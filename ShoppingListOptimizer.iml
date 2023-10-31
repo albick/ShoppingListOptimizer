@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/ShoppingListOptimizer">
+      <excludeFolder url="file://$MODULE_DIR$/ShoppingListOptimizer/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/ShoppingListOptimizer/tmp" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="431e8c00-3398-45e4-871e-8bcbc71b8c7c" />
+  </component>
+</module>
