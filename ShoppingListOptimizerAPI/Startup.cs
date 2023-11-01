@@ -1,4 +1,5 @@
 ﻿
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -131,12 +132,14 @@ namespace ShoppingListOptimizerAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleSeedService roleSeedService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleSeedService roleSeedService,IMapper mapper)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
             app.UseHttpsRedirection();
 
@@ -162,6 +165,17 @@ namespace ShoppingListOptimizerAPI
                 //endpoints.MapServerSentEvents("/notification-updates");
                 endpoints.MapControllers();
 
+            });
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/swagger")
+                {
+                    context.Response.Redirect("/index.html");
+                }
+                else
+                {
+                    await next();
+                }
             });
         }
     }
