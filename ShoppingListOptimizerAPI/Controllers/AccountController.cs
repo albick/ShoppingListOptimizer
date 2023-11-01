@@ -63,7 +63,9 @@ namespace ShoppingListOptimizerAPI.Controllers
 
             if (result.Succeeded)
             {
-                return Ok(new { Message = "Registration successful" });
+                RegisterResponse response = new RegisterResponse();
+                response.Message = "Registration successful";
+                return Ok(response);
             }
 
             return BadRequest("Registration failed");
@@ -85,7 +87,8 @@ namespace ShoppingListOptimizerAPI.Controllers
                 new Claim(ClaimTypes.Role, role)*/};
 
                 var token = _jwtAuthManager.GenerateTokens(request.UserName, claims, DateTime.Now);
-                return Ok(new { Token = token });
+                JwtAuthResponse response = new JwtAuthResponse{ AccessToken = token.AccessToken,RefreshToken=token.RefreshToken};
+                return Ok(response);
             }
 
             return BadRequest("Login failed");
