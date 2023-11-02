@@ -28,7 +28,12 @@ namespace ShoppingListOptimizerAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddIdentity<Account, IdentityRole>()
+            services.AddIdentity<Account, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.User.AllowedUserNameCharacters =
+            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ ";
+            })
     .AddEntityFrameworkStores<MyDbContext>()
             .AddDefaultTokenProviders();
 

@@ -6,8 +6,8 @@ namespace ShoppingListOptimizerAPI.Requests
     public class LoginRequest
     {
         [Required]
-        [JsonPropertyName("username")]
-        public string UserName { get; set; }
+        [JsonPropertyName("email")]
+        public string Email { get; set; }
 
         [Required]
         [JsonPropertyName("password")]
