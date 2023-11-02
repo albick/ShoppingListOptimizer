@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.JWTInfrastructure;
 using ShoppingListOptimizerAPI.Business.Services;
 using ShoppingListOptimizerAPI.Data.Models;
@@ -25,15 +27,17 @@ namespace ShoppingListOptimizerAPI.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly AccountService _accountService;
         private readonly IJwtAuthManager _jwtAuthManager;
+        private readonly IMapper _mapper;
 
         public AccountController(ILogger<AccountController> logger, AccountService accountService,
-            IJwtAuthManager jwtAuthManager, UserManager<Account> userManager, SignInManager<Account> signInManager)
+            IJwtAuthManager jwtAuthManager, UserManager<Account> userManager, SignInManager<Account> signInManager, IMapper mapper)
         {
             _logger = logger;
             _accountService = accountService;
             _jwtAuthManager = jwtAuthManager;
             _userManager = userManager;
             _signInManager = signInManager;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -57,11 +61,32 @@ namespace ShoppingListOptimizerAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            // Validate and create a new user
-            var user = new Account { UserName = request.UserName, Email = request.Email, Description = "..." };
-            var result = await _userManager.CreateAsync(user, request.Password);
+            Account user = new Account { UserName = request.UserName, Email = request.Email };
+            bool result = _accountService.RegisterUser(user,request.Password).Result;
+            if (result)
+            {
+                RegisterResponse response = new RegisterResponse();
+                response.Message = "Registration successful";
+                return Ok(response);
+            }
 
-            if (result.Succeeded)
+            return BadRequest("Registration failed");
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register-shop")]
+        public async Task<IActionResult> RegisterShop([FromBody] RegisterShopRequest request)
+        {
+            Account user = new Account { UserName = request.Company, Email = request.Email};
+            bool result = _accountService.RegisterShop(user, request.Password,
+                request.Location.City,
+                request.Location.Postcode,
+                request.Location.Street,
+                request.Location.Number,
+                request.Location.Latitude,
+                request.Location.Longitude
+                ).Result;
+            if (result)
             {
                 RegisterResponse response = new RegisterResponse();
                 response.Message = "Registration successful";
@@ -75,20 +100,25 @@ namespace ShoppingListOptimizerAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var result = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, false, false);
-
-            if (result.Succeeded)
+            var result = this._accountService.Login(request.Email, request.Password);
+            if (result.Result != null)
             {
-                //var token = GenerateJwtToken(request.UserName); // Implement this method
-                //var role = _accountService.GetUserRole(request.UserName);
-                var claims = new[]
+                if (result.Result.Succeeded)
                 {
-                new Claim(ClaimTypes.Name, request.UserName)/*,
+                    var user = _accountService.GetUserByEmail(request.Email).Result;
+                    if (result != null)
+                    {
+                        var claims = new[]
+                        {
+                new Claim(ClaimTypes.Name, user.UserName)/*,
                 new Claim(ClaimTypes.Role, role)*/};
 
-                var token = _jwtAuthManager.GenerateTokens(request.UserName, claims, DateTime.Now);
-                JwtAuthResponse response = new JwtAuthResponse{ AccessToken = token.AccessToken,RefreshToken=token.RefreshToken};
-                return Ok(response);
+                        var token = _jwtAuthManager.GenerateTokens(user.UserName, claims, DateTime.Now);
+                        JwtAuthResponse response = new JwtAuthResponse { AccessToken = token.AccessToken, RefreshToken = token.RefreshToken };
+                        return Ok(response);
+                    }
+                }
+                return BadRequest("Login failed");
             }
 
             return BadRequest("Login failed");

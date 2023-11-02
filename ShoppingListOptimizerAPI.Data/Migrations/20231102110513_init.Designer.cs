@@ -11,8 +11,8 @@ using ShoppingListOptimizerAPI.Data.Infrastructure;
 namespace ShoppingListOptimizerAPI.Data.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231021194732_init0")]
-    partial class init0
+    [Migration("20231102110513_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -163,16 +163,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
@@ -209,6 +208,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LocationId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -232,6 +233,39 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("double");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Postcode")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -283,6 +317,17 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Account", b =>
+                {
+                    b.HasOne("ShoppingListOptimizerAPI.Data.Models.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
                 });
 #pragma warning restore 612, 618
         }

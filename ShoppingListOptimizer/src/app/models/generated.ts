@@ -11,7 +11,7 @@
 
 
 export interface LoginRequest {
-    UserName: string;
+    Email: string;
     Password: string;
 }
 
@@ -50,4 +50,20 @@ export interface RefreshToken {
 
 export interface RegisterResponse {
     Message: string;
+}
+
+export interface Location {
+    City: string;
+    Postcode: string;
+    Street: string;
+    Number: string;
+    Longitude: number;
+    Latitude: number;
+}
+
+export interface RegisterShopRequest {
+    Company: string;
+    Password: string;
+    Email: string;
+    Location: Location;
 }

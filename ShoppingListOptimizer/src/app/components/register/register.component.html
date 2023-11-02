@@ -78,7 +78,9 @@
         Register failed!<br/>{{ errorMessage }}
       </div>
     </form>
-
+    <div *ngIf="!isSuccessful" class="form-group mt-4">
+      <button class="btn btn-outline-dark w-100 btn-block" routerLink="../register-shop">Register as shop</button>
+    </div>
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!
     </div>
