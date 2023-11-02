@@ -11,13 +11,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RegisterShopComponent} from './components/register-shop/register-shop.component';
 import {GeoapifyGeocoderAutocompleteModule} from '@geoapify/angular-geocoder-autocomplete';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    RegisterShopComponent
+    RegisterShopComponent,
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,
