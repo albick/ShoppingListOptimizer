@@ -14,5 +14,8 @@ namespace ShoppingListOptimizerAPI.Business.JWTInfrastructure
 
         [JsonPropertyName("refreshToken")]
         public RefreshToken RefreshToken { get; set; }
+
+        [JsonPropertyName("roles")]
+        public string[] Roles { get; set; }
     }
 }

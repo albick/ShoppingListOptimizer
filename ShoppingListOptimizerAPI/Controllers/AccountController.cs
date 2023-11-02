@@ -62,7 +62,7 @@ namespace ShoppingListOptimizerAPI.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             Account user = new Account { UserName = request.UserName, Email = request.Email };
-            bool result = _accountService.RegisterUser(user,request.Password).Result;
+            bool result = _accountService.RegisterUser(user, request.Password).Result;
             if (result)
             {
                 RegisterResponse response = new RegisterResponse();
@@ -77,7 +77,7 @@ namespace ShoppingListOptimizerAPI.Controllers
         [HttpPost("register-shop")]
         public async Task<IActionResult> RegisterShop([FromBody] RegisterShopRequest request)
         {
-            Account user = new Account { UserName = request.Company, Email = request.Email};
+            Account user = new Account { UserName = request.Company, Email = request.Email };
             bool result = _accountService.RegisterShop(user, request.Password,
                 request.Location.City,
                 request.Location.Postcode,
@@ -108,13 +108,21 @@ namespace ShoppingListOptimizerAPI.Controllers
                     var user = _accountService.GetUserByEmail(request.Email).Result;
                     if (result != null)
                     {
-                        var claims = new[]
-                        {
-                new Claim(ClaimTypes.Name, user.UserName)/*,
-                new Claim(ClaimTypes.Role, role)*/};
+                        var roles = await _accountService.GetUserRoleByEmail(request.Email);
+                        var claims = new List<Claim>        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Name, user.UserName)        };
 
-                        var token = _jwtAuthManager.GenerateTokens(user.UserName, claims, DateTime.Now);
-                        JwtAuthResponse response = new JwtAuthResponse { AccessToken = token.AccessToken, RefreshToken = token.RefreshToken };
+                        foreach (var role in roles)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Role, role)); // Add each role as a claim
+                        }
+                        var _claims = claims.ToArray();
+
+                        
+
+                        var token = _jwtAuthManager.GenerateTokens(user.UserName, _claims, DateTime.Now);
+                        JwtAuthResponse response = new JwtAuthResponse { AccessToken = token.AccessToken, RefreshToken = token.RefreshToken,Roles=roles.ToArray() };
                         return Ok(response);
                     }
                 }
@@ -186,13 +194,13 @@ namespace ShoppingListOptimizerAPI.Controllers
 
 
 
-        
 
 
-        
 
-        
 
-        
+
+
+
+
     }
 }

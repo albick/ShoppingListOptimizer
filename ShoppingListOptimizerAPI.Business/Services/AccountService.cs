@@ -85,6 +85,12 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return await _userManager.FindByEmailAsync(email);
         }
 
+        public async Task<IList<string>> GetUserRoleByEmail(string email)
+        {
+            var user=await _userManager.FindByEmailAsync(email);
+            var role=await _userManager.GetRolesAsync(user);
+            return role;
+        }
 
     }
 }

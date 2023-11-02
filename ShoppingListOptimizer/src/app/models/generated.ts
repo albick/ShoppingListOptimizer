@@ -37,6 +37,7 @@ export interface LoginResponse {
 export interface JwtAuthResult {
     AccessToken: string;
     RefreshToken: RefreshToken;
+    Roles: string[];
 }
 
 export interface JwtAuthResponse extends JwtAuthResult {
