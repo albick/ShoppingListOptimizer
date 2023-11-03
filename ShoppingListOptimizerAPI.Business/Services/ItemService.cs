@@ -28,9 +28,9 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return _items;
         }
 
-        public Item GetById(int id)
+        public Item GetById(string barcode)
         {
-            return _context.Items.FirstOrDefault(p => p.Id == id);
+            return _context.Items.FirstOrDefault(p => p.Barcode.Equals(barcode));
         }
 
         public Item Create(Item item)
@@ -40,9 +40,9 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return item;
         }
 
-        public bool Update(int id, Item updatedItem)
+        public bool Update(string barcode, Item updatedItem)
         {
-            var existingItem = _context.Items.FirstOrDefault(p => p.Id == id);
+            var existingItem = _context.Items.FirstOrDefault(p => p.Barcode.Equals(barcode));
             if (existingItem == null)
                 return false;
 
@@ -51,9 +51,9 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return true;
         }
 
-        public bool Delete(int id)
+        public bool Delete(string barcode)
         {
-            var item = _context.Items.FirstOrDefault(p => p.Id == id);
+            var item = _context.Items.FirstOrDefault(p => p.Barcode.Equals(barcode));
             if (item == null)
                 return false;
 

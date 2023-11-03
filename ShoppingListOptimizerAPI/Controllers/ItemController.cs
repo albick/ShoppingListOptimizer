@@ -24,9 +24,9 @@ namespace ShoppingListOptimizerAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Item> GetById(int id)
+        public ActionResult<Item> GetById(string barcode)
         {
-            var item = _itemService.GetById(id);
+            var item = _itemService.GetById(barcode);
             if (item == null)
                 return NotFound();
 
@@ -37,13 +37,13 @@ namespace ShoppingListOptimizerAPI.Controllers
         public ActionResult<Item> Create([FromBody] Item item)
         {
             var createdItem = _itemService.Create(item);
-            return CreatedAtAction(nameof(GetById), new { id = createdItem.Id }, createdItem);
+            return CreatedAtAction(nameof(GetById), new { barcode = createdItem.Barcode }, createdItem);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Item item)
+        public IActionResult Update(string barcode, [FromBody] Item item)
         {
-            var updated = _itemService.Update(id, item);
+            var updated = _itemService.Update(barcode, item);
             if (!updated)
                 return NotFound();
 
@@ -51,9 +51,9 @@ namespace ShoppingListOptimizerAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string barcode)
         {
-            var deleted = _itemService.Delete(id);
+            var deleted = _itemService.Delete(barcode);
             if (!deleted)
                 return NotFound();
 

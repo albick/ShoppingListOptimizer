@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@eisberg-labs/ngx-barcode-scanner": "^6.0.0"
-  }
-}

@@ -7,21 +7,16 @@ using System.Threading.Tasks;
 
 namespace ShoppingListOptimizerAPI.Data.Models
 {
-    public class Item
+    public class Shop
     {
-
         [Key]
-        [Required]
-        public string Barcode { get; set; }
-        [Required]
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Details { get; set; }
-        [Required]
-        public double Quantity { get; set; }
-        [Required]
-        public string Unit { get; set; }
-        
-        public Account Creator { get; set; }
+        public Location Location { get; set; }
 
+        public Account Creator { get; set; }
+        public Account Company { get; set; }
+        public OpeningHours OpeningHours { get; set; }
     }
 }
