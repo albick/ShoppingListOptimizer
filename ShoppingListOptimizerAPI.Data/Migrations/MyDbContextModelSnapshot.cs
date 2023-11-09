@@ -217,41 +217,6 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.HoursMatrixColumn", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HoursMatrixRowId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Value")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HoursMatrixRowId");
-
-                    b.ToTable("HoursMatrixColumn");
-                });
-
-            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.HoursMatrixRow", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OpeningHoursId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OpeningHoursId");
-
-                    b.ToTable("HoursMatrixRow");
-                });
-
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Item", b =>
                 {
                     b.Property<string>("Barcode")
@@ -351,17 +316,6 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.OpeningHours", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OpeningHours");
-                });
-
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Shop", b =>
                 {
                     b.Property<int>("Id")
@@ -387,8 +341,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("OpeningHoursId")
-                        .HasColumnType("int");
+                    b.Property<string>("OpeningHours")
+                        .HasMaxLength(672)
+                        .HasColumnType("varchar(672)");
 
                     b.HasKey("Id");
 
@@ -397,8 +352,6 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.HasIndex("CreatorId");
 
                     b.HasIndex("LocationId");
-
-                    b.HasIndex("OpeningHoursId");
 
                     b.ToTable("Shops");
                 });
@@ -463,20 +416,6 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.HoursMatrixColumn", b =>
-                {
-                    b.HasOne("ShoppingListOptimizerAPI.Data.Models.HoursMatrixRow", null)
-                        .WithMany("HoursMatrixColumns")
-                        .HasForeignKey("HoursMatrixRowId");
-                });
-
-            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.HoursMatrixRow", b =>
-                {
-                    b.HasOne("ShoppingListOptimizerAPI.Data.Models.OpeningHours", null)
-                        .WithMany("HoursMatrixRows")
-                        .HasForeignKey("OpeningHoursId");
-                });
-
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Item", b =>
                 {
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.Account", "Creator")
@@ -535,29 +474,11 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ShoppingListOptimizerAPI.Data.Models.OpeningHours", "OpeningHours")
-                        .WithMany()
-                        .HasForeignKey("OpeningHoursId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Company");
 
                     b.Navigation("Creator");
 
                     b.Navigation("Location");
-
-                    b.Navigation("OpeningHours");
-                });
-
-            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.HoursMatrixRow", b =>
-                {
-                    b.Navigation("HoursMatrixColumns");
-                });
-
-            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.OpeningHours", b =>
-                {
-                    b.Navigation("HoursMatrixRows");
                 });
 #pragma warning restore 612, 618
         }

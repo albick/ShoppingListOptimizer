@@ -6,9 +6,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace ShoppingListOptimizerAPI
+namespace ShoppingListOptimizerAPI.Models.Responses
 {
-    public class JwtAuthResponse:JwtAuthResult
+    public class JwtAuthResponse : JwtAuthResult
     {
     }
 }

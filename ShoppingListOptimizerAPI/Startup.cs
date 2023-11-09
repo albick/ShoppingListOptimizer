@@ -13,6 +13,7 @@ using ShoppingListOptimizerAPI.Business.MappingProfiles;
 using ShoppingListOptimizerAPI.Business.Services;
 using ShoppingListOptimizerAPI.Data.Infrastructure;
 using ShoppingListOptimizerAPI.Data.Models;
+using ShoppingListOptimizerAPI.MappingProfiles;
 using System.Text;
 
 namespace ShoppingListOptimizerAPI
@@ -94,7 +95,9 @@ namespace ShoppingListOptimizerAPI
 
             services.AddScoped<ItemService>();
             services.AddScoped<AccountService>();
-            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<ShopService>();
+            services.AddAutoMapper(typeof(MappingProfilePresentationLayer));
+            services.AddAutoMapper(typeof(MappingProfileServiceLayer));
             /*services.AddScoped<IUserService, UserService>();
             services.AddScoped<ItemService>();
             services.AddScoped<BidService>();

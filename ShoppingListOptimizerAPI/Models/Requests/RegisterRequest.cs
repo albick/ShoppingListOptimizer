@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace ShoppingListOptimizerAPI.Requests
+namespace ShoppingListOptimizerAPI.Models.Requests
 {
     public class RegisterRequest
     {

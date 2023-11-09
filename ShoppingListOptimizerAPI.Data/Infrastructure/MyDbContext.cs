@@ -23,7 +23,6 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
         public DbSet<Location> Locations { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<ItemPriceEntry> ItemPriceEntries { get; set; }
-        public DbSet<OpeningHours> OpeningHours { get; set; }
         
     }
 }

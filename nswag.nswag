@@ -4,14 +4,15 @@
   "documentGenerator": {
     "typesToOpenApi": {
       "classNames": [
+        "ShoppingListOptimizerAPI.JwtAuthResponse",
+        "ShoppingListOptimizerAPI.Requests.Location",
         "ShoppingListOptimizerAPI.Requests.LoginRequest",
         "ShoppingListOptimizerAPI.Requests.RefreshTokenRequest",
         "ShoppingListOptimizerAPI.Requests.RegisterRequest",
+        "ShoppingListOptimizerAPI.Requests.RegisterShopRequest",
         "ShoppingListOptimizerAPI.Responses.LoginResponse",
-        "ShoppingListOptimizerAPI.JwtAuthResponse",
         "ShoppingListOptimizerAPI.Responses.RegisterResponse",
-        "ShoppingListOptimizerAPI.Requests.Location",
-        "ShoppingListOptimizerAPI.Requests.RegisterShopRequest"
+        "ShoppingListOptimizerAPI.Responses.ShopResponse"
       ],
       "defaultPropertyNameHandling": "Default",
       "defaultReferenceTypeNullHandling": "Null",

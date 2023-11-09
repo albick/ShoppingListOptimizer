@@ -28,19 +28,20 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return _items;
         }
 
-        public Item GetById(string barcode)
+        public ItemDTO GetById(string barcode)
         {
-            return _context.Items.FirstOrDefault(p => p.Barcode.Equals(barcode));
+            var item= _context.Items.FirstOrDefault(p => p.Barcode.Equals(barcode));
+            return _mapper.Map<ItemDTO>(item);
         }
 
-        public Item Create(Item item)
+        public ItemDTO Create(ItemDTO item)
         {
-            _context.Items.Add(item);
+            _context.Items.Add(_mapper.Map<Item>(item));
             _context.SaveChanges();
             return item;
         }
 
-        public bool Update(string barcode, Item updatedItem)
+        public bool Update(string barcode, ItemDTO updatedItem)
         {
             var existingItem = _context.Items.FirstOrDefault(p => p.Barcode.Equals(barcode));
             if (existingItem == null)

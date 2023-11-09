@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ShoppingListOptimizerAPI.Responses
+namespace ShoppingListOptimizerAPI.Models.Responses
 {
     public class LoginResponse
     {
