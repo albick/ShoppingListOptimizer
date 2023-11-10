@@ -9,13 +9,13 @@ namespace ShoppingListOptimizerAPI.Business.JWTInfrastructure
 {
     public class JwtAuthResult
     {
-        [JsonPropertyName("accessToken")]
+        [JsonPropertyName("AccessToken")]
         public string AccessToken { get; set; }
 
-        [JsonPropertyName("refreshToken")]
+        [JsonPropertyName("RefreshToken")]
         public RefreshToken RefreshToken { get; set; }
 
-        [JsonPropertyName("roles")]
+        [JsonPropertyName("Roles")]
         public string[] Roles { get; set; }
     }
 }

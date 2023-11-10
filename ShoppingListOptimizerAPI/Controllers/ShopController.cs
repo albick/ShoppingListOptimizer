@@ -14,11 +14,13 @@ namespace ShoppingListOptimizerAPI.Controllers
     public class ShopController : ControllerBase
     {
         private readonly ShopService _shopService;
+        private readonly AccountService _accountService;
         private readonly IMapper _mapper;
 
-        public ShopController(ShopService shopService, IMapper mapper)
+        public ShopController(ShopService shopService, AccountService accountService, IMapper mapper)
         {
             _shopService = shopService;
+            _accountService = accountService;
             _mapper = mapper;
         }
         [HttpGet]
@@ -27,20 +29,21 @@ namespace ShoppingListOptimizerAPI.Controllers
             List<ShopDTO>? shops;
             if (distance == null)
             {
-                shops = _shopService.GetShops(null);
+                shops = _shopService.GetShops(0);
             }
             else
             {
-                shops = _shopService.GetShops(distance);
+                shops = _shopService.GetShops((double)distance);
             }
 
-            if (shops != null) {
+            if (shops != null)
+            {
                 return Ok(_mapper.Map<List<ShopResponse>>(shops));
             }
             return Ok();
         }
 
-        
+
         [HttpGet("{id}")]
         public ActionResult<ShopResponse> GetShopById(int id)
         {
@@ -53,6 +56,13 @@ namespace ShoppingListOptimizerAPI.Controllers
             var createdShop = _shopService.AddShopCommunity(_mapper.Map<ShopDTO>(shop));
             return CreatedAtAction(nameof(GetShopById), new { id = createdShop.Id }, createdShop);
 
+        }
+
+        [HttpGet("companies")]
+        public ActionResult<List<string>> GetCompanies()
+        {
+            var companies = _accountService.GetCompanies();
+            return Ok(companies);
         }
 
 

@@ -7,11 +7,13 @@ import {RegisterComponent} from './components/register/register.component';
 import {AppRoutingModule} from "./app-routing.module";
 
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RegisterShopComponent} from './components/register-shop/register-shop.component';
 import {GeoapifyGeocoderAutocompleteModule} from '@geoapify/angular-geocoder-autocomplete';
 import { HomeComponent } from './components/home/home.component';
+import { AddShopComponent } from './components/add-shop/add-shop.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     RegisterComponent,
     RegisterShopComponent,
-    HomeComponent
+    HomeComponent,
+    AddShopComponent
   ],
   imports: [
     AppRoutingModule,
@@ -30,7 +33,7 @@ import { HomeComponent } from './components/home/home.component';
     NgbModule,
     GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a')
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -16,6 +16,6 @@ namespace ShoppingListOptimizerAPI.Business.DTOs
 
         public AccountDTO Creator { get; set; }
         public AccountDTO Company { get; set; }
-        public string? OpeningHours { get; set; }
+        public ICollection<OpeningHoursDTO>? OpeningHours { get; set; }
     }
 }

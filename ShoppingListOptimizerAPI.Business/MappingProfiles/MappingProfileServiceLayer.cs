@@ -19,7 +19,19 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
 
             // Mapping from Shop to ShopDTO
             CreateMap<Shop, ShopDTO>()
-                .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location));
+                .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
+                .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom(src => src.OpeningHours));
+
+            CreateMap<ShopDTO, Shop>()
+            .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
+            .ForMember(dest => dest.Creator, opt => opt.MapFrom(src => src.Creator))
+            .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom(src => src.OpeningHours))
+            .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company));
+
+            CreateMap<OpeningHoursDTO, OpeningHours>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<OpeningHours, OpeningHoursDTO>();
 
             CreateMap<Location, LocationDTO>();
 
@@ -47,12 +59,6 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
             .ForMember(dest => dest.LockoutEnd, opt => opt.Ignore())
             .ForMember(dest => dest.LockoutEnabled, opt => opt.Ignore())
             .ForMember(dest => dest.AccessFailedCount, opt => opt.Ignore());
-
-            CreateMap<ShopDTO, Shop>()
-            .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
-            .ForMember(dest => dest.Creator, opt => opt.MapFrom(src => src.Creator))
-            .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom(src => src.OpeningHours))
-            .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company));
 
 
         }

@@ -26,7 +26,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
             _accountService = accountService;
         }
 
-        public List<ShopDTO> GetShops(double? distance)
+        public List<ShopDTO> GetShops(double distance)
         {
             var shops = _context.Shops
                 .Include(s => s.Creator)
@@ -36,7 +36,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 .Include(s => s.Location)
                 .ToList();
 
-            if (distance.HasValue)
+            if (!distance.Equals(0))
             {
                 //if distance param exists
                 var user = _accountService.GetCurrentUser().Result;
@@ -65,7 +65,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
         public ShopDTO AddShopCommunity(ShopDTO shop)
         {
             //look up company by id
-            var company = _accountService.GetCompanyById(shop.Company.Id).Result;
+            var company = _accountService.GetCompanyByName(shop.Company.UserName).Result;
             //get and look up creator by id
             var creator = _accountService.GetCurrentUser().Result;
 
@@ -79,8 +79,8 @@ namespace ShoppingListOptimizerAPI.Business.Services
             }
 
             //add to db
-            _context.Shops.Add(_shop);
-            _context.SaveChanges();
+            //_context.Shops.Add(_shop);
+            //_context.SaveChanges();
             return _mapper.Map<ShopDTO>(_shop);
         }
     }

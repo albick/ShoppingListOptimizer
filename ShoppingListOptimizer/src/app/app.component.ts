@@ -22,11 +22,11 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
 
-      this.roles = user.roles;
+      this.roles = user.Roles;
 
       this.showAdmin = this.roles.includes('Admin');
 
-      this.username = user.refreshToken.username;
+      this.username = user.RefreshToken.username;
       this.userId = user.id;
     }
   }

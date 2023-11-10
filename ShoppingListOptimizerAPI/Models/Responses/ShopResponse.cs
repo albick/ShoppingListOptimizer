@@ -1,5 +1,4 @@
-﻿using ShoppingListOptimizerAPI.Business.DTOs;
-
+﻿
 namespace ShoppingListOptimizerAPI.Models.Responses
 {
     public class ShopResponse
@@ -11,6 +10,6 @@ namespace ShoppingListOptimizerAPI.Models.Responses
 
         public AccountModel Creator { get; set; }
         public AccountModel Company { get; set; }
-        public string? OpeningHours { get; set; }
+        public ICollection<OpeningHoursModel>? OpeningHours { get; set; }
     }
 }

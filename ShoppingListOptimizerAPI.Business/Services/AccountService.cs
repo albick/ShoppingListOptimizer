@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using AutoMapper.Internal.Mappers;
 
 namespace ShoppingListOptimizerAPI.Business.Services
 {
@@ -93,6 +94,11 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return await _userManager.FindByEmailAsync(email);
         }
 
+        public async Task<Account> GetUserByName(string username)
+        {
+            return await _userManager.FindByNameAsync(username);
+        }
+
         public async Task<IList<string>> GetUserRoleByEmail(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
@@ -113,6 +119,34 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 else { return null; }
             }
             return null;
+        }
+        public async Task<Account?> GetCompanyByName(string name)
+        {
+            var account = _userManager.FindByNameAsync(name).Result;
+            if (account != null)
+            {
+                var roles = await _userManager.GetRolesAsync(account);
+                if (roles.Contains("Shop"))
+                {
+                    return account;
+                }
+                else { return null; }
+            }
+            return null;
+        }
+
+        public List<string>? GetCompanies()
+        {
+            var users = _userManager.Users.ToList();
+            List<string> companies = new List<string>();
+            foreach (var user in users)
+            {
+                if (_userManager.GetRolesAsync(user).Result.Contains("Shop"))
+                {
+                    companies.Add(user.UserName);
+                }
+            }
+            return companies;
         }
 
         public async Task<Account?> GetUserById(string id)

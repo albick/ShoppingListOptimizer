@@ -5,6 +5,7 @@ import {RegisterComponent} from "./components/register/register.component";
 import { RegisterShopComponent } from './components/register-shop/register-shop.component';
 import { HomeComponent } from './components/home/home.component';
 import { BarcodeScannerComponent } from './components/barcode-scanner/barcode-scanner.component';
+import { AddShopComponent } from './components/add-shop/add-shop.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'register-shop', component: RegisterShopComponent},
   {path: 'home', component: HomeComponent},
   {path: 'scan-barcode', component: BarcodeScannerComponent},
+  {path: 'add-shop', component: AddShopComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 

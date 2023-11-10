@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoppingListOptimizerAPI.Data.Migrations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,8 +18,7 @@ namespace ShoppingListOptimizerAPI.Data.Models
 
         public Account Creator { get; set; }
         public Account Company { get; set; }
-        //15 mins intervals 4*24*7=672 chars represent it
-        [MaxLength(672)]
-        public string? OpeningHours { get; set; }
+        public ICollection<OpeningHours>? OpeningHours { get; set; }
     }
+
 }

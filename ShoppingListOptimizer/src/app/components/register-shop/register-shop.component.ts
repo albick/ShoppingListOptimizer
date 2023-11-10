@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthService} from 'src/app/services/auth.service';
-import {Location} from 'src/app/models/generated';
+import {Location, LocationModel} from 'src/app/models/generated';
 import {Feature} from 'geojson';
+import { NgbTimepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-register-shop',
@@ -19,7 +20,7 @@ export class RegisterShopComponent {
     isSignUpFailed = false;
     errorMessage = '';
 
-    location: Location = {
+    location: LocationModel = {
         City: "",
         Postcode: "",
         Street: "",

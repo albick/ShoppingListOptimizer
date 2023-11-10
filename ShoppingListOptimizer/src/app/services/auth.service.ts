@@ -9,7 +9,6 @@ import {
     RegisterRequest,
     RegisterResponse,
     RegisterShopRequest,
-    Location,
     LocationModel
 } from "../models/generated";
 
