@@ -9,7 +9,8 @@ import {
     RegisterRequest,
     RegisterResponse,
     RegisterShopRequest,
-    Location
+    Location,
+    LocationModel
 } from "../models/generated";
 
 const AUTH_API = 'https://localhost:7090/api/Account/';
@@ -40,8 +41,8 @@ export class AuthService {
         return this.http.post<RegisterResponse>(AUTH_API + 'register', registerRequest, httpOptions);
     }
 
-    registerShop(company: string, email: string, password: string, location: Location): Observable<RegisterResponse> {
-        let _location: Location = {
+    registerShop(company: string, email: string, password: string, location: LocationModel): Observable<RegisterResponse> {
+        let _location: LocationModel = {
             City: location.City,
             Postcode: location.Postcode,
             Street: location.Street,
