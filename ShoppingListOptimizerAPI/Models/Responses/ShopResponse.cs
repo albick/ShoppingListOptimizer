@@ -1,15 +1,19 @@
 ﻿
+using System.Text.Json.Serialization;
+
 namespace ShoppingListOptimizerAPI.Models.Responses
 {
     public class ShopResponse
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Details { get; set; }
-        public LocationModel Location { get; set; }
+        
+        public int id { get; set; }
+        
+        public string name { get; set; }
+        public string details { get; set; }
+        public LocationModel location { get; set; }
 
-        public AccountModel Creator { get; set; }
-        public AccountModel Company { get; set; }
-        public ICollection<OpeningHoursModel>? OpeningHours { get; set; }
+        public AccountModel creator { get; set; }
+        public AccountModel company { get; set; }
+        public ICollection<OpeningHoursModel>? openingHours { get; set; }
     }
 }

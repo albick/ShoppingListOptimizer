@@ -18,6 +18,7 @@ export class AddShopComponent {
 
   companies: Observable<string[]> = EMPTY;
 
+  protected readonly DayOfWeek = DayOfWeek;
   daysOfWeek = Object.keys(DayOfWeek).map(key => parseInt(key)).filter(value => !isNaN(value));
 
   form: any = {
@@ -54,8 +55,6 @@ export class AddShopComponent {
 
   onSubmit() {
     const {company, name, details} = this.form;
-    console.log(this.times[0][0])
-    console.log(this.times[0][1])
 
     this.shopService.addShop(name, details, company, this.location, this.times).subscribe(
       data => {
@@ -107,5 +106,5 @@ export class AddShopComponent {
     this.location.Longitude = data.properties['lon'];
   }
 
-  protected readonly DayOfWeek = DayOfWeek;
+
 }

@@ -179,5 +179,11 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return null;
         }
 
+        public async Task<string?> GetCurrentLocation()
+        {
+            var geolocation=_httpContextAccessor.HttpContext.Request.Headers["Geolocation"];
+            return geolocation;
+        }
+
     }
 }

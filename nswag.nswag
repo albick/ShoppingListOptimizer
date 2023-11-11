@@ -16,7 +16,8 @@
         "ShoppingListOptimizerAPI.Models.Responses.JwtAuthResponse",
         "ShoppingListOptimizerAPI.Models.Responses.LoginResponse",
         "ShoppingListOptimizerAPI.Models.Responses.RegisterResponse",
-        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse"
+        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse",
+        "ShoppingListOptimizerAPI.Models.OpeningHoursModel"
       ],
       "defaultPropertyNameHandling": "Default",
       "defaultReferenceTypeNullHandling": "Null",

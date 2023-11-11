@@ -25,6 +25,22 @@ export interface LocationModel {
     Latitude: number;
 }
 
+export interface OpeningHoursModel {
+    DayOfWeek: DayOfWeek;
+    StartTime: string;
+    EndTime: string;
+}
+
+export enum DayOfWeek {
+    Sunday = 0,
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6,
+}
+
 export interface ItemRequest {
     Barcode: string;
     Name: string;
@@ -100,22 +116,6 @@ export interface ShopRequest {
     OpeningHours?: OpeningHoursModel[] | undefined;
 }
 
-export interface OpeningHoursModel {
-    DayOfWeek: DayOfWeek;
-    StartTime: string;
-    EndTime: string;
-}
-
-export enum DayOfWeek {
-    Sunday = 0,
-    Monday = 1,
-    Tuesday = 2,
-    Wednesday = 3,
-    Thursday = 4,
-    Friday = 5,
-    Saturday = 6,
-}
-
 export interface ItemResponse {
     Barcode: string;
     Name: string;
@@ -154,11 +154,11 @@ export interface RegisterResponse {
 }
 
 export interface ShopResponse {
-    Id: number;
-    Name: string;
-    Details: string;
-    Location: LocationModel;
-    Creator: AccountModel;
-    Company: AccountModel;
-    OpeningHours?: OpeningHoursModel[] | undefined;
+    id: number;
+    name: string;
+    details: string;
+    location: LocationModel;
+    creator: AccountModel;
+    company: AccountModel;
+    openingHours?: OpeningHoursModel[] | undefined;
 }

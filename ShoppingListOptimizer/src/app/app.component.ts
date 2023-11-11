@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "./services/token-storage.service";
+import {GeolocationService} from './services/geolocation.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,11 @@ export class AppComponent implements OnInit {
   username?: string;
   userId: string = "";
 
-  constructor(private tokenStorageService: TokenStorageService) {
+  constructor(private tokenStorageService: TokenStorageService, private geolocationService: GeolocationService) {
   }
 
   ngOnInit(): void {
+    this.getGeolocation();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
@@ -34,5 +36,23 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  getGeolocation() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          this.geolocationService.saveGeolocation(latitude, longitude);
+          console.log(this.geolocationService.getGeolocation());
+        },
+        (error) => {
+          console.error('Error getting geolocation:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
   }
 }

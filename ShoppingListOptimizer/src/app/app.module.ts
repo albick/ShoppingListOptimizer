@@ -14,6 +14,9 @@ import {GeoapifyGeocoderAutocompleteModule} from '@geoapify/angular-geocoder-aut
 import { HomeComponent } from './components/home/home.component';
 import { AddShopComponent } from './components/add-shop/add-shop.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ShopsComponent } from './components/shops/shops.component';
+import { ShopRowComponent } from './components/helpers/shop-row/shop-row.component';
+import { GeolocationInterceptor } from './interceptors/geolocation.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     RegisterComponent,
     RegisterShopComponent,
     HomeComponent,
-    AddShopComponent
+    AddShopComponent,
+    ShopsComponent,
+    ShopRowComponent
   ],
   imports: [
     AppRoutingModule,
@@ -33,7 +38,16 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NgbModule,
     GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a')
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GeolocationInterceptor,
+      multi: true,
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule {

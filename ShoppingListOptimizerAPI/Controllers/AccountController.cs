@@ -137,6 +137,7 @@ namespace ShoppingListOptimizerAPI.Controllers
         [Authorize]
         public async Task<IActionResult> GetCurrentUser()
         {
+            
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
             var c = User.Claims;
             await _userManager.AddToRoleAsync(user, "User");

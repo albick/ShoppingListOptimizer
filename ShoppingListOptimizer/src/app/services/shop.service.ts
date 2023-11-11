@@ -47,7 +47,6 @@ export class ShopService {
       OpeningHours:openingHours
     }
     return this.http.post<ShopResponse>(API_URL,shop);
-    //return this.http.get<ShopResponse>(API_URL);
   }
 
 }

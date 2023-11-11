@@ -27,7 +27,7 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
             
 
             CreateMap<ShopDTO, ShopResponse>()
-            .ForMember(dest => dest.Creator, opt => opt.MapFrom(src => src.Creator));
+            .ForMember(dest => dest.creator, opt => opt.MapFrom(src => src.Creator));
 
             CreateMap<ShopRequest, ShopDTO>()
            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
