@@ -1,3 +1,18 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="row">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name"  [(ngModel)]="form.name">
+    </div>
+    <div class="row">
+      <label for="distance" class="form-label">Distance (km)</label>
+      <input type="number" class="form-control" id="distance" min="0" step="0.5" placeholder="0"  [(ngModel)]="form.distance">
+    </div>
+    <div class="row">
+      <button class="btn btn-secondary" (click)="onSubmit()">Search</button>
+    </div>
+  </div>
+</div>
 <div *ngFor="let shop of shops|async">
-<app-shop-row [shop]="shop">asd</app-shop-row>
+  <app-shop-row [shop]="shop">asd</app-shop-row>
 </div>

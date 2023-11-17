@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.Helpers;
 using ShoppingListOptimizerAPI.Data.Infrastructure;
@@ -27,10 +28,10 @@ namespace ShoppingListOptimizerAPI.Business.Services
             _accountService = accountService;
         }
 
-        public List<ShopDTO> GetShops(double distance)
+        public List<ShopDTO> GetShops(double distance, string name)
         {
             var geolocation = _accountService.GetCurrentLocation().Result;
-            double[] coordinates= { 0, 0 };
+            double[] coordinates = { 0, 0 };
             if (geolocation != null)
             {
                 coordinates = geolocation
@@ -39,32 +40,58 @@ namespace ShoppingListOptimizerAPI.Business.Services
                     .Select(double.Parse)
                     .ToArray();
             }
-            var shops = _context.Shops
+
+            List<Shop>? shops;
+            if (name != null)
+            {
+                shops = _context.Shops.Where(s => s.Name.Contains(name))
                 .Include(s => s.Creator)
                     .ThenInclude(c => c.Location)
                 .Include(s => s.Company)
                     .ThenInclude(c => c.Location)
                 .Include(s => s.Location)
                 .ToList();
-
-            if (!distance.Equals(0))
+            }
+            else
             {
-                //if distance param exists
-                //var user = _accountService.GetCurrentUser().Result;
-
-                List<Shop> shops_ = new List<Shop>();
-                foreach (var s in shops)
-                {
-                    if (distance <= GeoFunctions.CalculateDistance(coordinates[0], coordinates[1], s.Location.Longitude, s.Location.Latitude)) { }
-                    shops_.Add(s);
-                }
-                shops = shops_;
-
+                shops = _context.Shops
+                .Include(s => s.Creator)
+                    .ThenInclude(c => c.Location)
+                .Include(s => s.Company)
+                    .ThenInclude(c => c.Location)
+                .Include(s => s.Location)
+                .ToList();
             }
 
 
-            List<ShopDTO> _shops = _mapper.Map<List<ShopDTO>>(shops);
-            return _shops;
+            //if distance param exists
+            List<ShopDTO> shops_mapped = _mapper.Map<List<ShopDTO>>(shops);
+
+            List<ShopDTO> shops_ret = new List<ShopDTO>();
+
+            foreach (var s in shops_mapped)
+            {
+                double calculated_distance = GeoFunctions.CalculateDistance(coordinates[0], coordinates[1], s.Location.Latitude, s.Location.Longitude);
+                s.DistanceFromUser = calculated_distance;
+                if (!distance.Equals(0))
+                {
+                    if (distance >= calculated_distance)
+                    {
+                        shops_ret.Add(s);
+                    }
+                }
+                else
+                {
+                    shops_ret.Add(s);
+                }
+            }
+            
+
+
+
+
+            
+            return shops_ret;
         }
 
         public ShopDTO GetShopById(int id)

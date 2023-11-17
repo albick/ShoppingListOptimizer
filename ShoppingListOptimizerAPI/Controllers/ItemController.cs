@@ -22,71 +22,41 @@ namespace ShoppingListOptimizerAPI.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public ActionResult<List<ItemResponse>> Get()
-        {
-            var items = _itemService.GetAll();
-            return Ok(_mapper.Map<List<ItemResponse>>(items));
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<ItemResponse> GetById(string barcode)
+        [HttpGet("{barcode}")]
+        public ActionResult<List<ItemResponse>> GetItemByBarcode(string barcode)
         {
             var item = _itemService.GetById(barcode);
             if (item == null)
-                return NotFound();
+            {
+                item = new ItemDTO();
+                item.Barcode = barcode;
+                _itemService.Create(item);
+            }
+            return Ok(_mapper.Map<ItemResponse>(item));
+        }
 
+        [HttpGet("{id}")]
+        public ActionResult<ItemResponse> GetItemById(string id)
+        {
+            var item = _itemService.GetById(id);
+            if(item == null)
+            {
+                return NotFound("Item not found");
+            }
             return Ok(_mapper.Map<ItemResponse>(item));
         }
 
         [HttpPost]
-        public ActionResult<Item> Create([FromBody] ItemRequest item)
+        public ActionResult<Item> AddItemEntry([FromBody] ItemRequest item)
         {
             var createdItem = _itemService.Create(_mapper.Map<ItemDTO>(item));
-            return CreatedAtAction(nameof(GetById), new { barcode = createdItem.Barcode }, createdItem);
+            if (createdItem == null)
+            {
+                return NotFound("Item creation failed");
+            }
+            return Ok(createdItem);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(string barcode, [FromBody] ItemRequest item)
-        {
-            var updated = _itemService.Update(barcode, _mapper.Map<ItemDTO>(item));
-            if (!updated)
-                return NotFound();
-
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(string barcode)
-        {
-            var deleted = _itemService.Delete(barcode);
-            if (!deleted)
-                return NotFound();
-
-            return NoContent();
-        }
-
-        /*
-        [Authorize(Roles = "User")]
-        [HttpGet("user")]
-        public IActionResult TestUser()
-        {
-            return Ok("user");
-        }
-
-        [Authorize(Roles = "Shop")]
-        [HttpGet("shop")]
-        public IActionResult TestShop()
-        {
-            return Ok("shop");
-        }
-
-        [Authorize(Roles = "Admin")]
-        [HttpGet("admin")]
-        public IActionResult TestAdmin()
-        {
-            return Ok("admin");
-        }*/
 
     }
 }

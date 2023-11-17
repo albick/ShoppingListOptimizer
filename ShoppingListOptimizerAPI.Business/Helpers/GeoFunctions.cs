@@ -8,32 +8,26 @@ namespace ShoppingListOptimizerAPI.Business.Helpers
 {
     public static class GeoFunctions
     {
-        public static double CalculateDistance(double longitudeA, double latitudeA, double longitudeB, double latitudeB)
+       private const double EarthRadiusKm = 6371.0;
+
+        public static double CalculateDistance(Double point1lat, Double point1lon, Double point2lat, Double point2lon)
         {
-            // Convert degrees to radians
-            double radLongitudeA = ToRadians(longitudeA);
-            double radLatitudeA = ToRadians(latitudeA);
-            double radLongitudeB = ToRadians(longitudeB);
-            double radLatitudeB = ToRadians(latitudeB);
+            var dLat = DegreeToRadian(point2lat - point1lat);
+            var dLon = DegreeToRadian(point2lon - point1lon);
 
-            // Calculate differences in coordinates
-            double deltaLongitude = radLongitudeB - radLongitudeA;
-            double deltaLatitude = radLatitudeB - radLatitudeA;
+            var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                    Math.Cos(DegreeToRadian(point1lat)) * Math.Cos(DegreeToRadian(point2lat)) *
+                    Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
 
-            // Haversine formula
-            double a = Math.Pow(Math.Sin(deltaLatitude / 2), 2) +
-                       Math.Cos(radLatitudeA) * Math.Cos(radLatitudeB) *
-                       Math.Pow(Math.Sin(deltaLongitude / 2), 2);
-            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
-            // Calculate distance
-            double distance = 6371 * c;
-
+            var distance = EarthRadiusKm * c;
             return distance;
         }
-        private static double ToRadians(double degrees)
+
+        private static double DegreeToRadian(double degree)
         {
-            return degrees * Math.PI / 180.0;
+            return degree * Math.PI / 180.0;
         }
     }
 }

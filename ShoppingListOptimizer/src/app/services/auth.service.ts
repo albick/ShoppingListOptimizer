@@ -42,12 +42,12 @@ export class AuthService {
 
     registerShop(company: string, email: string, password: string, location: LocationModel): Observable<RegisterResponse> {
         let _location: LocationModel = {
-            City: location.City,
-            Postcode: location.Postcode,
-            Street: location.Street,
-            Number: location.Number,
-            Longitude: location.Longitude,
-            Latitude: location.Latitude
+            city: location.city,
+            postcode: location.postcode,
+            street: location.street,
+            number: location.number,
+            longitude: location.longitude,
+            latitude: location.latitude
         };
         let registerRequest: RegisterShopRequest = {Company: company, Email: email, Password: password, Location: _location};
         return this.http.post<RegisterResponse>(AUTH_API + 'register-shop', registerRequest, httpOptions);

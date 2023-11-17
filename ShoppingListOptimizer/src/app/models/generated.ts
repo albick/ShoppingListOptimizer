@@ -17,12 +17,12 @@ export interface AccountModel {
 }
 
 export interface LocationModel {
-    City: string;
-    Postcode: string;
-    Street: string;
-    Number: string;
-    Longitude: number;
-    Latitude: number;
+    city: string;
+    postcode: string;
+    street: string;
+    number: string;
+    longitude: number;
+    latitude: number;
 }
 
 export interface OpeningHoursModel {
@@ -161,4 +161,5 @@ export interface ShopResponse {
     creator: AccountModel;
     company: AccountModel;
     openingHours?: OpeningHoursModel[] | undefined;
+    distanceFromUser: number;
 }

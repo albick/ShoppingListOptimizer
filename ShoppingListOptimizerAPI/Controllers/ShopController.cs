@@ -24,17 +24,18 @@ namespace ShoppingListOptimizerAPI.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public ActionResult<List<ShopResponse>> GetShops([FromQuery] double? distance)
+        public ActionResult<List<ShopResponse>> GetShops([FromQuery] double? distance, [FromQuery] string? name)
         {
             List<ShopDTO>? shops;
             if (distance == null)
             {
-                shops = _shopService.GetShops(0);
+                shops = _shopService.GetShops(0, name);
             }
             else
             {
-                shops = _shopService.GetShops((double)distance);
+                shops = _shopService.GetShops((double)distance,name);
             }
+
 
             if (shops != null)
             {

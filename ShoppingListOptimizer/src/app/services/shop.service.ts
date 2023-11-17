@@ -15,8 +15,8 @@ export class ShopService {
   constructor(private http: HttpClient) {
   }
 
-  getShops(distance: number = 0): Observable<ShopResponse[]> {
-    return this.http.get<ShopResponse[]>(API_URL + `?limit=${distance}`);
+  getShops(name:string="",distance: number = 0): Observable<ShopResponse[]> {
+    return this.http.get<ShopResponse[]>(API_URL + `?name=${name}&distance=${distance}`);
   }
   getCompanies(): Observable<string[]> {
     return this.http.get<string[]>(API_URL + `companies`);

@@ -19,8 +19,9 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
 
             // Mapping from Shop to ShopDTO
             CreateMap<Shop, ShopDTO>()
-                .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
-                .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom(src => src.OpeningHours));
+            .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
+            .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom(src => src.OpeningHours))
+            .ForMember(dest => dest.DistanceFromUser, opt => opt.MapFrom(src => 0));
 
             CreateMap<ShopDTO, Shop>()
             .ForMember(dest => dest.Location, opt => opt.MapFrom(src => src.Location))
@@ -35,7 +36,7 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
 
             CreateMap<Location, LocationDTO>();
 
-           
+
 
             CreateMap<LocationDTO, Location>();
             // Other mappings...

@@ -79,12 +79,12 @@ namespace ShoppingListOptimizerAPI.Controllers
         {
             Account user = new Account { UserName = request.Company, Email = request.Email };
             bool result = _accountService.RegisterShop(user, request.Password,
-                request.Location.City,
-                request.Location.Postcode,
-                request.Location.Street,
-                request.Location.Number,
-                request.Location.Latitude,
-                request.Location.Longitude
+                request.Location.city,
+                request.Location.postcode,
+                request.Location.street,
+                request.Location.number,
+                request.Location.latitude,
+                request.Location.longitude
                 ).Result;
             if (result)
             {

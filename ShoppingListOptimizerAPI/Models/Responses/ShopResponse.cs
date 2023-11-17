@@ -15,5 +15,7 @@ namespace ShoppingListOptimizerAPI.Models.Responses
         public AccountModel creator { get; set; }
         public AccountModel company { get; set; }
         public ICollection<OpeningHoursModel>? openingHours { get; set; }
+
+        public double distanceFromUser { get; set; } = 0;
     }
 }

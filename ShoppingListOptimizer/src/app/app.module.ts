@@ -17,6 +17,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ShopsComponent } from './components/shops/shops.component';
 import { ShopRowComponent } from './components/helpers/shop-row/shop-row.component';
 import { GeolocationInterceptor } from './interceptors/geolocation.interceptor';
+import { ScanBarcodeComponent } from './components/scan-barcode/scan-barcode.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GeolocationInterceptor } from './interceptors/geolocation.interceptor';
     HomeComponent,
     AddShopComponent,
     ShopsComponent,
-    ShopRowComponent
+    ShopRowComponent,
+    ScanBarcodeComponent
   ],
   imports: [
     AppRoutingModule,
