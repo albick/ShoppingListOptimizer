@@ -23,19 +23,19 @@ namespace ShoppingListOptimizerAPI.Controllers
         }
 
         [HttpGet("{barcode}")]
-        public ActionResult<List<ItemResponse>> GetItemByBarcode(string barcode)
+        public ActionResult<ItemResponse> GetItemByBarcode(string barcode)
         {
-            var item = _itemService.GetById(barcode);
-            if (item == null)
+            var item = _itemService.GetByBarcode(barcode);
+            /*if (item == null)
             {
                 item = new ItemDTO();
                 item.Barcode = barcode;
                 _itemService.Create(item);
-            }
+            }*/
             return Ok(_mapper.Map<ItemResponse>(item));
         }
 
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         public ActionResult<ItemResponse> GetItemById(string id)
         {
             var item = _itemService.GetById(id);
@@ -44,12 +44,13 @@ namespace ShoppingListOptimizerAPI.Controllers
                 return NotFound("Item not found");
             }
             return Ok(_mapper.Map<ItemResponse>(item));
-        }
+        }*/
 
         [HttpPost]
-        public ActionResult<Item> AddItemEntry([FromBody] ItemRequest item)
+        public ActionResult<Item> AddItem([FromBody] ItemRequest item)
         {
             var createdItem = _itemService.Create(_mapper.Map<ItemDTO>(item));
+            //ItemDTO createdItem = null;
             if (createdItem == null)
             {
                 return NotFound("Item creation failed");
@@ -57,6 +58,17 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(createdItem);
         }
 
+        [HttpPost("{id}")]
+        public ActionResult<Item> AddItemPrice(string id,[FromBody] ItemPriceRequest itemPrice)
+        {
+            //var createdItemPrice = _itemService.Create(_mapper.Map<ItemDTO>(itemPrice));
+            ItemDTO createdItemPrice = null;
+            if (createdItemPrice == null)
+            {
+                return NotFound("Item price entry creation failed");
+            }
+            return Ok(createdItemPrice);
+        }
 
     }
 }

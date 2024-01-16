@@ -18,6 +18,9 @@ import { ShopsComponent } from './components/shops/shops.component';
 import { ShopRowComponent } from './components/helpers/shop-row/shop-row.component';
 import { GeolocationInterceptor } from './interceptors/geolocation.interceptor';
 import { ScanBarcodeComponent } from './components/scan-barcode/scan-barcode.component';
+import {ZXingScannerModule} from "@zxing/ngx-scanner";
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { AddItemPriceComponent } from './components/add-item-price/add-item-price.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { ScanBarcodeComponent } from './components/scan-barcode/scan-barcode.com
     AddShopComponent,
     ShopsComponent,
     ShopRowComponent,
-    ScanBarcodeComponent
+    ScanBarcodeComponent,
+    AddItemComponent,
+    AddItemPriceComponent
   ],
   imports: [
     AppRoutingModule,
@@ -38,7 +43,8 @@ import { ScanBarcodeComponent } from './components/scan-barcode/scan-barcode.com
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
-    GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a')
+    GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a'),
+    ZXingScannerModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

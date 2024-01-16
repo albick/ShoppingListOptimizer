@@ -13,7 +13,5 @@ namespace ShoppingListOptimizerAPI.Models.Requests
         public double Quantity { get; set; }
 
         public string Unit { get; set; }
-
-        public Account Creator { get; set; }
     }
 }

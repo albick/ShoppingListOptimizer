@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {JwtResponse} from "../models/jwt-response";
 import {MessageResponse} from "../models/message-response";
+import {Environment} from "../../environment/env";
 import {
     JwtAuthResponse,
     LoginRequest,
@@ -12,7 +13,7 @@ import {
     LocationModel
 } from "../models/generated";
 
-const AUTH_API = 'https://localhost:7090/api/Account/';
+const AUTH_API = 'https://'+Environment.apiUrl+':7090/api/Account/';
 
 const httpOptions = {
     headers: new HttpHeaders({

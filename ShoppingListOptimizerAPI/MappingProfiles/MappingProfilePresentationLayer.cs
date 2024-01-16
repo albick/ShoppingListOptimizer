@@ -12,8 +12,9 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
     {
         public MappingProfilePresentationLayer()
         {
-            CreateMap<ItemResponse, ItemDTO>();
-            CreateMap<ItemRequest, ItemDTO>();
+            CreateMap<ItemDTO, ItemResponse>();
+            CreateMap<ItemRequest, ItemDTO>()
+            .ForMember(dest => dest.Creator, opt => opt.Ignore());
             // Other mappings...
             CreateMap<LocationModel, LocationDTO>()
            .ForMember(dest => dest.Id, opt => opt.Ignore());
@@ -29,7 +30,7 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
             CreateMap<ShopDTO, ShopResponse>()
             .ForMember(dest => dest.creator, opt => opt.MapFrom(src => src.Creator))
             .ForMember(dest => dest.distanceFromUser, opt => opt.MapFrom(src => src.DistanceFromUser));
-            
+
 
             CreateMap<ShopRequest, ShopDTO>()
            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
@@ -38,7 +39,7 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
            .ForMember(dest => dest.OpeningHours, opt => opt.MapFrom(src => src.OpeningHours))
            .ForMember(dest => dest.Creator, opt => opt.Ignore())  // Ignore Creator property
            .ForMember(dest => dest.Id, opt => opt.Ignore())       // Ignore Id property
-           .ForMember(dest=>dest.DistanceFromUser,opt=>opt.Ignore())
+           .ForMember(dest => dest.DistanceFromUser, opt => opt.Ignore())
            .ForMember(dest => dest.Company, opt => opt.MapFrom(src => new AccountDTO { UserName = src.CompanyName }));
 
             //CreateMap<ShopResponse, ShopDTO>();

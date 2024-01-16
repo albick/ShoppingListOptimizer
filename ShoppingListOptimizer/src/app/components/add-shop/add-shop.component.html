@@ -19,7 +19,7 @@
           maxlength="20"
           #name="ngModel"
         />
-        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+        <div class="alert alert-danger" *ngIf="name.errors && f.submitted">
           <div *ngIf="name.errors['required']">Name is required</div>
           <div *ngIf="name.errors['minlength']">
             Name must be at least 3 characters
@@ -42,7 +42,7 @@
           maxlength="20"
           #details="ngModel"
         />
-        <div class="alert-danger" *ngIf="details.errors && f.submitted">
+        <div class="alert alert-danger" *ngIf="details.errors && f.submitted">
           <div *ngIf="details.errors['required']">Details is required</div>
           <div *ngIf="details.errors['minlength']">
             Details must be at least 3 characters
@@ -65,7 +65,7 @@
         >
           <option *ngFor="let company of companies | async" [value]="company">{{ company }}</option>
           </select>
-        <div class="alert-danger" *ngIf="company.errors && f.submitted">
+        <div class="alert alert-danger" *ngIf="company.errors && f.submitted">
           <div *ngIf="company.errors['required']">Username is required</div>
           <div *ngIf="company.errors['minlength']">
             Company must be at least 3 characters

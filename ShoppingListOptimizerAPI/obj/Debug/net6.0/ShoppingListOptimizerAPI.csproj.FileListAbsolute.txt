@@ -146,3 +146,4 @@ C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI\obj\Debug\n
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI\obj\Debug\net6.0\ShoppingListOptimizerAPI.pdb
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI\obj\Debug\net6.0\ShoppingListOptimizerAPI.genruntimeconfig.cache
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI\obj\Debug\net6.0\ref\ShoppingListOptimizerAPI.dll
+C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI\obj\Debug\net6.0\ShoppingListOptimizerAPI.sourcelink.json

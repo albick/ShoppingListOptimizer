@@ -6,6 +6,7 @@
       "classNames": [
         "ShoppingListOptimizerAPI.Models.AccountModel",
         "ShoppingListOptimizerAPI.Models.LocationModel",
+        "ShoppingListOptimizerAPI.Models.OpeningHoursModel",
         "ShoppingListOptimizerAPI.Models.Requests.ItemRequest",
         "ShoppingListOptimizerAPI.Models.Requests.LoginRequest",
         "ShoppingListOptimizerAPI.Models.Requests.RefreshTokenRequest",
@@ -16,8 +17,7 @@
         "ShoppingListOptimizerAPI.Models.Responses.JwtAuthResponse",
         "ShoppingListOptimizerAPI.Models.Responses.LoginResponse",
         "ShoppingListOptimizerAPI.Models.Responses.RegisterResponse",
-        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse",
-        "ShoppingListOptimizerAPI.Models.OpeningHoursModel"
+        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse"
       ],
       "defaultPropertyNameHandling": "Default",
       "defaultReferenceTypeNullHandling": "Null",

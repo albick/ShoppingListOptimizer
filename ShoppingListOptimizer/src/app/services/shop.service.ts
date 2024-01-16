@@ -3,9 +3,10 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {DayOfWeek, LocationModel, OpeningHoursModel, ShopRequest, ShopResponse} from '../models/generated';
 import {NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
+import { Environment } from 'src/environment/env';
 
 
-const API_URL = 'https://localhost:7090/api/shops/';
+const API_URL = 'https://'+Environment.apiUrl+':7090/api/shops/';
 
 @Injectable({
   providedIn: 'root'

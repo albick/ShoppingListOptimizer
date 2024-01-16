@@ -1,1 +1,80 @@
-<p>add-item-price works!</p>
+<div class="col-md-12">
+  <div class="card card-container">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="barcode">Barcode</label>
+        <input
+          disabled
+          type="text"
+          class="form-control"
+          name="barcode"
+          [(ngModel)]="form.barcode"
+          required
+          #barcode="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="barcode.errors && f.submitted">
+          <div *ngIf="barcode.errors['required']">Barcode is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="shop">Shop</label>
+        <select
+          class="form-control"
+          name="shop"
+          [(ngModel)]="form.shop"
+          required
+          #shop="ngModel"
+        >
+          <option *ngFor="let shop of shops | async"
+                  [value]='shop.id'>{{ shop.name+', '+shop.location.city + ', ' + shop.location.postcode + ', ' + shop.location.street + ', ' + shop.location.number }}
+          </option>
+        </select>
+        <div class="alert alert-danger" *ngIf="shop.errors && f.submitted">
+          <div *ngIf="shop.errors['required']">Username is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          name="price"
+          [(ngModel)]="form.price"
+          required
+          #price="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="price.errors && f.submitted">
+          <div *ngIf="price.errors['required']">Price is required</div>
+        </div>
+      </div>
+
+
+      <div class="form-group mt-4">
+        <button class="btn btn-dark w-100 btn-block">Add</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isAddFailed">
+        Adding item price failed!<br/>{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Added item price successfully!
+    </div>
+    <div class="mt-4" *ngIf="isSuccessful">
+      <button class="btn btn-dark w-100 btn-block" [routerLink]="['/home']">
+        Home
+      </button>
+    </div>
+
+  </div>
+
+</div>

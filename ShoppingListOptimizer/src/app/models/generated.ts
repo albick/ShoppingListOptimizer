@@ -47,7 +47,45 @@ export interface ItemRequest {
     Details: string;
     Quantity: number;
     Unit: string;
-    Creator: Account;
+}
+
+export interface LoginRequest {
+    Email: string;
+    Password: string;
+}
+
+export interface RefreshTokenRequest {
+    RefreshToken: string;
+}
+
+export interface RegisterRequest {
+    UserName: string;
+    Password: string;
+    Email: string;
+}
+
+export interface RegisterShopRequest {
+    Company: string;
+    Password: string;
+    Email: string;
+    Location: LocationModel;
+}
+
+export interface ShopRequest {
+    Name: string;
+    Details: string;
+    CompanyName: string;
+    Location: LocationModel;
+    OpeningHours?: OpeningHoursModel[] | undefined;
+}
+
+export interface ItemResponse {
+    barcode: string;
+    name: string;
+    details: string;
+    quantity: number;
+    unit: string;
+    creator: Account;
 }
 
 export interface IdentityUserOfString {
@@ -84,45 +122,6 @@ export interface Location {
     Number: string;
     Longitude: number;
     Latitude: number;
-}
-
-export interface LoginRequest {
-    Email: string;
-    Password: string;
-}
-
-export interface RefreshTokenRequest {
-    RefreshToken: string;
-}
-
-export interface RegisterRequest {
-    UserName: string;
-    Password: string;
-    Email: string;
-}
-
-export interface RegisterShopRequest {
-    Company: string;
-    Password: string;
-    Email: string;
-    Location: LocationModel;
-}
-
-export interface ShopRequest {
-    Name: string;
-    Details: string;
-    CompanyName: string;
-    Location: LocationModel;
-    OpeningHours?: OpeningHoursModel[] | undefined;
-}
-
-export interface ItemResponse {
-    Barcode: string;
-    Name: string;
-    Details: string;
-    Quantity: number;
-    Unit: string;
-    Creator: Account;
 }
 
 export interface JwtAuthResult {
@@ -162,4 +161,9 @@ export interface ShopResponse {
     company: AccountModel;
     openingHours?: OpeningHoursModel[] | undefined;
     distanceFromUser: number;
+}
+
+export interface ItemPriceRequest {
+    Price: number;
+    ShopId: string;
 }
