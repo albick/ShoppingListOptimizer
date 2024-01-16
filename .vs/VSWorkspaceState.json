@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ShoppingListOptimizerAPI",
+    "\\ShoppingListOptimizerAPI\\.vs",
+    "\\ShoppingListOptimizerAPI\\.vs\\ShoppingListOptimizerAPI",
+    "\\ShoppingListOptimizerAPI\\.vs\\ShoppingListOptimizerAPI\\v17",
+    "\\ShoppingListOptimizerAPI\\Controllers",
+    "\\ShoppingListOptimizerAPI\\Models",
+    "\\ShoppingListOptimizerAPI\\Models\\Responses"
   ],
-  "SelectedNode": "\\ShoppingListOptimizerAPI.sln",
+  "SelectedNode": "\\ShoppingListOptimizerAPI\\Controllers\\ItemController.cs",
   "PreviewInSolutionExplorer": false
 }

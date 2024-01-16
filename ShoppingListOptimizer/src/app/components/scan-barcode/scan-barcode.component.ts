@@ -35,7 +35,7 @@ export class ScanBarcodeComponent {
   onSubmit() {
     const barcode = this.form.barcode;
     console.log(barcode);
-    
+
 
     this.itemService.getItemByBarcode(barcode)
       .pipe(
