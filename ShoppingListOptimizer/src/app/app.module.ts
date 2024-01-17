@@ -21,6 +21,7 @@ import { ScanBarcodeComponent } from './components/scan-barcode/scan-barcode.com
 import {ZXingScannerModule} from "@zxing/ngx-scanner";
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { AddItemPriceComponent } from './components/add-item-price/add-item-price.component';
+import { ItemsComponent } from './components/items/items.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddItemPriceComponent } from './components/add-item-price/add-item-pric
     ShopRowComponent,
     ScanBarcodeComponent,
     AddItemComponent,
-    AddItemPriceComponent
+    AddItemPriceComponent,
+    ItemsComponent
   ],
   imports: [
     AppRoutingModule,

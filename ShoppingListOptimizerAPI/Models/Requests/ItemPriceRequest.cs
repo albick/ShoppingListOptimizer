@@ -3,7 +3,6 @@
     public class ItemPriceRequest
     {
         public double Price { get; set; }
-
-        public string ShopId { get; set; }
+        public int ShopId { get; set; }
     }
 }

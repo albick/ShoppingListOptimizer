@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EMPTY, Observable} from 'rxjs';
 import {ShopResponse} from 'src/app/models/generated';
 import {ShopService} from 'src/app/services/shop.service';
@@ -8,7 +8,7 @@ import {ShopService} from 'src/app/services/shop.service';
   templateUrl: './shops.component.html',
   styleUrls: ['./shops.component.css']
 })
-export class ShopsComponent {
+export class ShopsComponent implements OnInit{
   form={
     name:"",
     distance:0
@@ -24,7 +24,7 @@ export class ShopsComponent {
     this.shops = this.shopService.getShops();
     this.shops.subscribe(data=>{
       console.log(data)
-    })
+    });
   }
 
   onSubmit(): void {

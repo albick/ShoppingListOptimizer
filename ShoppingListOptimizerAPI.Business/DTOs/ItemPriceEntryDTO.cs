@@ -1,20 +1,19 @@
-﻿using System;
+﻿using ShoppingListOptimizerAPI.Data.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingListOptimizerAPI.Data.Models
+namespace ShoppingListOptimizerAPI.Business.DTOs
 {
-    public class ItemPriceEntry
+    public class ItemPriceEntryDTO
     {
-        [Key]
         public int Id { get; set; }
         public double Price { get; set; }
         public DateTime CreatedAt { get; set; }
-        public Item Item { get; set; }
+        public ItemDTO Item { get; set; }
         public Account Creator { get; set; }
-        public Shop Shop { get; set; }
+        public ShopDTO Shop { get; set; }
     }
 }

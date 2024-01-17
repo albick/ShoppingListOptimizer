@@ -35,16 +35,17 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(_mapper.Map<ItemResponse>(item));
         }
 
-        /*[HttpGet("{id}")]
-        public ActionResult<ItemResponse> GetItemById(string id)
+        [HttpGet]
+        public ActionResult<List<ItemResponse>> GetItems([FromQuery] double? distance, [FromQuery] string? name, [FromQuery] double? priceMin, [FromQuery] double? priceMax)
         {
-            var item = _itemService.GetById(id);
-            if(item == null)
+            var items = _itemService.GetItems(0, name, priceMin, priceMax);
+
+            if (items != null)
             {
-                return NotFound("Item not found");
+                return Ok(_mapper.Map<List<ItemResponse>>(items));
             }
-            return Ok(_mapper.Map<ItemResponse>(item));
-        }*/
+            return Ok();
+        }
 
         [HttpPost]
         public ActionResult<Item> AddItem([FromBody] ItemRequest item)
@@ -58,12 +59,12 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(createdItem);
         }
 
-        [HttpPost("{id}")]
-        public ActionResult<Item> AddItemPrice(string id,[FromBody] ItemPriceRequest itemPrice)
+        [HttpPost("{barcode}")]
+        public ActionResult<Item> AddItemPrice(string barcode, [FromBody] ItemPriceRequest itemPriceEntryRequest)
         {
-            //var createdItemPrice = _itemService.Create(_mapper.Map<ItemDTO>(itemPrice));
-            ItemDTO createdItemPrice = null;
-            if (createdItemPrice == null)
+            var createdItemPrice = _itemService.CreateItemPriceEntry(barcode, itemPriceEntryRequest.ShopId, itemPriceEntryRequest.Price);
+
+            if (createdItemPrice == null || itemPriceEntryRequest.Price <= 0)
             {
                 return NotFound("Item price entry creation failed");
             }

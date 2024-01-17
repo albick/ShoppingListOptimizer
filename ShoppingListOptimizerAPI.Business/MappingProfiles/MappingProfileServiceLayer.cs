@@ -61,7 +61,8 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
             .ForMember(dest => dest.LockoutEnabled, opt => opt.Ignore())
             .ForMember(dest => dest.AccessFailedCount, opt => opt.Ignore());
 
-
+            CreateMap<ItemPriceEntry, ItemPriceEntryDTO>();
+            CreateMap<ItemPriceEntryDTO, ItemPriceEntry>();
         }
     }
 }
