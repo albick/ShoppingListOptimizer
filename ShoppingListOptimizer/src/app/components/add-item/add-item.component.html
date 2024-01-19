@@ -1,0 +1,113 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="barcode">Barcode</label>
+        <input
+          type="text"
+          class="form-control"
+          name="barcode"
+          [(ngModel)]="form.barcode"
+          required
+          #barcode="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="barcode.errors && f.submitted">
+          <div *ngIf="barcode.errors['required']">Barcode is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="3"
+          #name="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors['required']">Name is required</div>
+          <div *ngIf="name.errors['minlength']">
+            Name must be at least 3 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="details">Details</label>
+        <input
+          type="text"
+          class="form-control"
+          name="details"
+          [(ngModel)]="form.details"
+          #details="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="details.errors && f.submitted">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input
+          type="number"
+          class="form-control"
+          name="quantity"
+          [(ngModel)]="form.quantity"
+          required
+          min="0"
+          #quantity="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="quantity.errors && f.submitted">
+          <div *ngIf="quantity.errors['required']">Quantity is required</div>
+          <div *ngIf="quantity.errors['min']">
+            Quantity must be greater than 0
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="unit">Unit</label>
+        <select
+          type="text"
+          class="form-control"
+          name="unit"
+          [(ngModel)]="form.unit"
+          required
+          #unit="ngModel"
+        >
+          <option *ngFor="let unit of units" [value]="unit">{{ unit }}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="unit.errors && f.submitted">
+          <div *ngIf="unit.errors['required']">Unit is required</div>
+
+        </div>
+      </div>
+
+
+      <div class="form-group mt-4">
+        <button class="btn btn-dark w-100 btn-block">Add</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isAddFailed">
+        Adding item failed!<br/>{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Added item successfully!
+    </div>
+    <div class="mt-4" *ngIf="isSuccessful">
+      <button class="btn btn-dark w-100 btn-block" [routerLink]="['/add-item-price', form.barcode]">Add price entry for item</button>
+    </div>
+
+  </div>
+
+</div>

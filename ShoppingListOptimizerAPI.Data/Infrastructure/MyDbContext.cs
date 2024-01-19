@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using ShoppingListOptimizerAPI.Data.Models;
 
@@ -19,5 +20,9 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Shop> Shops { get; set; }
+        public DbSet<ItemPriceEntry> ItemPriceEntries { get; set; }
+        
     }
 }

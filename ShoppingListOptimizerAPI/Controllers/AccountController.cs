@@ -8,8 +8,8 @@ using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.JWTInfrastructure;
 using ShoppingListOptimizerAPI.Business.Services;
 using ShoppingListOptimizerAPI.Data.Models;
-using ShoppingListOptimizerAPI.Requests;
-using ShoppingListOptimizerAPI.Responses;
+using ShoppingListOptimizerAPI.Models.Requests;
+using ShoppingListOptimizerAPI.Models.Responses;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
@@ -79,12 +79,12 @@ namespace ShoppingListOptimizerAPI.Controllers
         {
             Account user = new Account { UserName = request.Company, Email = request.Email };
             bool result = _accountService.RegisterShop(user, request.Password,
-                request.Location.City,
-                request.Location.Postcode,
-                request.Location.Street,
-                request.Location.Number,
-                request.Location.Latitude,
-                request.Location.Longitude
+                request.Location.city,
+                request.Location.postcode,
+                request.Location.street,
+                request.Location.number,
+                request.Location.latitude,
+                request.Location.longitude
                 ).Result;
             if (result)
             {
@@ -137,6 +137,7 @@ namespace ShoppingListOptimizerAPI.Controllers
         [Authorize]
         public async Task<IActionResult> GetCurrentUser()
         {
+            
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
             var c = User.Claims;
             await _userManager.AddToRoleAsync(user, "User");

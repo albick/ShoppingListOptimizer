@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthService} from 'src/app/services/auth.service';
-import {Location} from 'src/app/models/generated';
+import {Location, LocationModel} from 'src/app/models/generated';
 import {Feature} from 'geojson';
+import { NgbTimepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-register-shop',
@@ -19,13 +20,13 @@ export class RegisterShopComponent {
     isSignUpFailed = false;
     errorMessage = '';
 
-    location: Location = {
-        City: "",
-        Postcode: "",
-        Street: "",
-        Number: "",
-        Longitude: 0,
-        Latitude: 0
+    location: LocationModel = {
+        city: "",
+        postcode: "",
+        street: "",
+        number: "",
+        longitude: 0,
+        latitude: 0
     };
 
     constructor(private authService: AuthService) {
@@ -56,35 +57,35 @@ export class RegisterShopComponent {
         // @ts-ignore
         let _city = data.properties['city']
         if (_city !== undefined) {
-            this.location.City = _city;
+            this.location.city = _city;
         } else {
-            this.location.City = ""
+            this.location.city = ""
         }
         // @ts-ignore
         let _postcode = data.properties['postcode']
         if (_postcode !== undefined) {
-            this.location.Postcode = _postcode;
+            this.location.postcode = _postcode;
         } else {
-            this.location.Postcode = ""
+            this.location.postcode = ""
         }
         // @ts-ignore
         let _street = data.properties['street']
         if (_street !== undefined) {
-            this.location.Street = _street;
+            this.location.street = _street;
         } else {
-            this.location.Street = ""
+            this.location.street = ""
         }
         // @ts-ignore
         let _number = data.properties['housenumber']
         if (_number !== undefined) {
-            this.location.Number = _number;
+            this.location.number = _number;
         } else {
-            this.location.Number = ""
+            this.location.number = ""
         }
         // @ts-ignore
-        this.location.Latitude = data.properties['lat'];
+        this.location.latitude = data.properties['lat'];
         // @ts-ignore
-        this.location.Longitude = data.properties['lon'];
+        this.location.longitude = data.properties['lon'];
         console.log(this.location)
     }
 

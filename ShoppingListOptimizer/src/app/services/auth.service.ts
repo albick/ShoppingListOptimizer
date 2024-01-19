@@ -3,16 +3,17 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {JwtResponse} from "../models/jwt-response";
 import {MessageResponse} from "../models/message-response";
+import {Environment} from "../../environment/env";
 import {
     JwtAuthResponse,
     LoginRequest,
     RegisterRequest,
     RegisterResponse,
     RegisterShopRequest,
-    Location
+    LocationModel
 } from "../models/generated";
 
-const AUTH_API = 'https://localhost:7090/api/Account/';
+const AUTH_API = 'https://'+Environment.apiUrl+':7090/api/Account/';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -40,14 +41,14 @@ export class AuthService {
         return this.http.post<RegisterResponse>(AUTH_API + 'register', registerRequest, httpOptions);
     }
 
-    registerShop(company: string, email: string, password: string, location: Location): Observable<RegisterResponse> {
-        let _location: Location = {
-            City: location.City,
-            Postcode: location.Postcode,
-            Street: location.Street,
-            Number: location.Number,
-            Longitude: location.Longitude,
-            Latitude: location.Latitude
+    registerShop(company: string, email: string, password: string, location: LocationModel): Observable<RegisterResponse> {
+        let _location: LocationModel = {
+            city: location.city,
+            postcode: location.postcode,
+            street: location.street,
+            number: location.number,
+            longitude: location.longitude,
+            latitude: location.latitude
         };
         let registerRequest: RegisterShopRequest = {Company: company, Email: email, Password: password, Location: _location};
         return this.http.post<RegisterResponse>(AUTH_API + 'register-shop', registerRequest, httpOptions);

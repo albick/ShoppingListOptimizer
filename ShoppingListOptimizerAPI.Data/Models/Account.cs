@@ -17,6 +17,7 @@ namespace ShoppingListOptimizerAPI.Data.Models
         public override string Id { get; set; }
 
         public Location? Location { get; set; }
+        
     }
 
     

@@ -1,0 +1,116 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="3"
+          maxlength="20"
+          #name="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors['required']">Name is required</div>
+          <div *ngIf="name.errors['minlength']">
+            Name must be at least 3 characters
+          </div>
+          <div *ngIf="name.errors['maxlength']">
+            Name must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="details">Details</label>
+        <input
+          type="text"
+          class="form-control"
+          name="details"
+          [(ngModel)]="form.details"
+          required
+          minlength="3"
+          maxlength="20"
+          #details="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="details.errors && f.submitted">
+          <div *ngIf="details.errors['required']">Details is required</div>
+          <div *ngIf="details.errors['minlength']">
+            Details must be at least 3 characters
+          </div>
+          <div *ngIf="details.errors['maxlength']">
+            Details must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company</label>
+        <select
+          type="text"
+          class="form-control"
+          name="company"
+          [(ngModel)]="form.company"
+          required
+          #company="ngModel"
+        >
+          <option *ngFor="let company of companies | async" [value]="company">{{ company }}</option>
+          </select>
+        <div class="alert alert-danger" *ngIf="company.errors && f.submitted">
+          <div *ngIf="company.errors['required']">Username is required</div>
+          <div *ngIf="company.errors['minlength']">
+            Company must be at least 3 characters
+          </div>
+          <div *ngIf="company.errors['maxlength']">
+            Company must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <geoapify-geocoder-autocomplete
+          [type]="'amenity'"
+          [filterByCountryCode]="['hu']"
+          (placeSelect)="placeSelected($event)">
+        </geoapify-geocoder-autocomplete>
+
+      </div>
+
+      <div class="form-group mt-4">
+        <button class="btn btn-dark w-100 btn-block">Add</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isAddFailed">
+        Adding shop failed!<br/>{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Added shop successfully!
+    </div>
+
+  </div>
+
+  <div class="card card-container" *ngIf="!isSuccessful">
+
+    <div *ngFor="let day of daysOfWeek">
+      <p class="m-0 fw-semibold">{{ DayOfWeek[day] }}</p>
+      <div class="d-flex align-items-center">
+        <p class="m-0">From</p>
+        <ngb-timepicker class="me-2" [(ngModel)]="times[day][0]"></ngb-timepicker>
+        <p class="m-0">To</p>
+        <ngb-timepicker [(ngModel)]="times[day][1]"></ngb-timepicker>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="col-6 offset-3">
+<div class="row">
+    <div class="col-6">
+        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" routerLink="../shops">
+            <p class="py-4 m-0">Shops</p>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center">
+            <p class="py-4 m-0">Shopping lists</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" [routerLink]="['/items']">
+            <p class="py-4 m-0">Items</p>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" [routerLink]="['/add-item']">
+            <p class="py-4 m-0">Add item</p>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-6">
+            <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" routerLink="../add-shop">
+                <p class="py-4 m-0">Add shop</p>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center">
+                <p class="py-4 m-0" routerLink="../scan-barcode">Scan barcode</p>
+            </div>
+        </div>
+    </div>
+</div>
