@@ -6,6 +6,8 @@ import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {AppRoutingModule} from "./app-routing.module";
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -45,6 +47,7 @@ import { ItemsComponent } from './components/items/items.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
+    NgxChartsModule,
     GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a'),
     ZXingScannerModule
   ],
