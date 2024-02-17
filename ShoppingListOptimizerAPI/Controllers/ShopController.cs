@@ -51,6 +51,13 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(_mapper.Map<ShopResponse>(_shopService.GetShopById(id)));
         }
 
+        [HttpGet("maxDistance")]
+        public ActionResult<double> GetMaxShopDistance()
+        {
+            double distance = _shopService.GetMaxShopDistance();
+            return Ok(distance);
+        }
+
         [HttpPost]
         public ActionResult<ShopResponse> AddShopCommunity([FromBody] ShopRequest shop)
         {

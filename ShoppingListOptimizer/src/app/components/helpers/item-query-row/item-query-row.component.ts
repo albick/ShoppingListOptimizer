@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ItemQueryResponse } from 'src/app/models/generated';
+
+
 
 @Component({
   selector: 'app-item-query-row',
@@ -6,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./item-query-row.component.css']
 })
 export class ItemQueryRowComponent {
+  @Input() item!: ItemQueryResponse;
 
 }

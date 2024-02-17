@@ -41,6 +41,11 @@ export enum DayOfWeek {
     Saturday = 6,
 }
 
+export interface ItemPriceRequest {
+    Price: number;
+    ShopId: number;
+}
+
 export interface ItemRequest {
     Barcode: string;
     Name: string;
@@ -163,7 +168,13 @@ export interface ShopResponse {
     distanceFromUser: number;
 }
 
-export interface ItemPriceRequest {
-    Price: number;
-    ShopId: string;
+export interface ItemQueryResponse {
+    price: number;
+    createdAt: Date;
+    itemBarcode: string;
+    itemName: string;
+    itemUnit: string;
+    itemQuantity: number;
+    shopName: string;
+    distance: number;
 }

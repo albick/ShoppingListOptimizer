@@ -23,6 +23,10 @@ export class ShopService {
     return this.http.get<string[]>(API_URL + `companies`);
   }
 
+  getMaxShopDistance():Observable<number>{
+    return this.http.get<number>(API_URL+'maxDistance');
+  }
+
   addShop(name: string, details: string, companyName: string, location: LocationModel, times: NgbTimeStruct[][]): Observable<ShopResponse> {
 
     var openingHours: OpeningHoursModel[] = [];

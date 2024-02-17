@@ -55,6 +55,17 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
                 .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime))
                 .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => src.EndTime));
 
+            CreateMap<ItemQueryResultDTO, ItemQueryResponse>()
+                .ForMember(dest => dest.price, opt => opt.MapFrom(src => src.Price))
+                .ForMember(dest => dest.createdAt, opt => opt.MapFrom(src => src.CreatedAt))
+                .ForMember(dest => dest.itemBarcode, opt => opt.MapFrom(src => src.Item.Barcode))
+                .ForMember(dest => dest.itemName, opt => opt.MapFrom(src => src.Item.Name))
+                .ForMember(dest => dest.itemUnit, opt => opt.MapFrom(src => src.Item.Unit))
+                .ForMember(dest => dest.itemQuantity, opt => opt.MapFrom(src => src.Item.Quantity))
+                .ForMember(dest => dest.shopName, opt => opt.MapFrom(src => src.Shop.Name))
+                .ForMember(dest => dest.distance, opt => opt.MapFrom(src => src.Distance))
+                ;
+
         }
     }
 

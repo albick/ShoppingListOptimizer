@@ -1,1 +1,19 @@
-<p>item-query-row works!</p>
+<div class="bg-dark text-bg-dark">
+  <div class="row">
+    <div class="col-6">
+      <p class="m-0 fw-semibold">{{item["itemName"] +" - "+item["itemQuantity"] +" "+ item["itemUnit"]}}</p>
+
+    </div>
+    <div class="col-6">
+      <button class="btn btn-secondary">Add to cart</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <p class="m-0 fw-semibold">{{item["price"]+" Ft at " + (item["createdAt"] | date:'mediumDate')}}</p>
+    </div>
+    <div class="col-6">
+      <p class="m-0">{{(item["distance"] | number:'1.1-1')+" km - " +item["shopName"]}}</p>
+    </div>
+  </div>
+</div>

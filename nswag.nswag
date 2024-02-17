@@ -7,6 +7,7 @@
         "ShoppingListOptimizerAPI.Models.AccountModel",
         "ShoppingListOptimizerAPI.Models.LocationModel",
         "ShoppingListOptimizerAPI.Models.OpeningHoursModel",
+        "ShoppingListOptimizerAPI.Models.Requests.ItemPriceRequest",
         "ShoppingListOptimizerAPI.Models.Requests.ItemRequest",
         "ShoppingListOptimizerAPI.Models.Requests.LoginRequest",
         "ShoppingListOptimizerAPI.Models.Requests.RefreshTokenRequest",
@@ -18,7 +19,7 @@
         "ShoppingListOptimizerAPI.Models.Responses.LoginResponse",
         "ShoppingListOptimizerAPI.Models.Responses.RegisterResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ShopResponse",
-        "ShoppingListOptimizerAPI.Models.Requests.ItemPriceRequest"
+        "ShoppingListOptimizerAPI.Models.Responses.ItemQueryResponse"
       ],
       "defaultPropertyNameHandling": "Default",
       "defaultReferenceTypeNullHandling": "Null",
