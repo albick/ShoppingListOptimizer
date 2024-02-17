@@ -24,6 +24,10 @@ import {ZXingScannerModule} from "@zxing/ngx-scanner";
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { AddItemPriceComponent } from './components/add-item-price/add-item-price.component';
 import { ItemsComponent } from './components/items/items.component';
+import { ItemQueryRowComponent } from './components/helpers/item-query-row/item-query-row.component';
+import { CommonModule } from '@angular/common';
+import { ShopSelectModalComponent } from './components/helpers/shop-select-modal/shop-select-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +42,9 @@ import { ItemsComponent } from './components/items/items.component';
     ScanBarcodeComponent,
     AddItemComponent,
     AddItemPriceComponent,
-    ItemsComponent
+    ItemsComponent,
+    ItemQueryRowComponent,
+    ShopSelectModalComponent
   ],
   imports: [
     AppRoutingModule,
@@ -49,7 +55,8 @@ import { ItemsComponent } from './components/items/items.component';
     NgbModule,
     NgxChartsModule,
     GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a'),
-    ZXingScannerModule
+    ZXingScannerModule,
+    CommonModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

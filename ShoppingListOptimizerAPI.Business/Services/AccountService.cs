@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using AutoMapper.Internal.Mappers;
+using AutoMapper.Internal;
 
 namespace ShoppingListOptimizerAPI.Business.Services
 {
@@ -179,10 +180,18 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return null;
         }
 
-        public async Task<string?> GetCurrentLocation()
+        public async Task<double[]> GetCurrentLocation()
         {
-            var geolocation=_httpContextAccessor.HttpContext.Request.Headers["Geolocation"];
-            return geolocation;
+            string? geolocation = _httpContextAccessor.HttpContext.Request.Headers["Geolocation"];
+            double[] coordinates = { 0, 0 };
+            if (geolocation != null) {
+                coordinates = geolocation
+                        .Split(' ')[1]
+                        .Split(';')
+                        .Select(double.Parse)
+                        .ToArray();
+            }
+            return coordinates;
         }
 
     }

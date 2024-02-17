@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ItemPriceRequest, ItemRequest, ItemResponse} from '../models/generated';
+import {ItemPriceRequest, ItemQueryResponse, ItemRequest, ItemResponse} from '../models/generated';
 import {Environment} from 'src/environment/env';
 
 
@@ -30,7 +30,7 @@ export class ItemService {
     return this.http.post<ItemResponse>(API_URL, item);
   }
 
-  addItemPrice(barcode: string, price: number, shopId: string) {
+  addItemPrice(barcode: string, price: number, shopId: number) {
     let itemPrice: ItemPriceRequest = {
       Price: price,
       ShopId: shopId
@@ -38,7 +38,30 @@ export class ItemService {
     return this.http.post<any>(API_URL + barcode, itemPrice);
   }
 
-  getItems(name: string = "", distance: number = 0, priceMin: number = 0, priceMax: number = 0):Observable<ItemResponse[]> {
-    return this.http.get<ItemResponse[]>(API_URL + `?name=${name}&distance=${distance}&priceMin=${priceMin}&priceMax=${priceMax}`);
+  getMaxItemPrice():Observable<number>{
+    return this.http.get<number>(API_URL+'maxPrice');
+  }
+
+  getItems(name: string = "", distance: number = 0, priceMin: number = 0, priceMax: number = 0,shopIds:number[]=[]):Observable<ItemQueryResponse[]> {
+    let query="?";
+    if(name.length>0){
+      query+=`name=${name}&`;
+    }
+    if(distance>0){
+      query+=`distance=${distance}&`;
+    }
+    if(priceMin>0){
+      query+=`priceMin=${priceMin}&`;
+    }
+    if(priceMax>0){
+      query+=`priceMax=${priceMax}&`;
+    }
+    if(shopIds.length>0){
+      for(let shopId of shopIds) {
+        query+=`shopIds=${shopId}&`;
+      }
+    }
+
+    return this.http.get<ItemQueryResponse[]>(API_URL + query);
   }
 }

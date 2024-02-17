@@ -30,16 +30,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public List<ShopDTO> GetShops(double distance, string name)
         {
-            var geolocation = _accountService.GetCurrentLocation().Result;
-            double[] coordinates = { 0, 0 };
-            if (geolocation != null)
-            {
-                coordinates = geolocation
-                    .Split(' ')[1]
-                    .Split(';')
-                    .Select(double.Parse)
-                    .ToArray();
-            }
+            double[] coordinates = _accountService.GetCurrentLocation().Result;
 
             List<Shop>? shops;
             if (name != null)
@@ -127,6 +118,22 @@ namespace ShoppingListOptimizerAPI.Business.Services
             _context.Shops.Add(_shop);
             _context.SaveChanges();
             return _mapper.Map<ShopDTO>(_shop);
+        }
+
+        public double GetMaxShopDistance()
+        {
+            double[] userLocation = _accountService.GetCurrentLocation().Result;
+            double maxDistance = 0;
+            var shops = _context.Shops.Include(shop=>shop.Location).ToList();
+            foreach (var shop in shops)
+            {
+                double distance = GeoFunctions.CalculateDistance(shop.Location.Latitude, shop.Location.Longitude, userLocation[0], userLocation[1]);
+                if (distance > maxDistance)
+                {
+                    maxDistance = distance;
+                }
+            }
+            return maxDistance;
         }
     }
 }

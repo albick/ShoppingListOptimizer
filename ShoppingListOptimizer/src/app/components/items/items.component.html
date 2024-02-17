@@ -1,13 +1,50 @@
-<p>items works!</p>
-<ngx-charts-line-chart
-  [view]=[300,300]
-  [legend]="legend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxis]="xAxis"
-  [yAxis]="yAxis"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  [timeline]="timeline"
->
-</ngx-charts-line-chart>
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="row py-2">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="form.name">
+    </div>
+    <div class="row py-2">
+      <!--p *ngIf="(maxShopDistance | async) as maxDistance">{{ maxDistance }}</p>
+      <p *ngIf="(maxItemPrice | async) as maxPrice">{{ maxPrice }}</p-->
+      <label for="priceMaxSlider" class="form-label">Maximum price</label>
+      <div class="d-flex align-items-center p-0">
+        <div class="col-8 pe-1">
+          <input *ngIf="(maxItemPrice | async) as maxPrice" type="range" id="priceMaxSlider" class="form-range" min="0"
+                 max="{{maxPrice}}" step="1" [(ngModel)]="form.priceMax">
+        </div>
+        <div class="col-4 ps-1">
+          <input *ngIf="(maxItemPrice | async) as maxPrice" type="number" disabled class="form-control mb-1"
+                 id="priceMaxText" min="0" max="{{maxPrice}}" step="1"
+                 [(ngModel)]="form.priceMax">
+        </div>
+      </div>
+    </div>
+    <div class="row py-2">
+      <label for="distanceMaxSlider" class="form-label">Maximum distance (km)</label>
+      <div class="d-flex align-items-center p-0">
+        <div class="col-8 pe-1">
+          <input *ngIf="(maxShopDistance | async) as maxDistance" type="range" id="distanceMaxSlider" class="form-range" min="0"
+                 max="{{maxDistance+1}}" step="0.5" [(ngModel)]="form.distance">
+        </div>
+        <div class="col-4 ps-1">
+          <input *ngIf="(maxShopDistance | async) as maxDistance" type="number" disabled class="form-control mb-1"
+                 id="distanceMaxText" min="0" max="{{maxDistance+1}}" step="0.5"
+                 [(ngModel)]="form.distance">
+        </div>
+      </div>
+    </div>
+    <div class="row py-2">
+      <button type="button" class="btn btn-secondary col-4 offset-4" (click)="openModal()">Shops</button>
+    </div>
+    <div class="row py-2">
+      <button class="btn btn-secondary" (click)="onSubmit()">Search</button>
+    </div>
+  </div>
+</div>
+<div *ngFor="let item of items|async">
+  <app-item-query-row [item]="item">asd</app-item-query-row>
+</div>
+
+
+
