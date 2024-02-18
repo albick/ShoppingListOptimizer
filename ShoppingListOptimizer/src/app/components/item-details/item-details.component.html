@@ -5,6 +5,7 @@
 <div class="row">
   line chart all shops
   <ngx-charts-line-chart
+    *ngIf="(itemPriceAllShops | async) as itemPriceAllShops"
     [view]="view"
 
     [legend]="legend"

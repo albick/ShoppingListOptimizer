@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ItemPriceRequest, ItemQueryResponse, ItemRequest, ItemResponse} from '../models/generated';
+import {ItemChartResponse, ItemPriceRequest, ItemQueryResponse, ItemRequest, ItemResponse} from '../models/generated';
 import {Environment} from 'src/environment/env';
 
 
@@ -63,5 +63,16 @@ export class ItemService {
     }
 
     return this.http.get<ItemQueryResponse[]>(API_URL + query);
+  }
+
+  getChartItemPriceForShops(barcode:string,shopIds:number[]=[]):Observable<ItemChartResponse[]>{
+    let query="?";
+
+    if(shopIds.length>0){
+      for(let shopId of shopIds) {
+        query+=`shopIds=${shopId}&`;
+      }
+    }
+    return this.http.get<ItemChartResponse[]>(API_URL+barcode+'/chart'+query);
   }
 }

@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Color, NgxChartsModule} from '@swimlane/ngx-charts';
+import {EMPTY, Observable } from 'rxjs';
 import {ItemChartResponse} from 'src/app/models/generated';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-item-details',
@@ -12,110 +14,22 @@ export class ItemDetailsComponent {
   id: string = "";
 
 
-  constructor(private route: ActivatedRoute) {
-
-
+  constructor(private route: ActivatedRoute,private itemService:ItemService) {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-
   }
 
-  itemPriceAllShops: ItemChartResponse[] = [{
-    name: "asd",
-    series: [
-      {
-        name: "hehe1",
-        value: 123
-      },
-      {
-        name: "hehe2",
-        value: 250
-      }
-    ]
-  },
-    {
-      name: "asd",
-      series: [
-        {
-          name: "hehe1",
-          value: 123
-        },
-        {
-          name: "hehe2",
-          value: 250
-        }
-      ]
-    }]
+  ngOnInit():void{
+    this.itemPriceAllShops=this.itemService.getChartItemPriceForShops(this.id);
+    this.itemPriceAllShops.subscribe(data=>{
+      console.log(data);
+    })
+  }
 
-  /*itemPriceAllShops = [
-     {
-       "name": "Germany",
-       "series": [
-         {
-           "name": "1990",
-           "value": 62000000
-         },
-         {
-           "name": "2010",
-           "value": 73000000
-         },
-         {
-           "name": "2011",
-           "value": 89400000
-         }
-       ]
-     },
+  itemPriceAllShops: Observable<ItemChartResponse[]> = EMPTY;
 
-     {
-       "name": "USA",
-       "series": [
-         {
-           "name": "1990",
-           "value": 250000000
-         },
-         {
-           "name": "2010",
-           "value": 309000000
-         },
-         {
-           "name": "2011",
-           "value": 311000000
-         }
-       ]
-     },
 
-     {
-       "name": "France",
-       "series": [
-         {
-           "name": "1990",
-           "value": 58000000
-         },
-         {
-           "name": "2010",
-           "value": 50000020
-         },
-         {
-           "name": "2011",
-           "value": 58000000
-         }
-       ]
-     },
-     {
-       "name": "UK",
-       "series": [
-         {
-           "name": "1990",
-           "value": 57000000
-         },
-         {
-           "name": "2010",
-           "value": 62000000
-         }
-       ]
-     }
-   ];*/
 
   view: [number, number] = [700, 300];
 
