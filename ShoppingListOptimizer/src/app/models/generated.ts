@@ -26,7 +26,7 @@ export interface LocationModel {
 }
 
 export interface ItemChartSeries {
-    name: string;
+    name: Date;
     value: number;
 }
 

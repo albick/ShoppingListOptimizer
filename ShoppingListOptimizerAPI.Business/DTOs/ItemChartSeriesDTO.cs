@@ -8,7 +8,7 @@ namespace ShoppingListOptimizerAPI.Business.DTOs
 {
     public class ItemChartSeriesDTO
     {
-        public string Name { get; set; }
+        public DateTime Name { get; set; }
         public double Value { get; set; }
     }
 }

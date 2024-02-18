@@ -2,7 +2,7 @@
 {
     public class ItemChartSeries
     {
-        public string name { get; set; }
+        public DateTime name { get; set; }
         public double value { get; set; }
     }
 }

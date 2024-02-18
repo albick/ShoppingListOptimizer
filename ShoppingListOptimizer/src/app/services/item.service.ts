@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, map} from 'rxjs';
 import {ItemChartResponse, ItemPriceRequest, ItemQueryResponse, ItemRequest, ItemResponse} from '../models/generated';
 import {Environment} from 'src/environment/env';
 
@@ -65,14 +65,36 @@ export class ItemService {
     return this.http.get<ItemQueryResponse[]>(API_URL + query);
   }
 
-  getChartItemPriceForShops(barcode:string,shopIds:number[]=[]):Observable<ItemChartResponse[]>{
-    let query="?";
+  getChartItemPriceForShops(barcode: string, shopIds: number[] = []): Observable<ItemChartResponse[]> {
+    let query = '?';
 
-    if(shopIds.length>0){
-      for(let shopId of shopIds) {
-        query+=`shopIds=${shopId}&`;
+    if (shopIds.length > 0) {
+      for (let shopId of shopIds) {
+        query += `shopIds=${shopId}&`;
       }
     }
-    return this.http.get<ItemChartResponse[]>(API_URL+barcode+'/chart'+query);
+
+    return this.http.get<ItemChartResponse[]>(API_URL + barcode + '/chart' + query).pipe(
+      map(data => {
+        // Iterate through each ItemChartResponse
+        return data.map(item => {
+          // Iterate through each ItemChartSeries inside the ItemChartResponse
+          const updatedSeries = item.series?.map(series => {
+            // Replace the 'name' property with a Date object
+            return {
+              ...series,
+              name: new Date(series.name)
+            };
+          });
+          // Return the updated ItemChartResponse object
+          return {
+            ...item,
+            series: updatedSeries
+          };
+        });
+      })
+    );
   }
+
+
 }

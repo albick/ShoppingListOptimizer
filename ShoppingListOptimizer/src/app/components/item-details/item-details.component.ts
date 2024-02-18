@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Color, NgxChartsModule} from '@swimlane/ngx-charts';
 import {EMPTY, Observable } from 'rxjs';
-import {ItemChartResponse} from 'src/app/models/generated';
+import {ItemChartResponse, ItemQueryResponse} from 'src/app/models/generated';
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
@@ -22,13 +22,11 @@ export class ItemDetailsComponent {
 
   ngOnInit():void{
     this.itemPriceAllShops=this.itemService.getChartItemPriceForShops(this.id);
-    this.itemPriceAllShops.subscribe(data=>{
-      console.log(data);
-    })
+    this.items=this.itemService.getItems();//berakni barcode is
   }
 
   itemPriceAllShops: Observable<ItemChartResponse[]> = EMPTY;
-
+  items: Observable<ItemQueryResponse[]> = EMPTY;
 
 
   view: [number, number] = [700, 300];
@@ -43,9 +41,8 @@ export class ItemDetailsComponent {
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Date';
   yAxisLabel: string = 'Price';
-  timeline: boolean = true;
+  timeline: boolean = false;
 
-  colorScheme = ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'];
 
   //colorScheme:Color|string='#5AA454';
 }

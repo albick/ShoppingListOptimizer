@@ -177,7 +177,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 {
                     var itemChartSeriesElement = new ItemChartSeriesDTO
                     {
-                        Name = group.Key.ToShortDateString(),
+                        Name = group.Key.Date,
                         Value = group.Average(entry => entry.Price)
                     };
 
@@ -220,7 +220,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                         foreach (var item in result)
                         {
                             ItemChartSeriesDTO itemChartSeriesElement = new ItemChartSeriesDTO();
-                            itemChartSeriesElement.Name = item.CreatedAt.ToShortDateString();
+                            itemChartSeriesElement.Name = item.CreatedAt.Date;
                             itemChartSeriesElement.Value = item.Price;
                             itemChartSeries.Add(itemChartSeriesElement);
                         }
