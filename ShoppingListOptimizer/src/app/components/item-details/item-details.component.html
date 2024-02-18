@@ -1,1 +1,24 @@
-<p>item-details works!</p>
+<p>id:{{id}}</p>
+<div class="row">
+  details of item
+</div>
+<div class="row">
+  line chart all shops
+  <ngx-charts-line-chart
+    [view]="view"
+
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="itemPriceAllShops"
+  >
+  </ngx-charts-line-chart>
+</div>
+<div class="row">
+  available in shops
+</div>

@@ -42,7 +42,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
             .Where(itemPriceEntry => (
                 !_context.ItemPriceEntries.Any(other => (
                     (other.Shop.Id == itemPriceEntry.Shop.Id) &&
-                    (other.CreatedAt > itemPriceEntry.CreatedAt))))) 
+                    (other.CreatedAt > itemPriceEntry.CreatedAt)))))
             .Include(itemPirceEntry => itemPirceEntry.Shop)
                 .ThenInclude(shop => shop.Location)
             .Include(itemPirceEntry => itemPirceEntry.Shop)
@@ -52,7 +52,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
             .Include(itemPriceEntry => itemPriceEntry.Item)
             .ToList();
 
-            var dist = query.Where(itemPriceEntry=>(distance == null || distance >= GeoFunctions.CalculateDistance(itemPriceEntry.Shop.Location.Latitude, itemPriceEntry.Shop.Location.Longitude, userLocation[0], userLocation[1]))).ToList();
+            var dist = query.Where(itemPriceEntry => (distance == null || distance >= GeoFunctions.CalculateDistance(itemPriceEntry.Shop.Location.Latitude, itemPriceEntry.Shop.Location.Longitude, userLocation[0], userLocation[1]))).ToList();
 
             var result = dist.Select(itemPriceEntry => new ItemQueryResultDTO
             {
@@ -148,6 +148,90 @@ namespace ShoppingListOptimizerAPI.Business.Services
             var max = _context.ItemPriceEntries.Max(entry => entry.Price);
             return max;
         }
+
+
+        public List<ItemChartDTO> GetChartItemPriceForShops(string barcode, int[] shopIds)
+        {
+            var query = _context.ItemPriceEntries
+                .Where(entry => entry.Item.Barcode == barcode)
+                .Include(entry => entry.Shop)
+                .Include(entry => entry.Item);
+
+            List<ItemChartDTO> itemPriceCharts = new List<ItemChartDTO>();
+            if (shopIds.Length == 0)
+            {
+                var filtered = (from entry in query
+                                where entry.Item.Barcode == barcode
+                                group entry by new { Date = entry.CreatedAt.Date, entry.Shop.Id } into grp
+                                select grp.OrderBy(entry => entry.CreatedAt).FirstOrDefault())
+                        .AsQueryable().ToList();
+
+                var groupedByDay = filtered.GroupBy(entry => entry.CreatedAt.Date);
+                var result = groupedByDay.ToList();
+
+
+
+                List<ItemChartSeriesDTO> itemChartSeries = new List<ItemChartSeriesDTO>();
+
+                foreach (var group in result)
+                {
+                    var itemChartSeriesElement = new ItemChartSeriesDTO
+                    {
+                        Name = group.Key.ToShortDateString(),
+                        Value = group.Average(entry => entry.Price)
+                    };
+
+                    itemChartSeries.Add(itemChartSeriesElement);
+                }
+
+
+                var itemPriceChart = new ItemChartDTO
+                {
+                    Name = "Average price of "+filtered.First().Item.Name,
+                    Series = itemChartSeries
+                };
+
+                itemPriceCharts.Add(itemPriceChart);
+                return itemPriceCharts;
+
+
+            }
+            else
+            {
+                foreach (int shopId in shopIds)
+                {
+                    // Filter by shop IDs and keeping only the latest in one day
+                    var filtered = query
+                            .Where(entry => entry.Shop.Id.Equals(shopId))
+                            .Include(entry => entry.Shop)
+                            .Include(entry => entry.Item)
+                            .OrderByDescending(entry => entry.CreatedAt)
+                            .GroupBy(entry => entry.CreatedAt.Date)
+                            .Select(group => group.OrderByDescending(entry => entry.CreatedAt).First());
+
+
+                    var result = filtered.ToList();
+                    if (result.Count > 0)
+                    {
+                        ItemChartDTO itemPriceChart = new ItemChartDTO();
+                        itemPriceChart.Name = result.First().Item.Name + " at " + result.First().Shop.Name;
+
+                        List<ItemChartSeriesDTO> itemChartSeries = new List<ItemChartSeriesDTO>();
+                        foreach (var item in result)
+                        {
+                            ItemChartSeriesDTO itemChartSeriesElement = new ItemChartSeriesDTO();
+                            itemChartSeriesElement.Name = item.CreatedAt.ToShortDateString();
+                            itemChartSeriesElement.Value = item.Price;
+                            itemChartSeries.Add(itemChartSeriesElement);
+                        }
+                        itemPriceChart.Series = itemChartSeries;
+                        itemPriceCharts.Add(itemPriceChart);
+                    }
+                }
+                return itemPriceCharts;
+            }
+        }
+
 
         public bool Update(string barcode, ItemDTO updatedItem)
         {

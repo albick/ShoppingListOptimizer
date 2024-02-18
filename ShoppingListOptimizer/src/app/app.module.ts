@@ -27,6 +27,8 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemQueryRowComponent } from './components/helpers/item-query-row/item-query-row.component';
 import { CommonModule } from '@angular/common';
 import { ShopSelectModalComponent } from './components/helpers/shop-select-modal/shop-select-modal.component';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { ShopSelectModalComponent } from './components/helpers/shop-select-modal
     AddItemPriceComponent,
     ItemsComponent,
     ItemQueryRowComponent,
-    ShopSelectModalComponent
+    ShopSelectModalComponent,
+    ItemDetailsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -56,7 +59,8 @@ import { ShopSelectModalComponent } from './components/helpers/shop-select-modal
     NgxChartsModule,
     GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a'),
     ZXingScannerModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

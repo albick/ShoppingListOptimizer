@@ -14,12 +14,14 @@
         "ShoppingListOptimizerAPI.Models.Requests.RegisterRequest",
         "ShoppingListOptimizerAPI.Models.Requests.RegisterShopRequest",
         "ShoppingListOptimizerAPI.Models.Requests.ShopRequest",
+        "ShoppingListOptimizerAPI.Models.Responses.ItemQueryResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ItemResponse",
         "ShoppingListOptimizerAPI.Models.Responses.JwtAuthResponse",
         "ShoppingListOptimizerAPI.Models.Responses.LoginResponse",
         "ShoppingListOptimizerAPI.Models.Responses.RegisterResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ShopResponse",
-        "ShoppingListOptimizerAPI.Models.Responses.ItemQueryResponse"
+        "ShoppingListOptimizerAPI.Models.ItemChartSeries",
+        "ShoppingListOptimizerAPI.Models.Responses.ItemChartResponse"
       ],
       "defaultPropertyNameHandling": "Default",
       "defaultReferenceTypeNullHandling": "Null",

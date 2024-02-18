@@ -84,6 +84,17 @@ export interface ShopRequest {
     OpeningHours?: OpeningHoursModel[] | undefined;
 }
 
+export interface ItemQueryResponse {
+    price: number;
+    createdAt: Date;
+    itemBarcode: string;
+    itemName: string;
+    itemUnit: string;
+    itemQuantity: number;
+    shopName: string;
+    distance: number;
+}
+
 export interface ItemResponse {
     barcode: string;
     name: string;
@@ -168,13 +179,12 @@ export interface ShopResponse {
     distanceFromUser: number;
 }
 
-export interface ItemQueryResponse {
-    price: number;
-    createdAt: Date;
-    itemBarcode: string;
-    itemName: string;
-    itemUnit: string;
-    itemQuantity: number;
-    shopName: string;
-    distance: number;
+export interface ItemChartSeries {
+    name: string;
+    value: number;
+}
+
+export interface ItemChartResponse {
+    name: string;
+    series: ItemChartSeries[];
 }

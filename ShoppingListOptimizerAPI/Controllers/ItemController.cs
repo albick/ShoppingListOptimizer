@@ -55,6 +55,18 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(price);
         }
 
+        [HttpGet("{barcode}/chart")]
+        public ActionResult<List<ItemChartResponse>> GetChartItemPriceForShops(string barcode, [FromQuery] int[]? shopIds)
+        {
+            var itemPricesForShops = _itemService.GetChartItemPriceForShops(barcode, shopIds);
+
+            if (itemPricesForShops != null)
+            {
+                return Ok(_mapper.Map<List<ItemChartResponse>>(itemPricesForShops));
+            }
+            return Ok();
+        }
+
         [HttpPost]
         public ActionResult<Item> AddItem([FromBody] ItemRequest item)
         {

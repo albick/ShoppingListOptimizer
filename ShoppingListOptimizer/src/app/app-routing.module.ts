@@ -10,6 +10,7 @@ import { ScanBarcodeComponent } from './components/scan-barcode/scan-barcode.com
 import { AddItemPriceComponent } from './components/add-item-price/add-item-price.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemsComponent } from './components/items/items.component';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'add-item-price/:id', component: AddItemPriceComponent},
   {path: 'shops', component: ShopsComponent},
   {path: 'items', component: ItemsComponent},
+  {path: 'items/:id', component: ItemDetailsComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
