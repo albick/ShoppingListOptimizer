@@ -24,7 +24,13 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
             CreateMap<LocationDTO, LocationModel>();
 
 
+            CreateMap<ItemChartDTO, ItemChartResponse>()
+            .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.series, opt => opt.MapFrom(src => src.Series));
 
+            CreateMap<ItemChartSeriesDTO, ItemChartSeries>()
+            .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.value, opt => opt.MapFrom(src => src.Value));
 
 
             CreateMap<ShopDTO, ShopResponse>()
@@ -63,6 +69,7 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
                 .ForMember(dest => dest.itemUnit, opt => opt.MapFrom(src => src.Item.Unit))
                 .ForMember(dest => dest.itemQuantity, opt => opt.MapFrom(src => src.Item.Quantity))
                 .ForMember(dest => dest.shopName, opt => opt.MapFrom(src => src.Shop.Name))
+                .ForMember(dest => dest.shopId, opt => opt.MapFrom(src => src.Shop.Id))
                 .ForMember(dest => dest.distance, opt => opt.MapFrom(src => src.Distance))
                 ;
 

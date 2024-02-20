@@ -5,6 +5,7 @@
     "typesToOpenApi": {
       "classNames": [
         "ShoppingListOptimizerAPI.Models.AccountModel",
+        "ShoppingListOptimizerAPI.Models.ItemChartSeries",
         "ShoppingListOptimizerAPI.Models.LocationModel",
         "ShoppingListOptimizerAPI.Models.OpeningHoursModel",
         "ShoppingListOptimizerAPI.Models.Requests.ItemPriceRequest",
@@ -14,12 +15,13 @@
         "ShoppingListOptimizerAPI.Models.Requests.RegisterRequest",
         "ShoppingListOptimizerAPI.Models.Requests.RegisterShopRequest",
         "ShoppingListOptimizerAPI.Models.Requests.ShopRequest",
+        "ShoppingListOptimizerAPI.Models.Responses.ItemChartResponse",
+        "ShoppingListOptimizerAPI.Models.Responses.ItemQueryResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ItemResponse",
         "ShoppingListOptimizerAPI.Models.Responses.JwtAuthResponse",
         "ShoppingListOptimizerAPI.Models.Responses.LoginResponse",
         "ShoppingListOptimizerAPI.Models.Responses.RegisterResponse",
-        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse",
-        "ShoppingListOptimizerAPI.Models.Responses.ItemQueryResponse"
+        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse"
       ],
       "defaultPropertyNameHandling": "Default",
       "defaultReferenceTypeNullHandling": "Null",

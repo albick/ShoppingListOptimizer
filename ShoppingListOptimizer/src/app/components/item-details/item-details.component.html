@@ -1,0 +1,50 @@
+<div class="row" *ngIf="(item | async) as item">
+  <div class="col-6">
+    <p>{{ item.name }}</p>
+    <p>{{ item.details }}</p>
+    <p>{{ item.quantity + " " + item.unit }}</p>
+  </div>
+  <div *ngIf="shopId.length>0" class="col-6">
+    SHOP DETAILS
+  </div>
+</div>
+<div class="row">
+  <ngx-charts-line-chart
+    *ngIf="(itemPriceAllShops | async) as itemPriceAllShops"
+    [view]="view"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="itemPriceAllShops"
+  >
+  </ngx-charts-line-chart>
+</div>
+<div class="row">
+  <button type="button" class="btn btn-secondary col-4 offset-4" (click)="openModal()">Compare prices</button>
+</div>
+<div class="row">
+  <ngx-charts-line-chart
+    *ngIf="(itemPriceSelectedShops | async) as itemPriceSelectedShops"
+    [view]="view"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="itemPriceSelectedShops"
+  >
+  </ngx-charts-line-chart>
+</div>
+<div class="row">
+  <div *ngFor="let item of items|async">
+    <app-item-query-row [item]="item">asd</app-item-query-row>
+  </div>
+</div>

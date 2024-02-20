@@ -25,6 +25,11 @@ export interface LocationModel {
     latitude: number;
 }
 
+export interface ItemChartSeries {
+    name: Date;
+    value: number;
+}
+
 export interface OpeningHoursModel {
     DayOfWeek: DayOfWeek;
     StartTime: string;
@@ -82,6 +87,23 @@ export interface ShopRequest {
     CompanyName: string;
     Location: LocationModel;
     OpeningHours?: OpeningHoursModel[] | undefined;
+}
+
+export interface ItemChartResponse {
+    name: string;
+    series?: ItemChartSeries[] | undefined;
+}
+
+export interface ItemQueryResponse {
+    price: number;
+    createdAt: Date;
+    itemBarcode: string;
+    itemName: string;
+    itemUnit: string;
+    itemQuantity: number;
+    shopName: string;
+    shopId: string;
+    distance: number;
 }
 
 export interface ItemResponse {
@@ -166,15 +188,4 @@ export interface ShopResponse {
     company: AccountModel;
     openingHours?: OpeningHoursModel[] | undefined;
     distanceFromUser: number;
-}
-
-export interface ItemQueryResponse {
-    price: number;
-    createdAt: Date;
-    itemBarcode: string;
-    itemName: string;
-    itemUnit: string;
-    itemQuantity: number;
-    shopName: string;
-    distance: number;
 }

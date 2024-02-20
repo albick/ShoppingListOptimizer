@@ -19,6 +19,7 @@ export class ItemsComponent implements OnInit {
 
   form = {
     name: "",
+    barcode: "",
     distance: 0,
     priceMax: 0
   }
@@ -39,12 +40,13 @@ export class ItemsComponent implements OnInit {
 
   onSubmit() {
     const name=this.form.name;
+    const barcode=this.form.barcode;
     const distance=this.form.distance;
     const priceMax=this.form.priceMax;
     const shopIds=this.shopIds;
 
 
-    this.items=this.itemService.getItems(name,distance,0,priceMax,shopIds);
+    this.items=this.itemService.getItems(barcode,name,distance,0,priceMax,shopIds);
   }
 
   shopIds:number[]=[];

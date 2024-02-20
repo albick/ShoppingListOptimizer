@@ -36,9 +36,9 @@ namespace ShoppingListOptimizerAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<ItemQueryResponse>> GetItems([FromQuery] double? distance, [FromQuery] string? name, [FromQuery] double? priceMin, [FromQuery] double? priceMax, [FromQuery] double[]? shopIds)
+        public ActionResult<List<ItemQueryResponse>> GetItems([FromQuery] double? distance, [FromQuery] string? barcode, [FromQuery] string? name, [FromQuery] double? priceMin, [FromQuery] double? priceMax, [FromQuery] double[]? shopIds)
         {
-            var items = _itemService.GetItems(distance, name, priceMin, priceMax, shopIds);
+            var items = _itemService.GetItems(distance, barcode, name, priceMin, priceMax, shopIds);
 
             if (items != null)
             {
@@ -53,6 +53,18 @@ namespace ShoppingListOptimizerAPI.Controllers
         {
             double price = _itemService.GetMaxItemPrice();
             return Ok(price);
+        }
+
+        [HttpGet("{barcode}/chart")]
+        public ActionResult<List<ItemChartResponse>> GetChartItemPriceForShops(string barcode, [FromQuery] int[]? shopIds)
+        {
+            var itemPricesForShops = _itemService.GetChartItemPriceForShops(barcode, shopIds);
+
+            if (itemPricesForShops != null)
+            {
+                return Ok(_mapper.Map<List<ItemChartResponse>>(itemPricesForShops));
+            }
+            return Ok();
         }
 
         [HttpPost]

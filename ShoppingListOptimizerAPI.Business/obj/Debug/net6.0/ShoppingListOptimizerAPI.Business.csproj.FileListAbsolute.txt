@@ -23,9 +23,9 @@ C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\ob
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ShoppingListOptimizerAPI.Business.AssemblyInfoInputs.cache
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ShoppingListOptimizerAPI.Business.AssemblyInfo.cs
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ShoppingListOptimizerAPI.Business.csproj.CoreCompileInputs.cache
-C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ShoppingListOptimizerAPI.Business.csproj.CopyComplete
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ShoppingListOptimizerAPI.Business.dll
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\refint\ShoppingListOptimizerAPI.Business.dll
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ShoppingListOptimizerAPI.Business.pdb
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ref\ShoppingListOptimizerAPI.Business.dll
 C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\ShoppingListOptimizerAPI.Business.sourcelink.json
+C:\Users\khhun\source\ShoppingListOptimizer\ShoppingListOptimizerAPI.Business\obj\Debug\net6.0\Shopping.204BD72F.Up2Date
