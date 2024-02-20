@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {Color, NgxChartsModule} from '@swimlane/ngx-charts';
-import {EMPTY, Observable } from 'rxjs';
-import {ItemChartResponse, ItemQueryResponse} from 'src/app/models/generated';
-import { ItemService } from 'src/app/services/item.service';
+import {EMPTY, Observable} from 'rxjs';
+import {ItemChartResponse, ItemQueryResponse, ItemResponse} from 'src/app/models/generated';
+import {ItemService} from 'src/app/services/item.service';
+import {ShopSelectModalComponent} from '../helpers/shop-select-modal/shop-select-modal.component';
 
 @Component({
   selector: 'app-item-details',
@@ -12,20 +14,26 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class ItemDetailsComponent {
   id: string = "";
+  shopId: string = "";
+  item: Observable<ItemResponse> = EMPTY;
 
-
-  constructor(private route: ActivatedRoute,private itemService:ItemService) {
-    this.route.params.subscribe(params => {
+  constructor(private route: ActivatedRoute, private itemService: ItemService, private modalService: NgbModal) {
+    /*this.route.params.subscribe(params => {
       this.id = params['id'];
-    });
+    });*/
+    this.id = this.route.snapshot.paramMap.get('id') ?? "";
+    this.shopId = this.route.snapshot.paramMap.get('shopId') ?? "";
   }
 
-  ngOnInit():void{
-    this.itemPriceAllShops=this.itemService.getChartItemPriceForShops(this.id);
-    this.items=this.itemService.getItems();//berakni barcode is
+  ngOnInit(): void {
+    this.itemPriceAllShops = this.itemService.getChartItemPriceForShops(this.id);
+    this.item = this.itemService.getItemByBarcode(this.id);
+    this.items = this.itemService.getItems(this.id);
+    console.log("shopId:"+this.shopId)
   }
 
   itemPriceAllShops: Observable<ItemChartResponse[]> = EMPTY;
+  itemPriceSelectedShops: Observable<ItemChartResponse[]> = EMPTY;
   items: Observable<ItemQueryResponse[]> = EMPTY;
 
 
@@ -43,6 +51,22 @@ export class ItemDetailsComponent {
   yAxisLabel: string = 'Price';
   timeline: boolean = false;
 
+  shopIds: number[] = [];
+  modalRef!: NgbModalRef;
 
-  //colorScheme:Color|string='#5AA454';
+  openModal() {
+    this.modalRef = this.modalService.open(ShopSelectModalComponent);
+    this.modalRef.componentInstance.inputShopIds = this.shopIds;
+
+    // Subscribe to onDataSaved event to receive data from modal
+    this.modalRef.componentInstance.onDataSaved.subscribe((data: number[]) => {
+      // Handle data received from modal
+      this.shopIds = data;
+      if (this.shopIds.length > 0) {
+        this.itemPriceSelectedShops = this.itemService.getChartItemPriceForShops(this.id, this.shopIds);
+      } else {
+        this.itemPriceSelectedShops = EMPTY;
+      }
+    });
+  }
 }

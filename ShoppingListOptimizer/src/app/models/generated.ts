@@ -102,6 +102,7 @@ export interface ItemQueryResponse {
     itemUnit: string;
     itemQuantity: number;
     shopName: string;
+    shopId: string;
     distance: number;
 }
 

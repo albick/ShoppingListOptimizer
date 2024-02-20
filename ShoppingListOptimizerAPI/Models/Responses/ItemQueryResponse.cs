@@ -12,6 +12,7 @@ namespace ShoppingListOptimizerAPI.Models.Responses
         public string itemUnit { get; set; }
         public double itemQuantity { get; set; }
         public string shopName { get; set; }
+        public string shopId { get; set; }
         public double distance { get; set; }
     }
 }

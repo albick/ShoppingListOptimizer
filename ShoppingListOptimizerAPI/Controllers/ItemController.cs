@@ -36,9 +36,9 @@ namespace ShoppingListOptimizerAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<ItemQueryResponse>> GetItems([FromQuery] double? distance, [FromQuery] string? name, [FromQuery] double? priceMin, [FromQuery] double? priceMax, [FromQuery] double[]? shopIds)
+        public ActionResult<List<ItemQueryResponse>> GetItems([FromQuery] double? distance, [FromQuery] string? barcode, [FromQuery] string? name, [FromQuery] double? priceMin, [FromQuery] double? priceMax, [FromQuery] double[]? shopIds)
         {
-            var items = _itemService.GetItems(distance, name, priceMin, priceMax, shopIds);
+            var items = _itemService.GetItems(distance, barcode, name, priceMin, priceMax, shopIds);
 
             if (items != null)
             {

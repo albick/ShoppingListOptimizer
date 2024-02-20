@@ -42,10 +42,13 @@ export class ItemService {
     return this.http.get<number>(API_URL+'maxPrice');
   }
 
-  getItems(name: string = "", distance: number = 0, priceMin: number = 0, priceMax: number = 0,shopIds:number[]=[]):Observable<ItemQueryResponse[]> {
+  getItems(barcode: string = "",name: string = "", distance: number = 0, priceMin: number = 0, priceMax: number = 0,shopIds:number[]=[]):Observable<ItemQueryResponse[]> {
     let query="?";
     if(name.length>0){
       query+=`name=${name}&`;
+    }
+    if(barcode.length>0){
+      query+=`barcode=${barcode}&`;
     }
     if(distance>0){
       query+=`distance=${distance}&`;

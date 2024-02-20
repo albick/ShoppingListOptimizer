@@ -107,6 +107,11 @@
         "IsRequired": false
       },
       {
+        "Name": "barcode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "name",
         "Type": "System.String",
         "IsRequired": false

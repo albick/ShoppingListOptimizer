@@ -29,13 +29,14 @@ namespace ShoppingListOptimizerAPI.Business.Services
             _shopService = shopService;
         }
 
-        public List<ItemQueryResultDTO> GetItems(double? distance, string? name, double? priceMin, double? priceMax, double[] shopIds)
+        public List<ItemQueryResultDTO> GetItems(double? distance, string? barcode, string? name, double? priceMin, double? priceMax, double[] shopIds)
         {
             double[] userLocation = _accountService.GetCurrentLocation().Result;
 
             var query = _context.ItemPriceEntries
             .Where(itemPriceEntry =>
                 (name == null || itemPriceEntry.Item.Name.Contains(name)) &&
+                (barcode == null || itemPriceEntry.Item.Barcode.Equals(barcode)) &&
                 (priceMin == null || itemPriceEntry.Price >= priceMin) &&
                 (priceMax == null || itemPriceEntry.Price <= priceMax) &&
                 (shopIds.Length == 0 || shopIds.Contains(itemPriceEntry.Shop.Id)))

@@ -23,6 +23,7 @@ const routes: Routes = [
   {path: 'add-item-price/:id', component: AddItemPriceComponent},
   {path: 'shops', component: ShopsComponent},
   {path: 'items', component: ItemsComponent},
+  {path: 'items/:id/:shopId', component: ItemDetailsComponent},
   {path: 'items/:id', component: ItemDetailsComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
