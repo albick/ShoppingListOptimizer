@@ -73,6 +73,35 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
                 .ForMember(dest => dest.distance, opt => opt.MapFrom(src => src.Distance))
                 ;
 
+            CreateMap<ShoppingListRequest, ShoppingListDTO>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.DateModified, opt => opt.Ignore())
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Details, opt => opt.MapFrom(src => src.Details))
+                .ForMember(dest => dest.Creator, opt => opt.Ignore())
+                .ForMember(dest => dest.ShoppingListItems, opt => opt.Ignore())
+                ;
+
+            CreateMap<ShoppingListDTO, ShoppingListResponse>()
+                .ForMember(dest=>dest.id,opt=>opt.MapFrom(src=>src.Id))
+                .ForMember(dest=>dest.name,opt=>opt.MapFrom(src=>src.Name))
+                .ForMember(dest=>dest.dateModified,opt=>opt.MapFrom(src=>src.DateModified))
+                .ForMember(dest=>dest.details,opt=>opt.MapFrom(src=>src.Details))
+                .ForMember(dest=>dest.creator,opt=>opt.MapFrom(src=>src.Creator))
+                .ForMember(dest=>dest.shoppingListItems,opt=>opt.MapFrom(src=>src.ShoppingListItems))
+                ;
+
+            CreateMap<ShoppingListItemDTO, ShoppingListItemResponse>()
+                .ForMember(dest=>dest.id,opt=>opt.MapFrom(src=>src.Id))
+                .ForMember(dest=>dest.count,opt=>opt.MapFrom(src=>src.Count))
+                .ForMember(dest=>dest.itemId,opt=>opt.MapFrom(src=>src.Item.Barcode))
+                ;
+
+            CreateMap<ShoppingListItemRequest, ShoppingListItemDTO>()
+                .ForMember(dest=>dest.Id,opt=>opt.Ignore())
+                .ForMember(dest=>dest.Count,opt=>opt.MapFrom(src=>src.Count))
+                .ForMember(dest => dest.Item, opt => opt.MapFrom(src => new ItemDTO { Barcode = src.ItemId}));
+            ;
         }
     }
 

@@ -1,3 +1,4 @@
+
 <div class="row" *ngIf="(item | async) as item">
   <div class="col-6">
     <p>{{ item.name }}</p>
@@ -5,7 +6,12 @@
     <p>{{ item.quantity + " " + item.unit }}</p>
   </div>
   <div *ngIf="shopId.length>0" class="col-6">
-    SHOP DETAILS
+    <div *ngIf="(shop | async) as shop">
+      <p>{{shop.name}}</p>
+      <p>{{shop.distanceFromUser}}</p>
+
+      <div id="shop_map" style="height: 400px;"></div>
+    </div>
   </div>
 </div>
 <div class="row">

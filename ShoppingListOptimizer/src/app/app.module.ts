@@ -29,6 +29,8 @@ import { CommonModule } from '@angular/common';
 import { ShopSelectModalComponent } from './components/helpers/shop-select-modal/shop-select-modal.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShopDetailsComponent } from './components/shop-details/shop-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ItemsComponent,
     ItemQueryRowComponent,
     ShopSelectModalComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    ShopDetailsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -60,7 +63,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GeoapifyGeocoderAutocompleteModule.withConfig('d69bf89b9e5c4838bc7dd0cf2ede270a'),
     ZXingScannerModule,
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

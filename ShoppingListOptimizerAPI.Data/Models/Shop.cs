@@ -1,4 +1,4 @@
-﻿using ShoppingListOptimizerAPI.Data.Migrations;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

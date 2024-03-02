@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.Helpers;
 using ShoppingListOptimizerAPI.Data.Infrastructure;
-using ShoppingListOptimizerAPI.Data.Migrations;
+
 using ShoppingListOptimizerAPI.Data.Models;
 using System;
 using System.Collections.Generic;

@@ -15,6 +15,8 @@ export class ScanBarcodeComponent {
   };
   formatsEnabled: BarcodeFormat[];
   scanEnabled = true;
+  itemFetched=false;
+
 
   isSuccessful: any;
 
@@ -35,7 +37,7 @@ export class ScanBarcodeComponent {
   onSubmit() {
     const barcode = this.form.barcode;
     console.log(barcode);
-
+    this.itemFetched=!this.itemFetched;
 
     this.itemService.getItemByBarcode(barcode)
       .pipe(
@@ -46,6 +48,7 @@ export class ScanBarcodeComponent {
             return EMPTY; // or any default value
           } else {
             //console.log(data)
+
             this.addItemShow = false;
             this.addPriceShow = true;
             return of(data); // assuming you imported 'of' from 'rxjs'
@@ -69,6 +72,7 @@ export class ScanBarcodeComponent {
   }
 
   rescan() {
+    this.itemFetched=!this.itemFetched;
     this.form.barcode = "";
     this.scanEnabled = !this.scanEnabled;
     this.addItemShow = true;

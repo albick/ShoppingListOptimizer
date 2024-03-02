@@ -32,11 +32,11 @@
     ></zxing-scanner>
   </div>
 </form>
-<div class="form-group">
-  <button [disabled]="addPriceShow" class="btn btn-secondary" (click)="onSubmit()">Get item</button>
-  <button class="btn btn-secondary" (click)="rescan()">Scan again</button>
+<div  class="form-group">
+  <button  *ngIf="!itemFetched" [disabled]="addPriceShow" class="btn btn-secondary" (click)="onSubmit()">Get item</button>
+  <button  *ngIf="itemFetched" class="btn btn-secondary" (click)="rescan()">Scan again</button>
 </div>
-<div class="form-group">
+<div *ngIf="itemFetched"  class="form-group">
   <button [disabled]="!addItemShow" class="btn btn-secondary"  [routerLink]="['/add-item',{id:form.barcode}]">Add item</button>
   <button [disabled]="!addPriceShow" class="btn btn-secondary" [routerLink]="['/add-item-price', form.barcode]">Add price</button>
 </div>
