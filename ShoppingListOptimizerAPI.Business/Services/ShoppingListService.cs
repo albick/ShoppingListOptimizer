@@ -49,8 +49,9 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public ShoppingListDTO UpdateShoppingList(ShoppingListDTO shoppingListDTO, int id)
         {
+            var creator = _accountService.GetCurrentUser().Result;
             var shoppingListFromDb = _context.ShoppingLists
-                .Where(l => l.Id.Equals(id))
+                .Where(l => l.Id.Equals(id) && l.Creator.Id.Equals(creator.Id))
                 .Include(l => l.ShoppingListItems)
                 .ThenInclude(li => li.Item)
                 .Include(l => l.Creator)
@@ -73,7 +74,8 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public bool DeleteShoppingList(int listId)
         {
-            var list = _context.ShoppingLists.Where(l => l.Id.Equals(listId)).Include(l => l.ShoppingListItems).FirstOrDefault();
+            var creator = _accountService.GetCurrentUser().Result;
+            var list = _context.ShoppingLists.Where(l => l.Id.Equals(listId) && l.Creator.Id.Equals(creator.Id)).Include(l => l.ShoppingListItems).FirstOrDefault();
 
             if (list == null)
             {
@@ -101,7 +103,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 return null;
             }
 
-            var list = _context.ShoppingLists.Where(l => l.Id.Equals(listId) && l.Creator.Id.Equals(currentUser.Id)).Include(l => l.ShoppingListItems).ThenInclude(li=>li.Item).FirstOrDefault();
+            var list = _context.ShoppingLists.Where(l => l.Id.Equals(listId) && l.Creator.Id.Equals(currentUser.Id)).Include(l => l.ShoppingListItems).ThenInclude(li => li.Item).FirstOrDefault();
             if (list == null)
             {
                 return null;
@@ -129,12 +131,17 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public bool DeleteShoppingListItem(int itemId)
         {
+            var creator = _accountService.GetCurrentUser().Result;
             var listItem = _context.ShoppingListItems.FirstOrDefault(li => li.Id.Equals(itemId));
             if (listItem == null)
             {
                 return false;
             }
-
+            var listContaining = _context.ShoppingLists.Where(l => l.ShoppingListItems.Contains(listItem) && l.Creator.Id.Equals(creator.Id)).FirstOrDefault();
+            if (listContaining == null)
+            {
+                return false;
+            }
             _context.ShoppingListItems.Remove(listItem);
             _context.SaveChanges();
             return true;
@@ -142,8 +149,9 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public ShoppingListItemDTO AddShoppingListItem(ShoppingListItemDTO listItem, int listId)
         {
+            var creator = _accountService.GetCurrentUser().Result;
             var shoppingListFromDb = _context.ShoppingLists
-                .Where(l => l.Id.Equals(listId))
+                .Where(l => l.Id.Equals(listId) && l.Creator.Id.Equals(creator.Id))
                 .Include(l => l.ShoppingListItems)
                 .ThenInclude(li => li.Item)
                 .Include(l => l.Creator)
@@ -197,8 +205,9 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public ShoppingListItemDTO UpdateShoppingListItem(ShoppingListItemDTO listItem, int itemId, int listId)
         {
+            var creator = _accountService.GetCurrentUser().Result;
             var shoppingListFromDb = _context.ShoppingLists
-                .Where(l => l.Id.Equals(listId))
+                .Where(l => l.Id.Equals(listId) && l.Creator.Id.Equals(creator.Id))
                 .Include(l => l.ShoppingListItems)
                 .ThenInclude(li => li.Item)
                 .Include(l => l.Creator)
