@@ -73,13 +73,21 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public bool DeleteShoppingList(int listId)
         {
-            var list = _context.ShoppingLists.FirstOrDefault(l => l.Id.Equals(listId));
+            var list = _context.ShoppingLists.Where(l => l.Id.Equals(listId)).Include(l => l.ShoppingListItems).FirstOrDefault();
 
             if (list == null)
             {
                 return false;
             }
-            //cascade needeed?
+            //cascade needeed
+
+            var listItems = list.ShoppingListItems;
+            if (listItems != null)
+            {
+                _context.ShoppingListItems.RemoveRange(listItems);
+                _context.SaveChanges();
+            }
+
             _context.ShoppingLists.Remove(list);
             _context.SaveChanges();
             return true;
@@ -87,16 +95,48 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public ShoppingListDTO GetShoppingList(int listId)
         {
-            return null;
+            var currentUser = _accountService.GetCurrentUser().Result;
+            if (currentUser == null)
+            {
+                return null;
+            }
+
+            var list = _context.ShoppingLists.Where(l => l.Id.Equals(listId) && l.Creator.Id.Equals(currentUser.Id)).Include(l => l.ShoppingListItems).ThenInclude(li=>li.Item).FirstOrDefault();
+            if (list == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<ShoppingListDTO>(list);
         }
         public List<ShoppingListDTO> GetShoppingLists()
         {
-            return null;
+            var currentUser = _accountService.GetCurrentUser().Result;
+            if (currentUser == null)
+            {
+                return null;
+            }
+
+            var lists = _context.ShoppingLists.Where(l => l.Creator.Id.Equals(currentUser.Id)).ToList();
+            if (lists == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<List<ShoppingListDTO>>(lists);
         }
 
 
         public bool DeleteShoppingListItem(int itemId)
         {
+            var listItem = _context.ShoppingListItems.FirstOrDefault(li => li.Id.Equals(itemId));
+            if (listItem == null)
+            {
+                return false;
+            }
+
+            _context.ShoppingListItems.Remove(listItem);
+            _context.SaveChanges();
             return true;
         }
 
@@ -121,7 +161,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 return null;
             }
 
-            
+
 
             shoppingListFromDb.DateModified = DateTime.Now;
 
@@ -138,7 +178,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 }
                 else
                 {
-                    
+
                     shoppingListFromDb.ShoppingListItems.Add(mappedListItem);
                 }
             }
@@ -182,7 +222,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
             }
             listItemFromDb.Count = listItem.Count;
 
-            
+
 
             shoppingListFromDb.DateModified = DateTime.Now;
 

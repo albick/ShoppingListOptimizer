@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.Services;
+using ShoppingListOptimizerAPI.Data.Models;
 using ShoppingListOptimizerAPI.Models.Requests;
 using ShoppingListOptimizerAPI.Models.Responses;
 
@@ -56,19 +57,34 @@ namespace ShoppingListOptimizerAPI.Controllers
         [HttpGet]
         public ActionResult<List<ShoppingListResponse>> GetShoppingLists()
         {
-            return Ok();
+            var shoppingLists = _shoppingListService.GetShoppingLists();
+            if(shoppingLists == null)
+            {
+                return NotFound("No shopping lists found");
+            }
+            return Ok(_mapper.Map<List<ShoppingListResponse>>(shoppingLists));
         }
 
         [HttpGet("{id}")]
         public ActionResult<ShoppingListResponse> GetShoppingList(int id)
         {
-            return Ok();
+            var shoppingList = _shoppingListService.GetShoppingList(id);
+            if (shoppingList == null)
+            {
+                return NotFound("No shopping list found");
+            }
+            return Ok(_mapper.Map<ShoppingListResponse>(shoppingList));
         }
 
         [HttpDelete("{listId}/items/{itemId}")]
-        public IActionResult DeleteShoppingListItem(int listId, int itemId)
+        public ActionResult<bool> DeleteShoppingListItem(int itemId)
         {
-            return Ok();
+            var success = _shoppingListService.DeleteShoppingListItem(itemId);
+            if (success == false)
+            {
+                return NotFound("Shopping list item deleting failed");
+            }
+            return Ok(true);
         }
 
         [HttpPost("{listId}/items")]

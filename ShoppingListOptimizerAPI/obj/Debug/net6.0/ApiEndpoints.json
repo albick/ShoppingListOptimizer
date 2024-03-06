@@ -447,17 +447,27 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "listId",
+        "Name": "itemId",
         "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "itemId",
-        "Type": "System.Int32",
+        "Name": "listId",
+        "Type": "",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
