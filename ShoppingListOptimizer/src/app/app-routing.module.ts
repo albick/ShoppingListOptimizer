@@ -13,6 +13,7 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { ShoppingListsComponent } from './components/shopping-lists/shopping-lists.component';
 import { ShoppingListDetailsComponent } from './components/shopping-list-details/shopping-list-details.component';
+import { ShopDetailsComponent } from './components/shop-details/shop-details.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'items', component: ItemsComponent},
   {path: 'items/:id/:shopId', component: ItemDetailsComponent},
   {path: 'items/:id', component: ItemDetailsComponent},
+  {path: 'shops/:id', component: ShopDetailsComponent},
   {path: 'shopping-lists/:id', component: ShoppingListDetailsComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];

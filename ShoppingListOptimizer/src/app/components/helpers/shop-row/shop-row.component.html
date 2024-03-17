@@ -4,7 +4,7 @@
       <p class="m-0 fw-semibold fs-5">{{shop.name}}</p>
     </div>
     <div class="col-4 text-end">
-      <fa-icon class="fs-2 align-self-center" [icon]="faCircleInfo"></fa-icon>
+      <fa-icon class="fs-2 align-self-center" [icon]="faCircleInfo" [routerLink]="['/shops', shop.id]"></fa-icon>
     </div>
   </div>
   <div class="row">

@@ -29,3 +29,7 @@ input[type="range"]:active::-moz-range-thumb {
 input[type="range"]:active::-ms-thumb {
   background-color: #6c757d;
 }
+
+.chart-height{
+  max-height: 300px;
+}
