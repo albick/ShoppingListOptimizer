@@ -1,19 +1,19 @@
-<div class="bg-dark text-bg-dark">
-  <div class="row">
-    <div class="col-6">
-      <p class="m-0 fw-semibold">{{shop.name}}</p>
-
+<div class="bg-dark text-bg-dark p-3 rounded-2 mb-2">
+  <div class="row mb-2">
+    <div class="col-8">
+      <p class="m-0 fw-semibold fs-5">{{shop.name}}</p>
     </div>
-    <div class="col-6">
-      <button class="btn btn-secondary">Details</button>
+    <div class="col-4 text-end">
+      <fa-icon class="fs-2 align-self-center" [icon]="faCircleInfo" [routerLink]="['/shops', shop.id]"></fa-icon>
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
-      <p class="m-0">{{shop["distanceFromUser"]}}</p>
+    <div class="col-8">
+
+      <p class="m-0">{{shop.location.city+", "+shop.location.postcode+", "+shop.location.street}}</p>
     </div>
-    <div class="col-6">
-      <p class="m-0">{{shop.location.city}}</p>
+    <div class="col-4 text-end">
+      <p class="m-0">{{shop["distanceFromUser"]| number:'1.1-1'}} km</p>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
-<div class="col-md-12">
-  <div class="card card-container">
+<div class="col-10 col-lg-4 offset-1 offset-lg-4 mt-4">
+  <p class="h1 mb-4 p-0">Add price for item</p>
+  <div class="border-container p-2">
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -7,7 +8,7 @@
       #f="ngForm"
       novalidate
     >
-      <div class="form-group">
+      <div class="">
         <label for="barcode">Barcode</label>
         <input
           disabled
@@ -23,7 +24,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="">
         <label for="shop">Shop</label>
         <select
           class="form-control"
@@ -58,7 +59,10 @@
 
 
       <div class="form-group mt-4">
-        <button class="btn btn-dark w-100 btn-block">Add</button>
+        <button class="btn btn-dark w-100 d-flex flex-nowrap justify-content-center">
+          <fa-icon class="fs-6 align-self-center me-1" [icon]="faTag"></fa-icon>
+          <p class="m-0 align-self-center pe-4">Add price</p>
+        </button>
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isAddFailed">
@@ -70,8 +74,9 @@
       Added item price successfully!
     </div>
     <div class="mt-4" *ngIf="isSuccessful">
-      <button class="btn btn-dark w-100 btn-block" [routerLink]="['/home']">
-        Home
+      <button class="btn btn-dark w-100 d-flex flex-nowrap justify-content-center" [routerLink]="['/home']">
+        <fa-icon class="fs-6 align-self-center me-1" [icon]="faHouse"></fa-icon>
+        <p class="m-0 align-self-center pe-4">Home</p>
       </button>
     </div>
 

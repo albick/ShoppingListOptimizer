@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.Helpers;
 using ShoppingListOptimizerAPI.Data.Infrastructure;
-using ShoppingListOptimizerAPI.Data.Migrations;
+
 using ShoppingListOptimizerAPI.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -86,19 +86,22 @@ namespace ShoppingListOptimizerAPI.Business.Services
         {
             //get and look up creator by id
             var creator = _accountService.GetCurrentUser().Result;
-            //link creator to item
-            var _item = _mapper.Map<Item>(item);
-            if (creator != null)
-            {
-                _item.Creator = creator;
-                _context.Items.Add(_item);
-                _context.SaveChanges();
-                return _mapper.Map<ItemDTO>(_item);
-            }
-            else
+            //look up item if exists
+            var exists = _context.Items.Where(i => i.Barcode.Equals(item.Barcode)).FirstOrDefault();
+            if (exists != null)
             {
                 return null;
             }
+            //link creator to item
+            var _item = _mapper.Map<Item>(item);
+            if (creator == null)
+            {
+                return null;
+            }
+            _item.Creator = creator;
+            _context.Items.Add(_item);
+            _context.SaveChanges();
+            return _mapper.Map<ItemDTO>(_item);
         }
 
         public ItemPriceEntryDTO CreateItemPriceEntry(string barcode, int shopId, double price)
@@ -188,7 +191,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
                 var itemPriceChart = new ItemChartDTO
                 {
-                    Name = "Average price of "+filtered.First().Item.Name,
+                    Name = "Average price of " + filtered.First().Item.Name,
                     Series = itemChartSeries
                 };
 

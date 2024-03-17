@@ -31,17 +31,13 @@ export class ShopSelectModalComponent {
   onDataSaved = new EventEmitter<any>();
 
   saveData() {
-
-    // Process data and emit event to send data back to parent
     this.onDataSaved.emit(this.data);
   }
 
   clickCheckbox($event: any) {
     if ($event.target.checked && !this.data.includes(Number($event.target.id))) {
-      // Checkbox is checked and ID is not in data array, so add it
       this.data.push(Number($event.target.id));
     } else if (!$event.target.checked && this.data.includes(Number($event.target.id))) {
-      // Checkbox is unchecked and ID is in data array, so remove it
       this.data = this.data.filter(id => id !== Number($event.target.id));
     }
   }

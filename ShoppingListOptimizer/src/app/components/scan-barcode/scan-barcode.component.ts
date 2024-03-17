@@ -3,6 +3,7 @@ import {ItemService} from 'src/app/services/item.service';
 import {BarcodeFormat, Result} from '@zxing/library'
 import {ItemResponse} from 'src/app/models/generated';
 import {EMPTY, Observable, of, switchMap} from 'rxjs';
+import { faCloudArrowDown, faRotateRight, faSquarePlus, faTag } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-scan-barcode',
@@ -15,6 +16,8 @@ export class ScanBarcodeComponent {
   };
   formatsEnabled: BarcodeFormat[];
   scanEnabled = true;
+  itemFetched=false;
+
 
   isSuccessful: any;
 
@@ -23,6 +26,11 @@ export class ScanBarcodeComponent {
 
   item!: ItemResponse;
 
+
+  faCloudArrowDown=  faCloudArrowDown;
+  faRotateRight=  faRotateRight;
+  faTag=  faTag;
+  faSquarePlus=  faSquarePlus;
   constructor(private itemService: ItemService) {
     this.formatsEnabled = [
       BarcodeFormat.CODE_128,
@@ -35,7 +43,7 @@ export class ScanBarcodeComponent {
   onSubmit() {
     const barcode = this.form.barcode;
     console.log(barcode);
-
+    this.itemFetched=!this.itemFetched;
 
     this.itemService.getItemByBarcode(barcode)
       .pipe(
@@ -46,6 +54,7 @@ export class ScanBarcodeComponent {
             return EMPTY; // or any default value
           } else {
             //console.log(data)
+
             this.addItemShow = false;
             this.addPriceShow = true;
             return of(data); // assuming you imported 'of' from 'rxjs'
@@ -69,6 +78,7 @@ export class ScanBarcodeComponent {
   }
 
   rescan() {
+    this.itemFetched=!this.itemFetched;
     this.form.barcode = "";
     this.scanEnabled = !this.scanEnabled;
     this.addItemShow = true;

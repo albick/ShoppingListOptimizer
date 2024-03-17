@@ -76,17 +76,19 @@ namespace ShoppingListOptimizerAPI.Business.Services
                     shops_ret.Add(s);
                 }
             }
-            
 
 
 
 
-            
+
+
             return shops_ret;
         }
 
         public ShopDTO GetShopById(int id)
         {
+            double[] coordinates = _accountService.GetCurrentLocation().Result;
+
             var shop = _context.Shops
                 .Include(s => s.Creator)
                     .ThenInclude(c => c.Location)
@@ -95,7 +97,13 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 .Include(s => s.Location)
                 .Include(s => s.OpeningHours)
                 .FirstOrDefault(p => p.Id == id);
-            return _mapper.Map<ShopDTO>(shop);
+
+            var shop_mapped = _mapper.Map<ShopDTO>(shop);
+
+            double calculated_distance = GeoFunctions.CalculateDistance(coordinates[0], coordinates[1], shop.Location.Latitude, shop.Location.Longitude);
+            shop_mapped.DistanceFromUser = calculated_distance;
+
+            return shop_mapped;
         }
 
         public ShopDTO AddShopCommunity(ShopDTO shop)
@@ -113,6 +121,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 _shop.Creator = creator;
                 _shop.Company = company;
             }
+            else { return null; }
 
             //add to db
             _context.Shops.Add(_shop);
@@ -120,11 +129,56 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return _mapper.Map<ShopDTO>(_shop);
         }
 
+        public ShopDTO AddShopDevelopment(ShopDTO shop, Account creator)
+        {
+
+            var existingLocation = _context.Locations.Where(l=>l.Id.Equals(shop.Location.Id)).FirstOrDefault();
+            
+            //look up company by id
+            var company = _accountService.GetCompanyByName(shop.Company.UserName).Result;
+
+            //link company to shop
+            //link creator to shop
+            var _shop = _mapper.Map<Shop>(shop);
+            if (existingLocation != null)
+            {
+                _shop.Location = existingLocation;
+            }
+            if (company != null && creator != null)
+            {
+                _shop.Creator = creator;
+                _shop.Company = company;
+            }
+            else { return null; }
+
+            //add to db
+            _context.Shops.Add(_shop);
+            _context.SaveChanges();
+            return _mapper.Map<ShopDTO>(_shop);
+        }
+
+        public ShopDTO GetShopByNameDevelopment(string name)
+        {
+            var shop=_context.Shops.Where(s=>s.Name.Equals(name))
+                .Include(s=>s.Company)
+                .ThenInclude(c=>c.Location)
+                .Include(s=>s.Creator)
+                .ThenInclude(c => c.Location)
+                .Include(s=>s.Location)
+                .Include(s=>s.OpeningHours)
+                .FirstOrDefault();
+            if (shop != null)
+            {
+                return _mapper.Map<ShopDTO>(shop);
+            }
+            return null;
+        }
+
         public double GetMaxShopDistance()
         {
             double[] userLocation = _accountService.GetCurrentLocation().Result;
             double maxDistance = 0;
-            var shops = _context.Shops.Include(shop=>shop.Location).ToList();
+            var shops = _context.Shops.Include(shop => shop.Location).ToList();
             foreach (var shop in shops)
             {
                 double distance = GeoFunctions.CalculateDistance(shop.Location.Latitude, shop.Location.Longitude, userLocation[0], userLocation[1]);

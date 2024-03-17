@@ -1,20 +1,23 @@
-<div class="bg-dark text-bg-dark">
-  <div class="row">
-    <div class="col-6">
-      <p class="m-0 fw-semibold">{{item["itemName"] +" - "+item["itemQuantity"] +" "+ item["itemUnit"]}}</p>
-
+<div class="bg-dark text-bg-dark p-3 rounded-2 mb-2">
+  <div class="row mb-2">
+    <div class="col-5">
+      <p class="m-0 fw-semibold fs-5">{{item["itemName"] +" - "+item["itemQuantity"] +" "+ item["itemUnit"]}}</p>
     </div>
-    <div class="col-6">
-      <button class="btn btn-secondary">Add to cart</button>
-      <button class="btn btn-secondary" (click)="reloadPageAndRedirect()">Details</button>
+
+    <div class="col-2 offset-5 text-end">
+
+      <fa-icon class="fs-2 align-self-center" [icon]="faCircleInfo" (click)="reloadPageAndRedirect()"></fa-icon>
     </div>
   </div>
-  <div class="row">
-    <div class="col-6">
+  <div class="row align-items-center">
+    <div class="col-5">
       <p class="m-0 fw-semibold">{{item["price"]+" Ft at " + (item["createdAt"] | date:'mediumDate')}}</p>
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <p class="m-0">{{(item["distance"] | number:'1.1-1')+" km - " +item["shopName"]}}</p>
+    </div>
+    <div class="col-2 text-end">
+      <fa-icon class="fs-2 align-self-center" [icon]="faBasketShopping" (click)="openModal()"></fa-icon>
     </div>
   </div>
 </div>

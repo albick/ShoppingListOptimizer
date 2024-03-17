@@ -1,10 +1,9 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
+<div class="col-10 col-lg-4 offset-1 offset-lg-4">
+  <div class="d-flex flex-column mt-4 p-2 border-container">
+    <div class="d-flex justify-content-center mb-4">
+      <fa-icon class="fs-1" [icon]="faUser"></fa-icon>
+    </div>
+    <div class="">
     <form
       *ngIf="!isLoggedIn"
       name="form"
@@ -12,7 +11,7 @@
       #f="ngForm"
       novalidate
     >
-      <div class="form-group">
+      <div class="form-group mb-2">
         <label for="email">Email</label>
         <input
           type="text"
@@ -67,7 +66,7 @@
         </div>
       </div>
     </form>
-
+  </div>
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in
     </div>

@@ -19,6 +19,10 @@ export class ShopService {
   getShops(name:string="",distance: number = 0): Observable<ShopResponse[]> {
     return this.http.get<ShopResponse[]>(API_URL + `?name=${name}&distance=${distance}`);
   }
+
+  getShop(id:string):Observable<ShopResponse>{
+    return this.http.get<ShopResponse>(API_URL+id);
+  }
   getCompanies(): Observable<string[]> {
     return this.http.get<string[]>(API_URL + `companies`);
   }

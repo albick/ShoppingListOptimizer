@@ -1,0 +1,37 @@
+<div class="col-10 col-lg-10 offset-1 offset-lg-1 mt-4">
+  <p class="h1 mb-4 p-0">Shop details</p>
+  <div class="row">
+
+    <div class="border-container p-2 row m-0">
+      <div class="col-12 col-lg-3 p-0">
+          <div *ngIf="(shop | async) as shop; else spinner">
+            <label for="shopName" class="fw-semibold">Shop</label>
+            <p class="mb-2">{{ shop.name }}</p>
+            <label for="distanceFromUser" class="fw-semibold">Distance</label>
+            <p class="mb-4">{{ shop.distanceFromUser | number:'1.1-1' }} km</p>
+          </div>
+          <!--button class="btn btn-secondary d-flex flex-nowrap justify-content-center w-100 mb-lg-0 mb-4" [routerLink]="['/add-item-price', form.barcode]">
+            <fa-icon class="fs-6 align-self-center me-1" [icon]="faMagnifyingGlass"></fa-icon>
+            <p class="m-0 align-self-center">Items in shop</p>
+          </button-->
+      </div>
+      <div class="col-12 col-lg-8 offset-lg-1 offset-0 p-0">
+        <div id="shop_map" style="height: 400px;"></div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+<ng-template #spinner>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-dark" role="status">
+    </div>
+  </div>
+</ng-template>

@@ -3,13 +3,13 @@
     <div class="container-fluid">
 
       <ul class="navbar-nav mr-auto" routerLinkActive="active">
-        <a href="#" class="navbar-brand">ShoppingListOptimizer</a>
-        <li class="nav-item">
+        <a href="#" class="navbar-brand"><fa-icon class="fs-2" [icon]="faHouse"></fa-icon></a>
+        <!--li class="nav-item">
           <a class="nav-link" *ngIf="isLoggedIn" routerLink="shopping-lists">My shopping lists</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="isLoggedIn&&showAdmin" routerLink="profiles">Change requests</a>
-        </li>
+        </li-->
       </ul>
 
       <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
@@ -26,13 +26,13 @@
           <a  class="nav-link" [routerLink]="['/details-profile',userId]">{{ username+" role:"+roles[0] }}</a>
         </li>
         <li class="nav-item">
-          <a href class="nav-link" (click)="logout()">Logout</a>
+          <button type="button" class="btn btn-secondary d-flex flex-nowrap" (click)="logout()"><fa-icon class="fs-4 align-self-center me-2" [icon]="faRightFromBracket"></fa-icon><p class="m-0 align-self-center">Logout</p></button>
         </li>
       </ul>
     </div>
   </nav>
 
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
     <router-outlet></router-outlet>
   </div>
 </div>

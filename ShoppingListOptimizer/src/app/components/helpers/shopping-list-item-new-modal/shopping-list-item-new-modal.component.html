@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Add item to shopping list</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <div *ngIf="(shoppingLists | async) as shoppingLists; else spinner">
+    <app-shopping-list-add-row *ngFor="let shoppingList of shoppingLists" [shoppingList]="shoppingList" [itemBarcode]="itemBarcode"  (onSave)="handleEvent($event)"></app-shopping-list-add-row>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="close()">Cancel</button>
+</div>
+
+<ng-template #spinner>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-dark" role="status">
+    </div>
+  </div>
+</ng-template>

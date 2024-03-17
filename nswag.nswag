@@ -14,6 +14,8 @@
         "ShoppingListOptimizerAPI.Models.Requests.RefreshTokenRequest",
         "ShoppingListOptimizerAPI.Models.Requests.RegisterRequest",
         "ShoppingListOptimizerAPI.Models.Requests.RegisterShopRequest",
+        "ShoppingListOptimizerAPI.Models.Requests.ShoppingListItemRequest",
+        "ShoppingListOptimizerAPI.Models.Requests.ShoppingListRequest",
         "ShoppingListOptimizerAPI.Models.Requests.ShopRequest",
         "ShoppingListOptimizerAPI.Models.Responses.ItemChartResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ItemQueryResponse",
@@ -21,6 +23,8 @@
         "ShoppingListOptimizerAPI.Models.Responses.JwtAuthResponse",
         "ShoppingListOptimizerAPI.Models.Responses.LoginResponse",
         "ShoppingListOptimizerAPI.Models.Responses.RegisterResponse",
+        "ShoppingListOptimizerAPI.Models.Responses.ShoppingListItemResponse",
+        "ShoppingListOptimizerAPI.Models.Responses.ShoppingListResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ShopResponse"
       ],
       "defaultPropertyNameHandling": "Default",

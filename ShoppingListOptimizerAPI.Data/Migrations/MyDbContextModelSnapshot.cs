@@ -376,6 +376,62 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.ToTable("Shops");
                 });
 
+            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatorId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.ToTable("ShoppingLists");
+                });
+
+            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingListItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPriority")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("ItemBarcode")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int?>("ShoppingListId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemBarcode");
+
+                    b.HasIndex("ShoppingListId");
+
+                    b.ToTable("ShoppingListItems");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -508,9 +564,40 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Navigation("Location");
                 });
 
+            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingList", b =>
+                {
+                    b.HasOne("ShoppingListOptimizerAPI.Data.Models.Account", "Creator")
+                        .WithMany()
+                        .HasForeignKey("CreatorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Creator");
+                });
+
+            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingListItem", b =>
+                {
+                    b.HasOne("ShoppingListOptimizerAPI.Data.Models.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemBarcode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShoppingListOptimizerAPI.Data.Models.ShoppingList", null)
+                        .WithMany("ShoppingListItems")
+                        .HasForeignKey("ShoppingListId");
+
+                    b.Navigation("Item");
+                });
+
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Shop", b =>
                 {
                     b.Navigation("OpeningHours");
+                });
+
+            modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingList", b =>
+                {
+                    b.Navigation("ShoppingListItems");
                 });
 #pragma warning restore 612, 618
         }

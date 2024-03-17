@@ -63,6 +63,12 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
 
             CreateMap<ItemPriceEntry, ItemPriceEntryDTO>();
             CreateMap<ItemPriceEntryDTO, ItemPriceEntry>();
+
+            CreateMap<ShoppingListItem, ShoppingListItemDTO>();
+            CreateMap<ShoppingListItemDTO, ShoppingListItem>();
+
+            CreateMap<ShoppingList, ShoppingListDTO>();
+            CreateMap<ShoppingListDTO, ShoppingList>();
         }
     }
 }

@@ -1,0 +1,13 @@
+<div class="col-10 col-lg-4 offset-1 offset-lg-4 mt-4">
+  <div class="d-flex justify-content-between mb-4 align-items-center">
+  <p class="h1 p-0">Shopping lists</p>
+    <button type="button" class="btn btn-dark d-flex flex-nowrap justify-content-center h-100" (click)="openModalNewShoppingList()">
+      <fa-icon class="fs-6 align-self-center me-1" [icon]="faReceipt"></fa-icon>
+      <p class="m-0 align-self-center">Add list</p>
+    </button>
+
+  </div>
+    <div *ngFor="let shoppingList of shoppingLists|async" class="mb-2">
+    <app-shopping-list-row [shoppingList]="shoppingList"></app-shopping-list-row>
+  </div>
+</div>

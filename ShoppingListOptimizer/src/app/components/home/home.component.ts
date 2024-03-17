@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {faBarcode, faMagnifyingGlass, faMicroscope, faReceipt, faShop, faSquarePlus, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  faUser = faUser;
+  faShop=faShop;
+  faReceipt=faReceipt;
+  faMagnifyingGlass=faMagnifyingGlass;
+  faSquarePlus=faSquarePlus;
+  faBarcode=faBarcode;
+  faMicroscope=faMicroscope;
 }

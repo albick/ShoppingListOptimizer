@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {faHouse, faTag } from '@fortawesome/free-solid-svg-icons';
 import {EMPTY, Observable} from 'rxjs';
 import {ShopResponse} from 'src/app/models/generated';
 import { ItemService } from 'src/app/services/item.service';
@@ -23,6 +24,9 @@ export class AddItemPriceComponent implements OnInit {
 
   shops: Observable<ShopResponse[]> = EMPTY;
   isAddFailed: any;
+
+  faTag=  faTag;
+  faHouse=  faHouse;
 
   constructor(private route: ActivatedRoute,private shopService:ShopService,private itemService:ItemService) {
     this.route.params.subscribe(params => {
