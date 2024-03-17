@@ -413,6 +413,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsPriority")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("ItemBarcode")
                         .IsRequired()
                         .HasColumnType("varchar(255)");

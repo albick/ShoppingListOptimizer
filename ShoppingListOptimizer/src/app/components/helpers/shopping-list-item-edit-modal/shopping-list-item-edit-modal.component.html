@@ -1,1 +1,58 @@
-<p>shopping-list-item-edit-modal works!</p>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Edit item</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <form
+    *ngIf="!isSuccessful"
+    name="form"
+    (ngSubmit)="f.form.valid && edit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="mb-2">
+      <label for="count">Count</label>
+      <input
+        type="number"
+        step="1"
+        min="1"
+        class="form-control"
+        name="count"
+        [(ngModel)]="form.count"
+        required
+        #count="ngModel"
+      />
+      <div class="alert alert-danger" *ngIf="count.errors">
+        <div *ngIf="count.errors['required']">Count is required</div>
+        <div *ngIf="count.errors['min']">Count needs to be more than 0</div>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <label for="urgent">Urgent</label>
+      <input
+        type="checkbox"
+        class="form-check-input ms-2"
+        name="urgent"
+        [(ngModel)]="form.urgent"
+        #urgent="ngModel"
+      />
+      <div class="alert alert-danger" *ngIf="urgent.errors"></div>
+    </div>
+
+
+
+
+
+    <div class="alert alert-warning" *ngIf="isAddFailed">
+      Editing item failed!<br/>{{ errorMessage }}
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="close()">Cancel</button>
+  <button class="btn btn-dark d-flex flex-nowrap justify-content-center" (click)="edit()">
+    <fa-icon class="fs-6 align-self-center me-1" [icon]="faSquareCheck"></fa-icon>
+    <p class="m-0 align-self-center">Edit item</p>
+  </button>
+</div>

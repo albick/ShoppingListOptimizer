@@ -81,6 +81,17 @@ export interface RegisterShopRequest {
     Location: LocationModel;
 }
 
+export interface ShoppingListItemRequest {
+    Count: number;
+    ItemId: string;
+    IsPriority: boolean;
+}
+
+export interface ShoppingListRequest {
+    Name: string;
+    Details: string;
+}
+
 export interface ShopRequest {
     Name: string;
     Details: string;
@@ -177,6 +188,23 @@ export interface LoginResponse {
 
 export interface RegisterResponse {
     Message: string;
+}
+
+export interface ShoppingListItemResponse {
+    id: number;
+    itemId: string;
+    count: number;
+    itemName: string;
+    isPriority: boolean;
+}
+
+export interface ShoppingListResponse {
+    id: number;
+    name: string;
+    details: string;
+    dateModified: Date;
+    creator: AccountModel;
+    shoppingListItems: ShoppingListItemResponse[];
 }
 
 export interface ShopResponse {

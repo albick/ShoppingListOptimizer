@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { ShopResponse } from 'src/app/models/generated';
+import {Component, Input} from '@angular/core';
+import {faCircleInfo} from '@fortawesome/free-solid-svg-icons';
+import {ShopResponse} from 'src/app/models/generated';
 
 @Component({
   selector: 'app-shop-row',
@@ -8,6 +9,8 @@ import { ShopResponse } from 'src/app/models/generated';
 })
 export class ShopRowComponent {
   @Input() shop!: ShopResponse;
+
+  faCircleInfo = faCircleInfo;
 
   constructor() {
 

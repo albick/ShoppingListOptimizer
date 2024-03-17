@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "./services/token-storage.service";
 import {GeolocationService} from './services/geolocation.service';
+import {faHouse, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,9 @@ export class AppComponent implements OnInit {
   showAdmin = false;
   username?: string;
   userId: string = "";
+
+  faHouse = faHouse;
+  faRightFromBracket = faRightFromBracket;
 
   constructor(private tokenStorageService: TokenStorageService, private geolocationService: GeolocationService) {
   }

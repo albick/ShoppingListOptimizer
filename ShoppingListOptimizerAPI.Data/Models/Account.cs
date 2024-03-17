@@ -18,6 +18,8 @@ namespace ShoppingListOptimizerAPI.Data.Models
 
         public Location? Location { get; set; }
         
+        
+
     }
 
     

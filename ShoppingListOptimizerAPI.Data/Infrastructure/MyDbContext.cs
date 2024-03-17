@@ -16,7 +16,11 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
     {
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
 
-       
+        /*protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Account>().HasData(true);
+        }*/
 
         public DbSet<Item> Items { get; set; }
         public DbSet<Account> Accounts { get; set; }

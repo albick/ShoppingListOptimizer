@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { faSquarePlus, faTag } from '@fortawesome/free-solid-svg-icons';
 import {ItemService} from 'src/app/services/item.service';
 
 @Component({
@@ -21,6 +22,9 @@ export class AddItemComponent implements OnInit {
   errorMessage = "";
   isAddFailed: any;
   units = ["kg", "l","piece"];
+
+  faSquarePlus=  faSquarePlus;
+  faTag=  faTag;
 
   constructor(private route: ActivatedRoute, private itemService: ItemService) {
     this.id = this.route.snapshot.paramMap.get('id') ?? "";

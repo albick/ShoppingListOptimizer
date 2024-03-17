@@ -280,6 +280,26 @@
   },
   {
     "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
+    "Method": "GetShoppingLists",
+    "RelativePath": "api/shoppinglists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ShoppingListOptimizerAPI.Models.Responses.ShoppingListResponse, ShoppingListOptimizerAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
     "Method": "AddShoppingList",
     "RelativePath": "api/shoppinglists",
     "HttpMethod": "POST",
@@ -306,15 +326,21 @@
   },
   {
     "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
-    "Method": "GetShoppingLists",
-    "RelativePath": "api/shoppinglists",
+    "Method": "GetShoppingList",
+    "RelativePath": "api/shoppinglists/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[ShoppingListOptimizerAPI.Models.Responses.ShoppingListResponse, ShoppingListOptimizerAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "ShoppingListOptimizerAPI.Models.Responses.ShoppingListResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -383,32 +409,6 @@
   },
   {
     "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
-    "Method": "GetShoppingList",
-    "RelativePath": "api/shoppinglists/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "ShoppingListOptimizerAPI.Models.Responses.ShoppingListResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
     "Method": "AddShoppingListItem",
     "RelativePath": "api/shoppinglists/{listId}/items",
     "HttpMethod": "POST",
@@ -422,6 +422,42 @@
       },
       {
         "Name": "listId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ShoppingListOptimizerAPI.Models.Responses.ShoppingListItemResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
+    "Method": "UpdateShoppingListItem",
+    "RelativePath": "api/shoppinglists/{listId}/items/{itemId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shoppingListItemRequest",
+        "Type": "ShoppingListOptimizerAPI.Models.Requests.ShoppingListItemRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "listId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "itemId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -460,42 +496,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Boolean",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ShoppingListOptimizerAPI.Controllers.ShoppingListController",
-    "Method": "UpdateShoppingListItem",
-    "RelativePath": "api/shoppinglists/{listId}/items/{itemId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "shoppingListItemRequest",
-        "Type": "ShoppingListOptimizerAPI.Models.Requests.ShoppingListItemRequest",
-        "IsRequired": true
-      },
-      {
-        "Name": "listId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "itemId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "ShoppingListOptimizerAPI.Models.Responses.ShoppingListItemResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",

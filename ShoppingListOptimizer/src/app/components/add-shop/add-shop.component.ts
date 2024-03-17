@@ -5,6 +5,7 @@ import {DayOfWeek, LocationModel, OpeningHoursModel} from 'src/app/models/genera
 import {ShopService} from 'src/app/services/shop.service';
 import { CommonModule } from '@angular/common';
 import { Feature } from 'geojson';
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-shop',
@@ -38,6 +39,10 @@ export class AddShopComponent {
   //days from monday to sunday
   times: NgbTimeStruct[][] = [];
 
+
+  faSquarePlus=faSquarePlus;
+
+  weekdaysSameAsMonday=true;
 
   constructor(private shopService: ShopService) {
     for (let i = 0; i <= 6; i++) {

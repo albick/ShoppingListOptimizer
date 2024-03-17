@@ -182,6 +182,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 {
                     shoppingListFromDb.ShoppingListItems.Remove(alreadyContains);
                     alreadyContains.Count = listItem.Count;
+                    alreadyContains.IsPriority = listItem.IsPriority;
                     shoppingListFromDb.ShoppingListItems.Add(alreadyContains);
                 }
                 else
@@ -230,7 +231,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 return null;
             }
             listItemFromDb.Count = listItem.Count;
-
+            listItemFromDb.IsPriority=listItem.IsPriority;
 
 
             shoppingListFromDb.DateModified = DateTime.Now;

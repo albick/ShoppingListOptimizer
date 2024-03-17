@@ -95,11 +95,15 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
                 .ForMember(dest=>dest.id,opt=>opt.MapFrom(src=>src.Id))
                 .ForMember(dest=>dest.count,opt=>opt.MapFrom(src=>src.Count))
                 .ForMember(dest=>dest.itemId,opt=>opt.MapFrom(src=>src.Item.Barcode))
+                .ForMember(dest=>dest.itemName,opt=>opt.MapFrom(src=>src.Item.Name))
+                .ForMember(dest=>dest.isPriority,opt=>opt.MapFrom(src=>src.IsPriority))
+                
                 ;
 
             CreateMap<ShoppingListItemRequest, ShoppingListItemDTO>()
                 .ForMember(dest=>dest.Id,opt=>opt.Ignore())
                 .ForMember(dest=>dest.Count,opt=>opt.MapFrom(src=>src.Count))
+                .ForMember(dest=>dest.IsPriority,opt=>opt.MapFrom(src=>src.IsPriority))
                 .ForMember(dest => dest.Item, opt => opt.MapFrom(src => new ItemDTO { Barcode = src.ItemId}));
             ;
         }

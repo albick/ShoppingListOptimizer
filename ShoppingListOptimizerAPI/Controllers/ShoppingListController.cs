@@ -21,6 +21,28 @@ namespace ShoppingListOptimizerAPI.Controllers
             _shoppingListService = shoppingListService;
         }
 
+        [HttpGet]
+        public ActionResult<List<ShoppingListResponse>> GetShoppingLists()
+        {
+            var shoppingLists = _shoppingListService.GetShoppingLists();
+            if(shoppingLists == null)
+            {
+                return NotFound("No shopping lists found");
+            }
+            return Ok(_mapper.Map<List<ShoppingListResponse>>(shoppingLists));
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<ShoppingListResponse> GetShoppingList(int id)
+        {
+            var shoppingList = _shoppingListService.GetShoppingList(id);
+            if (shoppingList == null)
+            {
+                return NotFound("No shopping list found");
+            }
+            return Ok(_mapper.Map<ShoppingListResponse>(shoppingList));
+        }
+        
         [HttpPost]
         public ActionResult<ShoppingListResponse> AddShoppingList([FromBody] ShoppingListRequest shoppingListRequest)
         {
@@ -54,26 +76,26 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(true);
         }
 
-        [HttpGet]
-        public ActionResult<List<ShoppingListResponse>> GetShoppingLists()
+        [HttpPost("{listId}/items")]
+        public ActionResult<ShoppingListItemResponse> AddShoppingListItem([FromBody] ShoppingListItemRequest shoppingListItemRequest, int listId)
         {
-            var shoppingLists = _shoppingListService.GetShoppingLists();
-            if(shoppingLists == null)
+            var shoppingListItem = _shoppingListService.AddShoppingListItem(_mapper.Map<ShoppingListItemDTO>(shoppingListItemRequest), listId);
+            if (shoppingListItem == null)
             {
-                return NotFound("No shopping lists found");
+                return NotFound("Shopping list item adding failed");
             }
-            return Ok(_mapper.Map<List<ShoppingListResponse>>(shoppingLists));
+            return Ok(_mapper.Map<ShoppingListItemResponse>(shoppingListItem));
         }
-
-        [HttpGet("{id}")]
-        public ActionResult<ShoppingListResponse> GetShoppingList(int id)
+        
+        [HttpPut("{listId}/items/{itemId}")]
+        public ActionResult<ShoppingListItemResponse> UpdateShoppingListItem([FromBody] ShoppingListItemRequest shoppingListItemRequest, int listId, int itemId)
         {
-            var shoppingList = _shoppingListService.GetShoppingList(id);
-            if (shoppingList == null)
+            var shoppingListItem = _shoppingListService.UpdateShoppingListItem(_mapper.Map<ShoppingListItemDTO>(shoppingListItemRequest), itemId, listId);
+            if (shoppingListItem == null)
             {
-                return NotFound("No shopping list found");
+                return NotFound("Shopping list item updating failed");
             }
-            return Ok(_mapper.Map<ShoppingListResponse>(shoppingList));
+            return Ok(_mapper.Map<ShoppingListItemResponse>(shoppingListItem));
         }
 
         [HttpDelete("{listId}/items/{itemId}")]
@@ -87,26 +109,5 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(true);
         }
 
-        [HttpPost("{listId}/items")]
-        public ActionResult<ShoppingListItemResponse> AddShoppingListItem([FromBody] ShoppingListItemRequest shoppingListItemRequest, int listId)
-        {
-            var shoppingListItem = _shoppingListService.AddShoppingListItem(_mapper.Map<ShoppingListItemDTO>(shoppingListItemRequest), listId);
-            if (shoppingListItem == null)
-            {
-                return NotFound("Shopping list item adding failed");
-            }
-            return Ok(_mapper.Map<ShoppingListItemResponse>(shoppingListItem));
-        }
-
-        [HttpPut("{listId}/items/{itemId}")]
-        public ActionResult<ShoppingListItemResponse> UpdateShoppingListItem([FromBody] ShoppingListItemRequest shoppingListItemRequest, int listId, int itemId)
-        {
-            var shoppingListItem = _shoppingListService.UpdateShoppingListItem(_mapper.Map<ShoppingListItemDTO>(shoppingListItemRequest), itemId, listId);
-            if (shoppingListItem == null)
-            {
-                return NotFound("Shopping list item updating failed");
-            }
-            return Ok(_mapper.Map<ShoppingListItemResponse>(shoppingListItem));
-        }
     }
 }

@@ -28,6 +28,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
         }
         public async Task SeedDbAsync()
         {
+            #region Locations
             Location location1 = new Location
             {
                 Id = 10,
@@ -64,8 +65,10 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 _context.Locations.AddRange(location1, location2, location3);
                 _context.SaveChanges();
             }
+            #endregion
 
 
+            #region Accounts
             Account account1 = new Account();
             Account account2 = new Account();
 
@@ -87,8 +90,10 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 account1 = _accountService.GetUserByName("User1").Result;
                 account2 = _accountService.GetUserByName("Shop1").Result;
             }
+            #endregion
 
 
+            #region Shops
             ShopDTO shop1 = new ShopDTO
             {
                 Company = _mapper.Map<AccountDTO>(account2),
@@ -114,6 +119,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 shop1 = _shopService.GetShopByNameDevelopment(shop1.Name);
                 shop2 = _shopService.GetShopByNameDevelopment(shop2.Name);
             }
+            #endregion
 
             //ItemDTO item1=
 

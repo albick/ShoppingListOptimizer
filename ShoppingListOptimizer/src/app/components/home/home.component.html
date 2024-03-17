@@ -1,38 +1,46 @@
-<div class="col-6 offset-3">
-<div class="row">
-    <div class="col-md-6 col-sm-12">
-        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" routerLink="../shops">
-            <p class="py-4 m-0">Shops</p>
-        </div>
+<div class="col-6 offset-3 mt-4">
+  <p class="h1 mb-4 text-center">Welcome to the shopping list optimizer!</p>
+  <div class="row mb-0 mb-lg-2">
+    <div class="col-10 offset-1 col-lg-6 offset-lg-0 mb-2 mb-lg-0">
+      <div class="bg-dark text-bg-dark rounded-2 d-flex justify-content-center" routerLink="../shops">
+        <fa-icon class="fs-2 align-self-center me-2" [icon]="faShop"></fa-icon>
+        <p class="py-4 m-0">Shops</p>
+      </div>
     </div>
-    <div class="col-md-6 col-sm-12">
-        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center">
-            <p class="py-4 m-0">Shopping lists</p>
-        </div>
+    <div class="col-10 offset-1 col-lg-6 offset-lg-0 mb-2 mb-lg-0">
+      <div class="bg-dark text-bg-dark rounded-2 d-flex justify-content-center" routerLink="../shopping-lists">
+        <fa-icon class="fs-2 align-self-center me-2" [icon]="faReceipt"></fa-icon>
+        <p class="py-4 m-0">Shopping lists</p>
+      </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" [routerLink]="['/items']">
-            <p class="py-4 m-0">Items</p>
-        </div>
+  </div>
+  <div class="row mb-0 mb-lg-2">
+    <div class="col-10 offset-1 col-lg-6 offset-lg-0 mb-2 mb-lg-0">
+      <div class="bg-dark text-bg-dark rounded-2 d-flex justify-content-center" [routerLink]="['/items']">
+        <fa-icon class="fs-2 align-self-center me-2" [icon]="faMagnifyingGlass"></fa-icon>
+        <p class="py-4 m-0">Items</p>
+      </div>
     </div>
-    <div class="col-6">
-        <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" [routerLink]="['/add-item']">
-            <p class="py-4 m-0">Add item</p>
-        </div>
+    <div class="col-10 offset-1 col-lg-6 offset-lg-0 mb-2 mb-lg-0">
+      <div class="bg-dark text-bg-dark rounded-2 d-flex justify-content-center" [routerLink]="['/add-item']">
+        <fa-icon class="fs-2 align-self-center me-2" [icon]="faSquarePlus"></fa-icon>
+        <p class="py-4 m-0">Add item</p>
+      </div>
     </div>
-</div>
-    <div class="row">
-        <div class="col-6">
-            <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center" routerLink="../add-shop">
-                <p class="py-4 m-0">Add shop</p>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="bg-dark text-bg-dark rounded-1 d-flex justify-content-center">
-                <p class="py-4 m-0" routerLink="../scan-barcode">Scan barcode</p>
-            </div>
-        </div>
+  </div>
+  <div class="row mb-0 mb-lg-2">
+    <div class="col-10 offset-1 col-lg-6 offset-lg-0 mb-2 mb-lg-0">
+      <div class="bg-dark text-bg-dark rounded-2 d-flex justify-content-center" routerLink="../add-shop">
+        <fa-icon class="fs-2 align-self-center me-2" [icon]="faSquarePlus"></fa-icon>
+        <p class="py-4 m-0">Add shop</p>
+
+      </div>
     </div>
+    <div class="col-10 offset-1 col-lg-6 offset-lg-0 mb-2 mb-lg-0">
+      <div class="bg-dark text-bg-dark rounded-2 d-flex justify-content-center">
+        <fa-icon class="fs-2 align-self-center me-2" [icon]="faBarcode"></fa-icon>
+        <p class="py-4 m-0" routerLink="../scan-barcode">Scan barcode</p>
+      </div>
+    </div>
+  </div>
 </div>

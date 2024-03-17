@@ -1,50 +1,75 @@
-<div class="row">
-  <div class="col-6 offset-3">
-    <div class="row py-2">
-      <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" [(ngModel)]="form.name">
-    </div>
-    <div class="row py-2">
-      <!--p *ngIf="(maxShopDistance | async) as maxDistance">{{ maxDistance }}</p>
-      <p *ngIf="(maxItemPrice | async) as maxPrice">{{ maxPrice }}</p-->
-      <label for="priceMaxSlider" class="form-label">Maximum price</label>
-      <div class="d-flex align-items-center p-0">
-        <div class="col-8 pe-1">
-          <input *ngIf="(maxItemPrice | async) as maxPrice" type="range" id="priceMaxSlider" class="form-range" min="0"
-                 max="{{maxPrice}}" step="1" [(ngModel)]="form.priceMax">
+<div class="col-10 col-lg-10 offset-1 offset-lg-1 mt-4">
+  <div class="row">
+    <p class="h1 mb-4 p-0">Search shops</p>
+  </div>
+  <div class="row">
+    <div class="mb-4 col-12 col-lg-4 p-0">
+      <div class="p-2 border-container">
+        <div class="mb-2">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="form.name">
         </div>
-        <div class="col-4 ps-1">
-          <input *ngIf="(maxItemPrice | async) as maxPrice" type="number" disabled class="form-control mb-1"
-                 id="priceMaxText" min="0" max="{{maxPrice}}" step="1"
-                 [(ngModel)]="form.priceMax">
+        <div class="mb-2">
+          <div *ngIf="(maxItemPrice | async) as maxPrice; else spinner">
+            <label for="priceMaxSlider" class="form-label">Maximum price</label>
+            <div class="d-flex align-items-center p-0">
+              <div class="col-8 pe-1">
+                <input type="range" id="priceMaxSlider" class="form-range"
+                       min="0"
+                       max="{{maxPrice}}" step="1" [(ngModel)]="form.priceMax">
+              </div>
+              <div class="col-4 ps-1">
+                <input type="number" class="form-control mb-1"
+                       id="priceMaxText" min="0" max="{{maxPrice}}" step="1"
+                       [(ngModel)]="form.priceMax">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div *ngIf="(maxShopDistance | async) as maxDistance; else spinner">
+            <label for="distanceMaxSlider" class="form-label">Maximum distance (km)</label>
+            <div class="d-flex align-items-center p-0">
+              <div class="col-8 pe-1">
+                <input type="range" id="distanceMaxSlider"
+                       class="form-range"
+                       min="0"
+                       max="{{maxDistance+1}}" step="0.5" [(ngModel)]="form.distance">
+              </div>
+              <div class="col-4 ps-1">
+                <input type="number" class="form-control mb-1"
+                       id="distanceMaxText" min="0" max="{{maxDistance+1}}" step="0.5"
+                       [(ngModel)]="form.distance">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button type="button" class="btn btn-secondary w-25 d-flex flex-nowrap justify-content-center"
+                  (click)="openModalShops()">
+            <fa-icon class="fs-6 align-self-center me-1" [icon]="faShop"></fa-icon>
+            <p class="m-0 align-self-center">Shops</p></button>
+          <button class="btn btn-secondary w-50  d-flex flex-nowrap justify-content-center" (click)="onSubmit()">
+            <fa-icon class="fs-6 align-self-center me-1" [icon]="faMagnifyingGlass"></fa-icon>
+            <p class="m-0 align-self-center">Search</p></button>
         </div>
       </div>
     </div>
-    <div class="row py-2">
-      <label for="distanceMaxSlider" class="form-label">Maximum distance (km)</label>
-      <div class="d-flex align-items-center p-0">
-        <div class="col-8 pe-1">
-          <input *ngIf="(maxShopDistance | async) as maxDistance" type="range" id="distanceMaxSlider" class="form-range" min="0"
-                 max="{{maxDistance+1}}" step="0.5" [(ngModel)]="form.distance">
-        </div>
-        <div class="col-4 ps-1">
-          <input *ngIf="(maxShopDistance | async) as maxDistance" type="number" disabled class="form-control mb-1"
-                 id="distanceMaxText" min="0" max="{{maxDistance+1}}" step="0.5"
-                 [(ngModel)]="form.distance">
-        </div>
+    <div class="col-12 col-lg-7 offset-lg-1 p-0">
+
+      <div *ngIf="(items | async) as items; else spinner">
+        <app-item-query-row *ngFor="let item of items" [item]="item"></app-item-query-row>
       </div>
-    </div>
-    <div class="row py-2">
-      <button type="button" class="btn btn-secondary col-4 offset-4" (click)="openModal()">Shops</button>
-    </div>
-    <div class="row py-2">
-      <button class="btn btn-secondary" (click)="onSubmit()">Search</button>
     </div>
   </div>
-</div>
-<div *ngFor="let item of items|async">
-  <app-item-query-row [item]="item">asd</app-item-query-row>
+
 </div>
 
 
-
+<ng-template #spinner>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-dark" role="status">
+    </div>
+  </div>
+</ng-template>

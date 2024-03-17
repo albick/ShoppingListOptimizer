@@ -1,1 +1,21 @@
-<p>shopping-list-row works!</p>
+<div class="bg-dark text-bg-dark p-3 rounded-2">
+  <div class="row mb-2">
+    <div class="col-8">
+      <p class="m-0 fw-semibold fs-5"> {{ shoppingList.name }} </p>
+
+    </div>
+    <div class="col-4 text-end">
+      <fa-icon class="fs-2" [icon]="faCircleInfo" [routerLink]="['/shopping-lists',shoppingList.id]"></fa-icon>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-8">
+        <p class="m-0">
+        Last edited: {{ shoppingList.dateModified | date:'mediumDate' }}
+      </p>
+    </div>
+    <div class="col-4 text-end">
+      <fa-icon class="fs-2 align-self-center text-danger" [icon]="faTrashCan" (click)="openModal()"></fa-icon>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {EMPTY, Observable} from 'rxjs';
-import {ItemQueryResponse, ItemResponse, ShopResponse} from 'src/app/models/generated';
+import {ItemQueryResponse, ShopResponse} from 'src/app/models/generated';
 import {ItemService} from 'src/app/services/item.service';
 import {ShopService} from 'src/app/services/shop.service';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ShopSelectModalComponent } from '../helpers/shop-select-modal/shop-select-modal.component';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {ShopSelectModalComponent} from '../helpers/shop-select-modal/shop-select-modal.component';
+import {faMagnifyingGlass, faShop} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-items',
@@ -14,8 +15,8 @@ import { ShopSelectModalComponent } from '../helpers/shop-select-modal/shop-sele
 export class ItemsComponent implements OnInit {
   items: Observable<ItemQueryResponse[]> = EMPTY;
   shops: Observable<ShopResponse[]> = EMPTY;
-  maxItemPrice:Observable<number> = EMPTY;
-  maxShopDistance:Observable<number> = EMPTY;
+  maxItemPrice: Observable<number> = EMPTY;
+  maxShopDistance: Observable<number> = EMPTY;
 
   form = {
     name: "",
@@ -24,8 +25,13 @@ export class ItemsComponent implements OnInit {
     priceMax: 0
   }
 
-  modalRef!: NgbModalRef;
-  constructor(private itemService: ItemService, private shopService: ShopService,private modalService: NgbModal) {
+
+  modalShopsRef!: NgbModalRef;
+
+  faMagnifyingGlass = faMagnifyingGlass;
+  faShop = faShop;
+
+  constructor(private itemService: ItemService, private shopService: ShopService, private modalService: NgbModal) {
 
   }
 
@@ -39,25 +45,24 @@ export class ItemsComponent implements OnInit {
 
 
   onSubmit() {
-    const name=this.form.name;
-    const barcode=this.form.barcode;
-    const distance=this.form.distance;
-    const priceMax=this.form.priceMax;
-    const shopIds=this.shopIds;
+    const name = this.form.name;
+    const barcode = this.form.barcode;
+    const distance = this.form.distance;
+    const priceMax = this.form.priceMax;
+    const shopIds = this.shopIds;
 
 
-    this.items=this.itemService.getItems(barcode,name,distance,0,priceMax,shopIds);
+    this.items = this.itemService.getItems(barcode, name, distance, 0, priceMax, shopIds);
   }
 
-  shopIds:number[]=[];
-  openModal() {
-    this.modalRef = this.modalService.open(ShopSelectModalComponent);
-    this.modalRef.componentInstance.inputShopIds=this.shopIds;
+  shopIds: number[] = [];
 
-    // Subscribe to onDataSaved event to receive data from modal
-    this.modalRef.componentInstance.onDataSaved.subscribe((data: number[]) => {
-      // Handle data received from modal
-      this.shopIds=data;
+  openModalShops() {
+    this.modalShopsRef = this.modalService.open(ShopSelectModalComponent);
+    this.modalShopsRef.componentInstance.inputShopIds = this.shopIds;
+
+    this.modalShopsRef.componentInstance.onDataSaved.subscribe((data: number[]) => {
+      this.shopIds = data;
     });
   }
 }

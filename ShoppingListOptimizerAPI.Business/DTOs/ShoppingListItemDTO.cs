@@ -13,6 +13,9 @@ namespace ShoppingListOptimizerAPI.Business.DTOs
 
         public ItemDTO Item { get; set; }
 
+        //constraint 0>
         public int Count { get; set; }
+
+        public bool IsPriority { get; set; }
     }
 }

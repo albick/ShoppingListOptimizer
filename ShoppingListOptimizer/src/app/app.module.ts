@@ -31,6 +31,16 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShopDetailsComponent } from './components/shop-details/shop-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShoppingListsComponent } from './components/shopping-lists/shopping-lists.component';
+import { ShoppingListRowComponent } from './components/helpers/shopping-list-row/shopping-list-row.component';
+import { ShoppingListDetailsComponent } from './components/shopping-list-details/shopping-list-details.component';
+import { ShoppingListDeleteModalComponent } from './components/helpers/shopping-list-delete-modal/shopping-list-delete-modal.component';
+import { ShoppingListNewModalComponent } from './components/helpers/shopping-list-new-modal/shopping-list-new-modal.component';
+import { ShoppingListItemNewModalComponent } from './components/helpers/shopping-list-item-new-modal/shopping-list-item-new-modal.component';
+import { ShoppingListAddRowComponent } from './components/helpers/shopping-list-add-row/shopping-list-add-row.component';
+import { ShoppingListItemRowComponent } from './components/helpers/shopping-list-item-row/shopping-list-item-row.component';
+import { ShoppingListItemDeleteModalComponent } from './components/helpers/shopping-list-item-delete-modal/shopping-list-item-delete-modal.component';
+import { ShoppingListItemEditModalComponent } from './components/helpers/shopping-list-item-edit-modal/shopping-list-item-edit-modal.component';
 
 
 @NgModule({
@@ -50,7 +60,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ItemQueryRowComponent,
     ShopSelectModalComponent,
     ItemDetailsComponent,
-    ShopDetailsComponent
+    ShopDetailsComponent,
+    ShoppingListsComponent,
+    ShoppingListRowComponent,
+    ShoppingListDetailsComponent,
+    ShoppingListDeleteModalComponent,
+    ShoppingListNewModalComponent,
+    ShoppingListItemNewModalComponent,
+    ShoppingListAddRowComponent,
+    ShoppingListItemRowComponent,
+    ShoppingListItemDeleteModalComponent,
+    ShoppingListItemEditModalComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,5 +1,6 @@
-<div class="col-md-12">
-  <div class="card card-container">
+<div class="col-10 col-lg-4 offset-1 offset-lg-4 mt-4">
+  <p class="h1 mb-4 p-0">Add new item</p>
+  <div class="border-container p-2">
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -7,7 +8,7 @@
       #f="ngForm"
       novalidate
     >
-      <div class="form-group">
+      <div class="mb-2">
         <label for="barcode">Barcode</label>
         <input
           type="text"
@@ -22,7 +23,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="mb-2">
         <label for="name">Name</label>
         <input
           type="text"
@@ -41,7 +42,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="mb-2">
         <label for="details">Details</label>
         <input
           type="text"
@@ -54,7 +55,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="mb-2">
         <label for="quantity">Quantity</label>
         <input
           type="number"
@@ -73,7 +74,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="">
         <label for="unit">Unit</label>
         <select
           type="text"
@@ -92,8 +93,11 @@
       </div>
 
 
-      <div class="form-group mt-4">
-        <button class="btn btn-dark w-100 btn-block">Add</button>
+      <div class="mt-4">
+        <button class="btn btn-dark w-100 d-flex flex-nowrap justify-content-center">
+          <fa-icon class="fs-6 align-self-center me-1" [icon]="faSquarePlus"></fa-icon>
+          <p class="m-0 align-self-center pe-4">Add item</p>
+        </button>
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isAddFailed">
@@ -105,7 +109,10 @@
       Added item successfully!
     </div>
     <div class="mt-4" *ngIf="isSuccessful">
-      <button class="btn btn-dark w-100 btn-block" [routerLink]="['/add-item-price', form.barcode]">Add price entry for item</button>
+      <button class="btn btn-dark w-100 d-flex flex-nowrap justify-content-center" [routerLink]="['/add-item-price', form.barcode]">
+        <fa-icon class="fs-6 align-self-center me-1" [icon]="faTag"></fa-icon>
+        <p class="m-0 align-self-center pe-4">Add price for item</p>
+      </button>
     </div>
 
   </div>

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {faMagnifyingGlass, faMagnifyingGlassLocation } from '@fortawesome/free-solid-svg-icons';
 import {EMPTY, Observable} from 'rxjs';
 import {ShopResponse} from 'src/app/models/generated';
 import {ShopService} from 'src/app/services/shop.service';
@@ -14,13 +15,17 @@ export class ShopsComponent implements OnInit{
     distance:0
   }
 
+  maxShopDistance: Observable<number> = EMPTY;
   shops: Observable<ShopResponse[]> = EMPTY;
+
+  faMagnifyingGlass= faMagnifyingGlass;
 
   constructor(private shopService: ShopService) {
 
   }
 
   ngOnInit(): void {
+    this.maxShopDistance = this.shopService.getMaxShopDistance();
     this.shops = this.shopService.getShops();
     this.shops.subscribe(data=>{
       console.log(data)

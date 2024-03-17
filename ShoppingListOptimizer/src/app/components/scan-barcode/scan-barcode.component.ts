@@ -3,6 +3,7 @@ import {ItemService} from 'src/app/services/item.service';
 import {BarcodeFormat, Result} from '@zxing/library'
 import {ItemResponse} from 'src/app/models/generated';
 import {EMPTY, Observable, of, switchMap} from 'rxjs';
+import { faCloudArrowDown, faRotateRight, faSquarePlus, faTag } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-scan-barcode',
@@ -25,6 +26,11 @@ export class ScanBarcodeComponent {
 
   item!: ItemResponse;
 
+
+  faCloudArrowDown=  faCloudArrowDown;
+  faRotateRight=  faRotateRight;
+  faTag=  faTag;
+  faSquarePlus=  faSquarePlus;
   constructor(private itemService: ItemService) {
     this.formatsEnabled = [
       BarcodeFormat.CODE_128,

@@ -16,5 +16,7 @@ namespace ShoppingListOptimizerAPI.Data.Models
         public Item Item { get; set; }
         [Required]
         public int Count { get; set; }
+
+        public bool IsPriority { get; set; }
     }
 }

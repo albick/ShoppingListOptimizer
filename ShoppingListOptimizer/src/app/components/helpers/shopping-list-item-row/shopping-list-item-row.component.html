@@ -1,1 +1,24 @@
-<p>shopping-list-item-row works!</p>
+<div class="bg-dark text-bg-dark py-2 px-3 rounded-2 mb-2">
+  <div class="row">
+    <div class="col-9 col-lg-10">
+      <p class="mx-0 mt-0 mb-1 fw-semibold fs-5"> {{ shoppingListItem.itemName }} </p>
+    </div>
+    <div class="col-3 col-lg-2 text-end">
+      <div class="d-flex justify-content-end" *ngIf="shoppingListItem.isPriority">
+        <p class="m-0 fw-semibold fs-6 align-self-center me-2 text-danger">Urgent</p>
+        <fa-icon class="fs-4 align-self-center text-danger" [icon]="faCircleExclamation"></fa-icon>
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-6 col-lg-8">
+      <div class="d-flex">
+        <p class="m-0 fw-semibold align-self-center">{{ shoppingListItem.count }} pieces</p>
+      </div>
+    </div>
+    <div class="col-6 col-lg-4 text-end">
+      <fa-icon class="fs-2 align-self-center me-3" [icon]="faPenToSquare"  (click)="showEditShoppingListItemModal()"></fa-icon>
+      <fa-icon class="fs-2 align-self-center text-danger" [icon]="faTrashCan" (click)="showDeleteShoppingListItemModal()"></fa-icon>
+    </div>
+  </div>
+</div>
