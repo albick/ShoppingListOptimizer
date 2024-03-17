@@ -84,7 +84,6 @@ export class ItemDetailsComponent {
 
 
   initMap(mapElement: HTMLElement): void {
-    // Your map initialization code here
     console.log('Map element:', mapElement);
     const isRetina = L.Browser.retina;
     const map = L.map(mapElement).setView([this.shopLatitude, this.shopLongitude], 16);

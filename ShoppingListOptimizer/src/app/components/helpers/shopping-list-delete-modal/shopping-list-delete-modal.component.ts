@@ -22,7 +22,8 @@ export class ShoppingListDeleteModalComponent {
   delete() {
     this.shoppingListService.deleteShoppingList(this.shoppingList.id.toString()).subscribe();
     this.modalService.dismissAll();
-    this.router.navigate(['shopping-lists']);
-    window.location.reload();
+    this.router.navigate(['shopping-lists']).then(() => {
+      window.location.reload();
+    });
   }
 }
