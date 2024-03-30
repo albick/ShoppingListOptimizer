@@ -31,14 +31,14 @@ export class ShopService {
     return this.http.get<number>(API_URL+'maxDistance');
   }
 
-  addShop(name: string, details: string, companyName: string, location: LocationModel, times: NgbTimeStruct[][]): Observable<ShopResponse> {
+  addShop(name: string, details: string, companyName: string, location: LocationModel, times: string[][]): Observable<ShopResponse> {
 
     var openingHours: OpeningHoursModel[] = [];
     for (let i = 0; i < times.length; i++) {
       let dayOfWeek: DayOfWeek = i;
 
-      let startTime = times[i][0].hour + ":" + times[i][0].minute + ":" + times[i][0].second;
-      let endTime = times[i][1].hour + ":" + times[i][1].minute + ":" + times[i][1].second;
+      let startTime = times[i][0];
+      let endTime = times[i][1];
 
       let day: OpeningHoursModel = {
         DayOfWeek: dayOfWeek,

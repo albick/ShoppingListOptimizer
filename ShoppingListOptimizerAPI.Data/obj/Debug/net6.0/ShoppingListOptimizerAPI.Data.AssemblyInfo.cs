@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShoppingListOptimizerAPI.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f3eacfcf92361ce81e5b373df76de732ad0f6715")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00135fa577f37e38f2c657e1c9b5977e43c30962")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShoppingListOptimizerAPI.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShoppingListOptimizerAPI.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
