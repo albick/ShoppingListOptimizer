@@ -43,6 +43,29 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0",
+                            ConcurrencyStamp = "12dc0b01-6ef1-4847-8f7d-937b0c3d4c07",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "9746a88b-aa11-43f4-8138-f707d9b3eca0",
+                            Name = "Shop",
+                            NormalizedName = "SHOP"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "ba43b4a5-286f-4d23-8746-6c0cab93517d",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -126,6 +149,33 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000000",
+                            RoleId = "0"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000001",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000002",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000003",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000004",
+                            RoleId = "1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -215,6 +265,88 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000000",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9e0aa2ce-5d77-4fbb-86f6-19d8a4053ec4",
+                            Email = "Account0@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT0@X.COM",
+                            NormalizedUserName = "ACCOUNT0",
+                            PasswordHash = "AQAAAAEAACcQAAAAELsaAxvYu2B//oXw8l4RUMC+7U34ACO6l54LDhRgobcTs6Ss6SVz18S4qYe3I0yWxg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "72c5ca34-d722-424a-9897-34df4407c9a5",
+                            TwoFactorEnabled = false,
+                            UserName = "Account0"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000001",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6b0a7a73-08c0-4a00-89ea-5fb5c507839b",
+                            Email = "Account1@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT1@X.COM",
+                            NormalizedUserName = "ACCOUNT1",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJnWKcQjyT9OltJWi11WemUxKZMtJVhkr8Qw7pi+zob3TNxWe95quszNTODoKNg7EA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0a05a43e-f287-4c4b-8bee-12ffe54532f1",
+                            TwoFactorEnabled = false,
+                            UserName = "Account1"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000002",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5f275d84-afc0-4946-a3ce-5773cbd3d8c8",
+                            Email = "Account2@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT2@X.COM",
+                            NormalizedUserName = "ACCOUNT2",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOnUuPU0Bzd7Ghay0ewLITzAVkfmiMndZmSVR0Z2EYug9hr/haqVOLhqBJyyvNjv3g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0ac1b040-7c8b-494d-a95b-17e6df48835c",
+                            TwoFactorEnabled = false,
+                            UserName = "Account2"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000003",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "41363038-33bf-4b6c-a4bd-a0c5de29de8f",
+                            Email = "Account3@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT3@X.COM",
+                            NormalizedUserName = "ACCOUNT3",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKkv2HbpiUQbHeLDk8xCDZShXVEPUh+HZfCStoczL9J5PKzeKS53o907ITQ8pSdAlQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3c0045fb-5e34-4cac-9195-88deb8e7cb82",
+                            TwoFactorEnabled = false,
+                            UserName = "Account3"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000004",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a912cc05-5a73-4f86-8ceb-5d291e1e214d",
+                            Email = "Account4@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT4@X.COM",
+                            NormalizedUserName = "ACCOUNT4",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDqycilbI2nnaySKi8x/T5r3n/Ioy47e2XOq80GyJek8qVN9VasdVHNx3Xp8lamAEw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9da38305-b65b-49f1-b069-79abc018fa6d",
+                            TwoFactorEnabled = false,
+                            UserName = "Account4"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Item", b =>
@@ -232,7 +364,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("double");
@@ -241,11 +374,17 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Barcode");
+                    b.HasKey("Barcode")
+                        .HasName("PK_Item");
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("Items");
+                    b.ToTable("Item", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Item_Name", "CHAR_LENGTH(Name) >= 3");
+
+                            t.HasCheckConstraint("CK_Item_Quantity", "Quantity > 0");
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ItemPriceEntry", b =>
@@ -261,7 +400,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("ItemBarcode")
+                    b.Property<string>("ItemId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
@@ -271,15 +410,19 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<int>("ShopId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ItemPriceEntry");
 
                     b.HasIndex("CreatorId");
 
-                    b.HasIndex("ItemBarcode");
+                    b.HasIndex("ItemId");
 
                     b.HasIndex("ShopId");
 
-                    b.ToTable("ItemPriceEntries");
+                    b.ToTable("ItemPriceEntry", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ItemPriceEntry_Price", "Price > 0");
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Location", b =>
@@ -290,7 +433,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<double>("Latitude")
                         .HasColumnType("double");
@@ -300,17 +444,21 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Number")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Postcode")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Street")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_Location");
 
                     b.ToTable("Locations");
                 });
@@ -333,7 +481,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time(6)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_OpeningHours");
 
                     b.HasIndex("ShopId");
 
@@ -356,16 +505,20 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Details")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("char(50)")
+                        .IsFixedLength();
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_Shop");
 
                     b.HasIndex("CompanyId");
 
@@ -373,7 +526,10 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.HasIndex("LocationId");
 
-                    b.ToTable("Shops");
+                    b.ToTable("Shop", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Shop_Name", "CHAR_LENGTH(Name) >= 3");
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingList", b =>
@@ -391,17 +547,24 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Details")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("char(50)")
+                        .IsFixedLength();
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ShoppingList");
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("ShoppingLists");
+                    b.ToTable("ShoppingList", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ShoppingList_Name", "CHAR_LENGTH(Name) >= 3");
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingListItem", b =>
@@ -416,20 +579,24 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<bool>("IsPriority")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("ItemBarcode")
+                    b.Property<string>("ItemId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<int?>("ShoppingListId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ShoppingListItem");
 
-                    b.HasIndex("ItemBarcode");
+                    b.HasIndex("ItemId");
 
                     b.HasIndex("ShoppingListId");
 
-                    b.ToTable("ShoppingListItems");
+                    b.ToTable("ShoppingListItem", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ShoppingListItem_Count", "Count > 0");
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -513,7 +680,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("ItemBarcode")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -579,7 +746,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 {
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("ItemBarcode")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

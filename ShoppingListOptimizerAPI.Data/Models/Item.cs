@@ -10,15 +10,11 @@ namespace ShoppingListOptimizerAPI.Data.Models
     public class Item
     {
 
-        [Key]
-        [Required]
         public string Barcode { get; set; }
-        [Required]
+
         public string Name { get; set; }
         public string Details { get; set; }
-        [Required]
         public double Quantity { get; set; }
-        [Required]
         public string Unit { get; set; }
         
         public Account Creator { get; set; }

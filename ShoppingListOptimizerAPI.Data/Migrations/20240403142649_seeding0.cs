@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ShoppingListOptimizerAPI.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class seeding0 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,20 +42,20 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    City = table.Column<string>(type: "longtext", nullable: false)
+                    City = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Postcode = table.Column<string>(type: "longtext", nullable: false)
+                    Postcode = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Street = table.Column<string>(type: "longtext", nullable: false)
+                    Street = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Number = table.Column<string>(type: "longtext", nullable: false)
+                    Number = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Longitude = table.Column<double>(type: "double", nullable: false),
                     Latitude = table.Column<double>(type: "double", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Locations", x => x.Id);
+                    table.PrimaryKey("PK_Location", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -226,12 +228,12 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Items",
+                name: "Item",
                 columns: table => new
                 {
                     Barcode = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Details = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -243,9 +245,11 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Items", x => x.Barcode);
+                    table.PrimaryKey("PK_Item", x => x.Barcode);
+                    table.CheckConstraint("CK_Item_Name", "CHAR_LENGTH(Name) >= 3");
+                    table.CheckConstraint("CK_Item_Quantity", "Quantity > 0");
                     table.ForeignKey(
-                        name: "FK_Items_AspNetUsers_CreatorId",
+                        name: "FK_Item_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -254,40 +258,14 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ShoppingLists",
+                name: "Shop",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
+                    Name = table.Column<string>(type: "char(50)", fixedLength: true, maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Details = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DateModified = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    CreatorId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ShoppingLists", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ShoppingLists_AspNetUsers_CreatorId",
-                        column: x => x.CreatorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Shops",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Details = table.Column<string>(type: "longtext", nullable: false)
+                    Details = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LocationId = table.Column<int>(type: "int", nullable: false),
                     CreatorId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -297,21 +275,22 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Shops", x => x.Id);
+                    table.PrimaryKey("PK_Shop", x => x.Id);
+                    table.CheckConstraint("CK_Shop_Name", "CHAR_LENGTH(Name) >= 3");
                     table.ForeignKey(
-                        name: "FK_Shops_AspNetUsers_CompanyId",
+                        name: "FK_Shop_AspNetUsers_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Shops_AspNetUsers_CreatorId",
+                        name: "FK_Shop_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Shops_Locations_LocationId",
+                        name: "FK_Shop_Locations_LocationId",
                         column: x => x.LocationId,
                         principalTable: "Locations",
                         principalColumn: "Id",
@@ -320,42 +299,41 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ShoppingListItems",
+                name: "ShoppingList",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ItemBarcode = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Name = table.Column<string>(type: "char(50)", fixedLength: true, maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Count = table.Column<int>(type: "int", nullable: false),
-                    ShoppingListId = table.Column<int>(type: "int", nullable: true)
+                    Details = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DateModified = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatorId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShoppingListItems", x => x.Id);
+                    table.PrimaryKey("PK_ShoppingList", x => x.Id);
+                    table.CheckConstraint("CK_ShoppingList_Name", "CHAR_LENGTH(Name) >= 3");
                     table.ForeignKey(
-                        name: "FK_ShoppingListItems_Items_ItemBarcode",
-                        column: x => x.ItemBarcode,
-                        principalTable: "Items",
-                        principalColumn: "Barcode",
+                        name: "FK_ShoppingList_AspNetUsers_CreatorId",
+                        column: x => x.CreatorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ShoppingListItems_ShoppingLists_ShoppingListId",
-                        column: x => x.ShoppingListId,
-                        principalTable: "ShoppingLists",
-                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ItemPriceEntries",
+                name: "ItemPriceEntry",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Price = table.Column<double>(type: "double", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ItemBarcode = table.Column<string>(type: "varchar(255)", nullable: false)
+                    ItemId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatorId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -363,23 +341,24 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItemPriceEntries", x => x.Id);
+                    table.PrimaryKey("PK_ItemPriceEntry", x => x.Id);
+                    table.CheckConstraint("CK_ItemPriceEntry_Price", "Price > 0");
                     table.ForeignKey(
-                        name: "FK_ItemPriceEntries_AspNetUsers_CreatorId",
+                        name: "FK_ItemPriceEntry_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ItemPriceEntries_Items_ItemBarcode",
-                        column: x => x.ItemBarcode,
-                        principalTable: "Items",
+                        name: "FK_ItemPriceEntry_Item_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Item",
                         principalColumn: "Barcode",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ItemPriceEntries_Shops_ShopId",
+                        name: "FK_ItemPriceEntry_Shop_ShopId",
                         column: x => x.ShopId,
-                        principalTable: "Shops",
+                        principalTable: "Shop",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -400,12 +379,76 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 {
                     table.PrimaryKey("PK_OpeningHours", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OpeningHours_Shops_ShopId",
+                        name: "FK_OpeningHours_Shop_ShopId",
                         column: x => x.ShopId,
-                        principalTable: "Shops",
+                        principalTable: "Shop",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ShoppingListItem",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ItemId = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Count = table.Column<int>(type: "int", nullable: false),
+                    IsPriority = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    ShoppingListId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShoppingListItem", x => x.Id);
+                    table.CheckConstraint("CK_ShoppingListItem_Count", "Count > 0");
+                    table.ForeignKey(
+                        name: "FK_ShoppingListItem_Item_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Item",
+                        principalColumn: "Barcode",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ShoppingListItem_ShoppingList_ShoppingListId",
+                        column: x => x.ShoppingListId,
+                        principalTable: "ShoppingList",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "0", "12dc0b01-6ef1-4847-8f7d-937b0c3d4c07", "Admin", "ADMIN" },
+                    { "1", "9746a88b-aa11-43f4-8138-f707d9b3eca0", "Shop", "SHOP" },
+                    { "2", "ba43b4a5-286f-4d23-8746-6c0cab93517d", "User", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LocationId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "00000000-0000-0000-0000-000000000000", 0, "9e0aa2ce-5d77-4fbb-86f6-19d8a4053ec4", "Account0@x.com", false, null, false, null, "ACCOUNT0@X.COM", "ACCOUNT0", "AQAAAAEAACcQAAAAELsaAxvYu2B//oXw8l4RUMC+7U34ACO6l54LDhRgobcTs6Ss6SVz18S4qYe3I0yWxg==", null, false, "72c5ca34-d722-424a-9897-34df4407c9a5", false, "Account0" },
+                    { "00000000-0000-0000-0000-000000000001", 0, "6b0a7a73-08c0-4a00-89ea-5fb5c507839b", "Account1@x.com", false, null, false, null, "ACCOUNT1@X.COM", "ACCOUNT1", "AQAAAAEAACcQAAAAEJnWKcQjyT9OltJWi11WemUxKZMtJVhkr8Qw7pi+zob3TNxWe95quszNTODoKNg7EA==", null, false, "0a05a43e-f287-4c4b-8bee-12ffe54532f1", false, "Account1" },
+                    { "00000000-0000-0000-0000-000000000002", 0, "5f275d84-afc0-4946-a3ce-5773cbd3d8c8", "Account2@x.com", false, null, false, null, "ACCOUNT2@X.COM", "ACCOUNT2", "AQAAAAEAACcQAAAAEOnUuPU0Bzd7Ghay0ewLITzAVkfmiMndZmSVR0Z2EYug9hr/haqVOLhqBJyyvNjv3g==", null, false, "0ac1b040-7c8b-494d-a95b-17e6df48835c", false, "Account2" },
+                    { "00000000-0000-0000-0000-000000000003", 0, "41363038-33bf-4b6c-a4bd-a0c5de29de8f", "Account3@x.com", false, null, false, null, "ACCOUNT3@X.COM", "ACCOUNT3", "AQAAAAEAACcQAAAAEKkv2HbpiUQbHeLDk8xCDZShXVEPUh+HZfCStoczL9J5PKzeKS53o907ITQ8pSdAlQ==", null, false, "3c0045fb-5e34-4cac-9195-88deb8e7cb82", false, "Account3" },
+                    { "00000000-0000-0000-0000-000000000004", 0, "a912cc05-5a73-4f86-8ceb-5d291e1e214d", "Account4@x.com", false, null, false, null, "ACCOUNT4@X.COM", "ACCOUNT4", "AQAAAAEAACcQAAAAEDqycilbI2nnaySKi8x/T5r3n/Ioy47e2XOq80GyJek8qVN9VasdVHNx3Xp8lamAEw==", null, false, "9da38305-b65b-49f1-b069-79abc018fa6d", false, "Account4" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "0", "00000000-0000-0000-0000-000000000000" },
+                    { "2", "00000000-0000-0000-0000-000000000001" },
+                    { "1", "00000000-0000-0000-0000-000000000002" },
+                    { "1", "00000000-0000-0000-0000-000000000003" },
+                    { "1", "00000000-0000-0000-0000-000000000004" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -450,24 +493,24 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemPriceEntries_CreatorId",
-                table: "ItemPriceEntries",
+                name: "IX_Item_CreatorId",
+                table: "Item",
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemPriceEntries_ItemBarcode",
-                table: "ItemPriceEntries",
-                column: "ItemBarcode");
+                name: "IX_ItemPriceEntry_CreatorId",
+                table: "ItemPriceEntry",
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemPriceEntries_ShopId",
-                table: "ItemPriceEntries",
+                name: "IX_ItemPriceEntry_ItemId",
+                table: "ItemPriceEntry",
+                column: "ItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemPriceEntry_ShopId",
+                table: "ItemPriceEntry",
                 column: "ShopId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_CreatorId",
-                table: "Items",
-                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OpeningHours_ShopId",
@@ -475,34 +518,34 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 column: "ShopId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingListItems_ItemBarcode",
-                table: "ShoppingListItems",
-                column: "ItemBarcode");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ShoppingListItems_ShoppingListId",
-                table: "ShoppingListItems",
-                column: "ShoppingListId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ShoppingLists_CreatorId",
-                table: "ShoppingLists",
-                column: "CreatorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Shops_CompanyId",
-                table: "Shops",
+                name: "IX_Shop_CompanyId",
+                table: "Shop",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shops_CreatorId",
-                table: "Shops",
+                name: "IX_Shop_CreatorId",
+                table: "Shop",
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shops_LocationId",
-                table: "Shops",
+                name: "IX_Shop_LocationId",
+                table: "Shop",
                 column: "LocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShoppingList_CreatorId",
+                table: "ShoppingList",
+                column: "CreatorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShoppingListItem_ItemId",
+                table: "ShoppingListItem",
+                column: "ItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShoppingListItem_ShoppingListId",
+                table: "ShoppingListItem",
+                column: "ShoppingListId");
         }
 
         /// <inheritdoc />
@@ -524,25 +567,25 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ItemPriceEntries");
+                name: "ItemPriceEntry");
 
             migrationBuilder.DropTable(
                 name: "OpeningHours");
 
             migrationBuilder.DropTable(
-                name: "ShoppingListItems");
+                name: "ShoppingListItem");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Shops");
+                name: "Shop");
 
             migrationBuilder.DropTable(
-                name: "Items");
+                name: "Item");
 
             migrationBuilder.DropTable(
-                name: "ShoppingLists");
+                name: "ShoppingList");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
