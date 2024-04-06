@@ -11,7 +11,7 @@ using ShoppingListOptimizerAPI.Data.Infrastructure;
 namespace ShoppingListOptimizerAPI.Data.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240406135222_seeding0")]
+    [Migration("20240406144243_seeding0")]
     partial class seeding0
     {
         /// <inheritdoc />
@@ -51,21 +51,21 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         new
                         {
                             Id = "0",
-                            ConcurrencyStamp = "d8ee14dd-47d7-4937-bfcd-535c83625153",
+                            ConcurrencyStamp = "92955802-1298-4935-b41f-b2627831ed96",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "22c35fe2-2cdf-4ef3-9ed7-5c875ce95108",
+                            ConcurrencyStamp = "d11018ad-f977-4821-8f3a-fac6a18259f3",
                             Name = "Shop",
                             NormalizedName = "SHOP"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "00e0264b-ef37-4902-b432-964ff9dbf234",
+                            ConcurrencyStamp = "37773b24-d637-4d89-9422-ba7b10fe309b",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -274,15 +274,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000000",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "78350e97-202a-4b02-87bd-8160711088ff",
+                            ConcurrencyStamp = "5db5bf6a-ce89-4d3e-8821-33df7fc5056e",
                             Email = "Account0@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT0@X.COM",
                             NormalizedUserName = "ADMIN0",
-                            PasswordHash = "AQAAAAEAACcQAAAAEILkm2PTi72TqLhCs0p6DFcDa9hqaqMAaEqdDREC3myPzO2Cg4S4gT5OHJTGMGDsjQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPx/ZkAVZq09VBV+Yvh/CGArUqln4qoP/E2794duVco15y9wWU7jGeZFuY4cQid8Ug==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "57a9c217-1f60-4e16-a899-629263a45633",
+                            SecurityStamp = "f278aa71-2cdd-499e-b28f-152c4533d39a",
                             TwoFactorEnabled = false,
                             UserName = "Admin0"
                         },
@@ -290,15 +290,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e698bd78-f37c-475b-9285-bf514781f94f",
+                            ConcurrencyStamp = "d0f77330-c197-4142-941a-361a435b3a22",
                             Email = "Account1@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT1@X.COM",
                             NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFuQ8iJ+Gso0U1z0Vr9VnZD4RS5Ul4xsnmHgM0ZxWH7pMkM57KvdTVVAD/CpTd0ahA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFz1tS8EeGUEC8Pr9KHVWQ3pvYUf7c4iQo2xhO1DnaSfjHh7M2ltVks8T6ohXaQGig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd2feee7-5dca-4a24-8775-9b397698d2ee",
+                            SecurityStamp = "09c29dd3-f462-47a9-8cf2-0a3020fbae60",
                             TwoFactorEnabled = false,
                             UserName = "User1"
                         },
@@ -306,15 +306,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "941053cd-3931-40f2-b43e-8ceed5f6692f",
+                            ConcurrencyStamp = "9d2e0b2e-527e-4339-82c2-30a599929ba0",
                             Email = "Account2@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT2@X.COM",
                             NormalizedUserName = "TESCO",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEql4wiXHPHaT7EL8TqyZS59QI60twBO7FwsDXmLcyuI2HxzW1Yqt4i3Msws/BqgPQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECWRJwztJTgPNJWNWHIi2Gre4KGX8LhHcp63BhhyPAjRdZPRLC2d1QMG/KtCY7DroA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eb4c92bf-7dcf-4a6c-8700-dbc263b4eeb0",
+                            SecurityStamp = "6f449158-b1ed-4b54-b8d5-2a10b2583704",
                             TwoFactorEnabled = false,
                             UserName = "Tesco"
                         },
@@ -322,15 +322,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000003",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "964168a0-cc3d-4ac8-b458-a9dfed3d7d9a",
+                            ConcurrencyStamp = "5745ea10-7fc8-4941-b8c4-dc2ab70e58a4",
                             Email = "Account3@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT3@X.COM",
                             NormalizedUserName = "AUCHAN",
-                            PasswordHash = "AQAAAAEAACcQAAAAECDrkWWqWP7KR/T5+FmvJvrnqqLqe5IwM7WfOLOCK5JVhHoq9dxO/YN+06Nr/UIKxA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKNMMw/ViX4tY7ws/lQ5DTutKcO9GcWmA14ArxinOLmvYuMmi3T+bfrjF+NiR4PXgg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2ee8e31c-453c-4e26-b345-2559af9b826e",
+                            SecurityStamp = "ff838fa0-e955-46b5-8046-94947a30f62d",
                             TwoFactorEnabled = false,
                             UserName = "Auchan"
                         },
@@ -338,15 +338,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000004",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "da217a0b-b144-4528-af42-c207d664947a",
+                            ConcurrencyStamp = "a2682994-61b7-4353-8cd1-4ef750eb8a85",
                             Email = "Account4@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT4@X.COM",
                             NormalizedUserName = "USER4",
-                            PasswordHash = "AQAAAAEAACcQAAAAELKdZUPAj08rU5mgUw8HeOhm5o+xtFOer7YQgyR8UuCPUMM7dqsyRkCTijerl91TAQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGk33uyVuJmrOUq6J8HkmzsQFfO1xloy/NqbtRzM4eq5rur3Yyq07+njzuD85DNWUA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f769b0bc-927c-46b0-a5e1-334a0d0dbd9c",
+                            SecurityStamp = "b8c7b67e-663e-4416-8f7e-bca5a762561c",
                             TwoFactorEnabled = false,
                             UserName = "User4"
                         });
@@ -1922,6 +1922,16 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             t.HasCheckConstraint("CK_ShoppingList_Name", "CHAR_LENGTH(Name) >= 3");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            DateModified = new DateTime(2024, 3, 8, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            Details = "details of shopping list",
+                            Name = "Shopping List 1"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingListItem", b =>
@@ -1940,7 +1950,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int?>("ShoppingListId")
+                    b.Property<int>("ShoppingListId")
                         .HasColumnType("int");
 
                     b.HasKey("Id")
@@ -1953,6 +1963,16 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.ToTable("ShoppingListItem", null, t =>
                         {
                             t.HasCheckConstraint("CK_ShoppingListItem_Count", "Count > 0");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Count = 2,
+                            IsPriority = true,
+                            ItemId = "1",
+                            ShoppingListId = 1
                         });
                 });
 
@@ -2111,7 +2131,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.ShoppingList", null)
                         .WithMany("ShoppingListItems")
-                        .HasForeignKey("ShoppingListId");
+                        .HasForeignKey("ShoppingListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Item");
                 });

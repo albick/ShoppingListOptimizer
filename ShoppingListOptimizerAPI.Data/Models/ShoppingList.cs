@@ -17,6 +17,7 @@ namespace ShoppingListOptimizerAPI.Data.Models
 
         public DateTime DateModified { get; set; }
 
+        public string CreatorId { get; set; }
         public Account Creator { get; set; }
 
         public List<ShoppingListItem>? ShoppingListItems { get; set; }

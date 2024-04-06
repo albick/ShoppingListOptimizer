@@ -21,10 +21,7 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-
-
-
+            #region Seeding
             //Seed users
             var hasher = new PasswordHasher<IdentityUser>();
             Account account1 = new Account { Id = "00000000-0000-0000-0000-000000000001", UserName = "User1", NormalizedUserName = "USER1", Email = "Account1@x.com", NormalizedEmail = "ACCOUNT1@X.COM", PasswordHash = hasher.HashPassword(null, "password") };
@@ -153,8 +150,18 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
                 );
 
 
+            //Seed shopping lists
+            modelBuilder.Entity<ShoppingList>().HasData(
+                new ShoppingList { Id=1,CreatorId=account1.Id,Name="Shopping List 1",Details="details of shopping list",DateModified= new DateTime(2024, 3, 8).AddHours(1) }
+                );
 
+            //Seed shopping list items
+            modelBuilder.Entity<ShoppingListItem>().HasData(
+                new ShoppingListItem { Id=1,ItemId=item1.Barcode,Count=2,ShoppingListId=1,IsPriority=true}
+                );
+            #endregion
 
+            #region Constraints
             // ShoppingList entity
             modelBuilder.Entity<ShoppingList>()
                      .HasKey(s => s.Id)
@@ -179,7 +186,7 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
             modelBuilder.Entity<ShoppingList>()
                     .HasOne(s => s.Creator)
                     .WithMany()
-                    .HasForeignKey("CreatorId")
+                    .HasForeignKey(s=>s.CreatorId)
                     .IsRequired();
 
 
@@ -191,7 +198,7 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
             modelBuilder.Entity<ShoppingListItem>()
                     .HasOne(e => e.Item)
                     .WithMany()
-                    .HasForeignKey("ItemId")
+                    .HasForeignKey(e=>e.ItemId)
                     .IsRequired();
 
             modelBuilder.Entity<ShoppingListItem>()
@@ -205,6 +212,11 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
                 .IsRequired();
 
 
+            modelBuilder.Entity<ShoppingListItem>()
+                        .HasOne<ShoppingList>()
+                        .WithMany(s => s.ShoppingListItems)
+                        .HasForeignKey(sh => sh.ShoppingListId)
+                        .IsRequired();
 
             // Shop entity
             modelBuilder.Entity<Shop>()
@@ -374,7 +386,7 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
                         .WithMany()
                         .HasForeignKey(i => i.CreatorId)
                         .IsRequired();
-
+            #endregion
 
         }
 
