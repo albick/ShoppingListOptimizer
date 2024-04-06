@@ -373,7 +373,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     DayOfWeek = table.Column<int>(type: "int", nullable: false),
                     StartTime = table.Column<TimeSpan>(type: "time(6)", nullable: false),
                     EndTime = table.Column<TimeSpan>(type: "time(6)", nullable: false),
-                    ShopId = table.Column<int>(type: "int", nullable: true)
+                    ShopId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -382,7 +382,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         name: "FK_OpeningHours_Shop_ShopId",
                         column: x => x.ShopId,
                         principalTable: "Shop",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -421,9 +422,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0", "12dc0b01-6ef1-4847-8f7d-937b0c3d4c07", "Admin", "ADMIN" },
-                    { "1", "9746a88b-aa11-43f4-8138-f707d9b3eca0", "Shop", "SHOP" },
-                    { "2", "ba43b4a5-286f-4d23-8746-6c0cab93517d", "User", "USER" }
+                    { "0", "a50f57a4-d3d5-4674-b5d8-403cb9416b75", "Admin", "ADMIN" },
+                    { "1", "9cab94c7-b4be-4232-b26d-64750a9367ef", "Shop", "SHOP" },
+                    { "2", "c1dd4f71-f6b6-4433-9f7b-7dc9d27f300a", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -431,11 +432,22 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LocationId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "00000000-0000-0000-0000-000000000000", 0, "9e0aa2ce-5d77-4fbb-86f6-19d8a4053ec4", "Account0@x.com", false, null, false, null, "ACCOUNT0@X.COM", "ACCOUNT0", "AQAAAAEAACcQAAAAELsaAxvYu2B//oXw8l4RUMC+7U34ACO6l54LDhRgobcTs6Ss6SVz18S4qYe3I0yWxg==", null, false, "72c5ca34-d722-424a-9897-34df4407c9a5", false, "Account0" },
-                    { "00000000-0000-0000-0000-000000000001", 0, "6b0a7a73-08c0-4a00-89ea-5fb5c507839b", "Account1@x.com", false, null, false, null, "ACCOUNT1@X.COM", "ACCOUNT1", "AQAAAAEAACcQAAAAEJnWKcQjyT9OltJWi11WemUxKZMtJVhkr8Qw7pi+zob3TNxWe95quszNTODoKNg7EA==", null, false, "0a05a43e-f287-4c4b-8bee-12ffe54532f1", false, "Account1" },
-                    { "00000000-0000-0000-0000-000000000002", 0, "5f275d84-afc0-4946-a3ce-5773cbd3d8c8", "Account2@x.com", false, null, false, null, "ACCOUNT2@X.COM", "ACCOUNT2", "AQAAAAEAACcQAAAAEOnUuPU0Bzd7Ghay0ewLITzAVkfmiMndZmSVR0Z2EYug9hr/haqVOLhqBJyyvNjv3g==", null, false, "0ac1b040-7c8b-494d-a95b-17e6df48835c", false, "Account2" },
-                    { "00000000-0000-0000-0000-000000000003", 0, "41363038-33bf-4b6c-a4bd-a0c5de29de8f", "Account3@x.com", false, null, false, null, "ACCOUNT3@X.COM", "ACCOUNT3", "AQAAAAEAACcQAAAAEKkv2HbpiUQbHeLDk8xCDZShXVEPUh+HZfCStoczL9J5PKzeKS53o907ITQ8pSdAlQ==", null, false, "3c0045fb-5e34-4cac-9195-88deb8e7cb82", false, "Account3" },
-                    { "00000000-0000-0000-0000-000000000004", 0, "a912cc05-5a73-4f86-8ceb-5d291e1e214d", "Account4@x.com", false, null, false, null, "ACCOUNT4@X.COM", "ACCOUNT4", "AQAAAAEAACcQAAAAEDqycilbI2nnaySKi8x/T5r3n/Ioy47e2XOq80GyJek8qVN9VasdVHNx3Xp8lamAEw==", null, false, "9da38305-b65b-49f1-b069-79abc018fa6d", false, "Account4" }
+                    { "00000000-0000-0000-0000-000000000000", 0, "4ce768ab-f0bb-4705-beb3-b79d9c264527", "Account0@x.com", false, null, false, null, "ACCOUNT0@X.COM", "ADMIN0", "AQAAAAEAACcQAAAAEP3uYJp4AurpyY7NYMia5Dyt21MvCvGZOGSXW/RH+DEGdUyxNsyAmhZnigaSdiykpQ==", null, false, "a3961caf-0302-4940-8ebf-29bc01e97bfe", false, "Admin0" },
+                    { "00000000-0000-0000-0000-000000000001", 0, "65341b4d-dbc3-4972-8308-0c3c3e8e5503", "Account1@x.com", false, null, false, null, "ACCOUNT1@X.COM", "USER1", "AQAAAAEAACcQAAAAEApVIxb9Awx6xsF22jkhWCWW7bhqsqQt+79ZFR7yXbJ8hc0Fz8ZeOaVW9Eb0k9sc2A==", null, false, "1e50f2df-2697-415b-ac7e-3b8b3c7976bf", false, "User1" },
+                    { "00000000-0000-0000-0000-000000000002", 0, "ceba9665-21b2-46a7-bd52-9cc56a66cc01", "Account2@x.com", false, null, false, null, "ACCOUNT2@X.COM", "TESCO", "AQAAAAEAACcQAAAAECNQUwh12XcabmS6dSCgfa7aBB0mQ0dbh7o4TCBLYjaiV/6tPKHcau90E8MiOvZ9HQ==", null, false, "5424316e-e0ef-4b4d-aed0-37490676be5f", false, "Tesco" },
+                    { "00000000-0000-0000-0000-000000000003", 0, "f7c1a863-676d-4097-91bb-ccfc3310a8d9", "Account3@x.com", false, null, false, null, "ACCOUNT3@X.COM", "AUCHAN", "AQAAAAEAACcQAAAAEAVtRMvwnfAhXD/kXKf0oT2zYbE5cCzGqDSKxEXPb6kLe6AG6XBdrW+B5lNpZawClg==", null, false, "e664753c-a67c-4c6a-ae59-843954985bc0", false, "Auchan" },
+                    { "00000000-0000-0000-0000-000000000004", 0, "392c853a-f6ee-4b72-b5e3-1f6adaeb959e", "Account4@x.com", false, null, false, null, "ACCOUNT4@X.COM", "USER4", "AQAAAAEAACcQAAAAEPCmHMA21Z+gAScOTasOLH0jEcRjY8RqnwdYXS/AdZWXmnLCvYd+VbhIYC9Ydd/FdA==", null, false, "2ef4fb1f-b33f-42c8-ab72-eb1863eb2eb1", false, "User4" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Locations",
+                columns: new[] { "Id", "City", "Latitude", "Longitude", "Number", "Postcode", "Street" },
+                values: new object[,]
+                {
+                    { 1, "Budaörs", 47.450125, 18.964566300000001, "1", "2040", "Kinizsi utca" },
+                    { 2, "Budaörs", 47.454938749999997, 18.943733936449245, "2-4", "2040", "Sport utca" },
+                    { 3, "Székesfehérvár", 47.190058999999998, 18.4041082, "6", "8000", "Palotai út" },
+                    { 4, "Debrecen", 47.540409799999999, 21.583815048626832, "7", "4031", "Kishatár utca" }
                 });
 
             migrationBuilder.InsertData(
@@ -448,6 +460,52 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     { "1", "00000000-0000-0000-0000-000000000002" },
                     { "1", "00000000-0000-0000-0000-000000000003" },
                     { "1", "00000000-0000-0000-0000-000000000004" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Shop",
+                columns: new[] { "Id", "CompanyId", "CreatorId", "Details", "LocationId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000002", "Tesco Budaörs", 1, "TESCO Budaörs" },
+                    { 2, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Budaörs", 2, "AUCHAN Budaörs" },
+                    { 3, "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000002", "Tesco Székesfehérvár", 3, "TESCO Székesfehérvár" },
+                    { 4, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Debrecen", 4, "AUCHAN Debrecen" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "OpeningHours",
+                columns: new[] { "Id", "DayOfWeek", "EndTime", "ShopId", "StartTime" },
+                values: new object[,]
+                {
+                    { 1, 1, new TimeSpan(0, 20, 0, 0, 0), 1, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 2, 2, new TimeSpan(0, 20, 0, 0, 0), 1, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 3, 3, new TimeSpan(0, 20, 0, 0, 0), 1, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 4, 4, new TimeSpan(0, 20, 0, 0, 0), 1, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 5, 5, new TimeSpan(0, 20, 0, 0, 0), 1, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 6, 6, new TimeSpan(0, 16, 0, 0, 0), 1, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 7, 0, new TimeSpan(0, 16, 0, 0, 0), 1, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 8, 1, new TimeSpan(0, 20, 0, 0, 0), 2, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 9, 2, new TimeSpan(0, 20, 0, 0, 0), 2, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 10, 3, new TimeSpan(0, 20, 0, 0, 0), 2, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 11, 4, new TimeSpan(0, 20, 0, 0, 0), 2, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 12, 5, new TimeSpan(0, 20, 0, 0, 0), 2, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 13, 6, new TimeSpan(0, 16, 0, 0, 0), 2, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 14, 0, new TimeSpan(0, 16, 0, 0, 0), 2, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 15, 1, new TimeSpan(0, 20, 0, 0, 0), 3, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 16, 2, new TimeSpan(0, 20, 0, 0, 0), 3, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 17, 3, new TimeSpan(0, 20, 0, 0, 0), 3, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 18, 4, new TimeSpan(0, 20, 0, 0, 0), 3, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 19, 5, new TimeSpan(0, 20, 0, 0, 0), 3, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 20, 6, new TimeSpan(0, 16, 0, 0, 0), 3, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 21, 0, new TimeSpan(0, 16, 0, 0, 0), 3, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 22, 1, new TimeSpan(0, 20, 0, 0, 0), 4, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 23, 2, new TimeSpan(0, 20, 0, 0, 0), 4, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 24, 3, new TimeSpan(0, 20, 0, 0, 0), 4, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 25, 4, new TimeSpan(0, 20, 0, 0, 0), 4, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 26, 5, new TimeSpan(0, 20, 0, 0, 0), 4, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 27, 6, new TimeSpan(0, 16, 0, 0, 0), 4, new TimeSpan(0, 6, 0, 0, 0) },
+                    { 28, 0, new TimeSpan(0, 16, 0, 0, 0), 4, new TimeSpan(0, 6, 0, 0, 0) }
                 });
 
             migrationBuilder.CreateIndex(

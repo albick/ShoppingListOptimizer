@@ -48,21 +48,21 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         new
                         {
                             Id = "0",
-                            ConcurrencyStamp = "12dc0b01-6ef1-4847-8f7d-937b0c3d4c07",
+                            ConcurrencyStamp = "a50f57a4-d3d5-4674-b5d8-403cb9416b75",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "9746a88b-aa11-43f4-8138-f707d9b3eca0",
+                            ConcurrencyStamp = "9cab94c7-b4be-4232-b26d-64750a9367ef",
                             Name = "Shop",
                             NormalizedName = "SHOP"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "ba43b4a5-286f-4d23-8746-6c0cab93517d",
+                            ConcurrencyStamp = "c1dd4f71-f6b6-4433-9f7b-7dc9d27f300a",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -271,81 +271,81 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000000",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9e0aa2ce-5d77-4fbb-86f6-19d8a4053ec4",
+                            ConcurrencyStamp = "4ce768ab-f0bb-4705-beb3-b79d9c264527",
                             Email = "Account0@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT0@X.COM",
-                            NormalizedUserName = "ACCOUNT0",
-                            PasswordHash = "AQAAAAEAACcQAAAAELsaAxvYu2B//oXw8l4RUMC+7U34ACO6l54LDhRgobcTs6Ss6SVz18S4qYe3I0yWxg==",
+                            NormalizedUserName = "ADMIN0",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP3uYJp4AurpyY7NYMia5Dyt21MvCvGZOGSXW/RH+DEGdUyxNsyAmhZnigaSdiykpQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "72c5ca34-d722-424a-9897-34df4407c9a5",
+                            SecurityStamp = "a3961caf-0302-4940-8ebf-29bc01e97bfe",
                             TwoFactorEnabled = false,
-                            UserName = "Account0"
+                            UserName = "Admin0"
                         },
                         new
                         {
                             Id = "00000000-0000-0000-0000-000000000001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6b0a7a73-08c0-4a00-89ea-5fb5c507839b",
+                            ConcurrencyStamp = "65341b4d-dbc3-4972-8308-0c3c3e8e5503",
                             Email = "Account1@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT1@X.COM",
-                            NormalizedUserName = "ACCOUNT1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJnWKcQjyT9OltJWi11WemUxKZMtJVhkr8Qw7pi+zob3TNxWe95quszNTODoKNg7EA==",
+                            NormalizedUserName = "USER1",
+                            PasswordHash = "AQAAAAEAACcQAAAAEApVIxb9Awx6xsF22jkhWCWW7bhqsqQt+79ZFR7yXbJ8hc0Fz8ZeOaVW9Eb0k9sc2A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0a05a43e-f287-4c4b-8bee-12ffe54532f1",
+                            SecurityStamp = "1e50f2df-2697-415b-ac7e-3b8b3c7976bf",
                             TwoFactorEnabled = false,
-                            UserName = "Account1"
+                            UserName = "User1"
                         },
                         new
                         {
                             Id = "00000000-0000-0000-0000-000000000002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5f275d84-afc0-4946-a3ce-5773cbd3d8c8",
+                            ConcurrencyStamp = "ceba9665-21b2-46a7-bd52-9cc56a66cc01",
                             Email = "Account2@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT2@X.COM",
-                            NormalizedUserName = "ACCOUNT2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOnUuPU0Bzd7Ghay0ewLITzAVkfmiMndZmSVR0Z2EYug9hr/haqVOLhqBJyyvNjv3g==",
+                            NormalizedUserName = "TESCO",
+                            PasswordHash = "AQAAAAEAACcQAAAAECNQUwh12XcabmS6dSCgfa7aBB0mQ0dbh7o4TCBLYjaiV/6tPKHcau90E8MiOvZ9HQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0ac1b040-7c8b-494d-a95b-17e6df48835c",
+                            SecurityStamp = "5424316e-e0ef-4b4d-aed0-37490676be5f",
                             TwoFactorEnabled = false,
-                            UserName = "Account2"
+                            UserName = "Tesco"
                         },
                         new
                         {
                             Id = "00000000-0000-0000-0000-000000000003",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "41363038-33bf-4b6c-a4bd-a0c5de29de8f",
+                            ConcurrencyStamp = "f7c1a863-676d-4097-91bb-ccfc3310a8d9",
                             Email = "Account3@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT3@X.COM",
-                            NormalizedUserName = "ACCOUNT3",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKkv2HbpiUQbHeLDk8xCDZShXVEPUh+HZfCStoczL9J5PKzeKS53o907ITQ8pSdAlQ==",
+                            NormalizedUserName = "AUCHAN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAVtRMvwnfAhXD/kXKf0oT2zYbE5cCzGqDSKxEXPb6kLe6AG6XBdrW+B5lNpZawClg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3c0045fb-5e34-4cac-9195-88deb8e7cb82",
+                            SecurityStamp = "e664753c-a67c-4c6a-ae59-843954985bc0",
                             TwoFactorEnabled = false,
-                            UserName = "Account3"
+                            UserName = "Auchan"
                         },
                         new
                         {
                             Id = "00000000-0000-0000-0000-000000000004",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a912cc05-5a73-4f86-8ceb-5d291e1e214d",
+                            ConcurrencyStamp = "392c853a-f6ee-4b72-b5e3-1f6adaeb959e",
                             Email = "Account4@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT4@X.COM",
-                            NormalizedUserName = "ACCOUNT4",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDqycilbI2nnaySKi8x/T5r3n/Ioy47e2XOq80GyJek8qVN9VasdVHNx3Xp8lamAEw==",
+                            NormalizedUserName = "USER4",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPCmHMA21Z+gAScOTasOLH0jEcRjY8RqnwdYXS/AdZWXmnLCvYd+VbhIYC9Ydd/FdA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9da38305-b65b-49f1-b069-79abc018fa6d",
+                            SecurityStamp = "2ef4fb1f-b33f-42c8-ab72-eb1863eb2eb1",
                             TwoFactorEnabled = false,
-                            UserName = "Account4"
+                            UserName = "User4"
                         });
                 });
 
@@ -461,6 +461,48 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .HasName("PK_Location");
 
                     b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Budaörs",
+                            Latitude = 47.450125,
+                            Longitude = 18.964566300000001,
+                            Number = "1",
+                            Postcode = "2040",
+                            Street = "Kinizsi utca"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Budaörs",
+                            Latitude = 47.454938749999997,
+                            Longitude = 18.943733936449245,
+                            Number = "2-4",
+                            Postcode = "2040",
+                            Street = "Sport utca"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Székesfehérvár",
+                            Latitude = 47.190058999999998,
+                            Longitude = 18.4041082,
+                            Number = "6",
+                            Postcode = "8000",
+                            Street = "Palotai út"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Debrecen",
+                            Latitude = 47.540409799999999,
+                            Longitude = 21.583815048626832,
+                            Number = "7",
+                            Postcode = "4031",
+                            Street = "Kishatár utca"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.OpeningHours", b =>
@@ -475,7 +517,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time(6)");
 
-                    b.Property<int?>("ShopId")
+                    b.Property<int>("ShopId")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan>("StartTime")
@@ -487,6 +529,232 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.HasIndex("ShopId");
 
                     b.ToTable("OpeningHours");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 12,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 13,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 14,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 15,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 16,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 17,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 18,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 19,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 20,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 21,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 22,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 23,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 24,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 25,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 26,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 27,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 28,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Shop", b =>
@@ -529,6 +797,44 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.ToTable("Shop", null, t =>
                         {
                             t.HasCheckConstraint("CK_Shop_Name", "CHAR_LENGTH(Name) >= 3");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyId = "00000000-0000-0000-0000-000000000002",
+                            CreatorId = "00000000-0000-0000-0000-000000000002",
+                            Details = "Tesco Budaörs",
+                            LocationId = 1,
+                            Name = "TESCO Budaörs"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyId = "00000000-0000-0000-0000-000000000003",
+                            CreatorId = "00000000-0000-0000-0000-000000000003",
+                            Details = "Auchan Budaörs",
+                            LocationId = 2,
+                            Name = "AUCHAN Budaörs"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CompanyId = "00000000-0000-0000-0000-000000000002",
+                            CreatorId = "00000000-0000-0000-0000-000000000002",
+                            Details = "Tesco Székesfehérvár",
+                            LocationId = 3,
+                            Name = "TESCO Székesfehérvár"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CompanyId = "00000000-0000-0000-0000-000000000003",
+                            CreatorId = "00000000-0000-0000-0000-000000000003",
+                            Details = "Auchan Debrecen",
+                            LocationId = 4,
+                            Name = "AUCHAN Debrecen"
                         });
                 });
 
@@ -701,7 +1007,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 {
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.Shop", null)
                         .WithMany("OpeningHours")
-                        .HasForeignKey("ShopId");
+                        .HasForeignKey("ShopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Shop", b =>
