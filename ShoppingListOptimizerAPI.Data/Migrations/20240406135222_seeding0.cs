@@ -422,9 +422,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0", "a50f57a4-d3d5-4674-b5d8-403cb9416b75", "Admin", "ADMIN" },
-                    { "1", "9cab94c7-b4be-4232-b26d-64750a9367ef", "Shop", "SHOP" },
-                    { "2", "c1dd4f71-f6b6-4433-9f7b-7dc9d27f300a", "User", "USER" }
+                    { "0", "d8ee14dd-47d7-4937-bfcd-535c83625153", "Admin", "ADMIN" },
+                    { "1", "22c35fe2-2cdf-4ef3-9ed7-5c875ce95108", "Shop", "SHOP" },
+                    { "2", "00e0264b-ef37-4902-b432-964ff9dbf234", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -432,11 +432,11 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LocationId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "00000000-0000-0000-0000-000000000000", 0, "4ce768ab-f0bb-4705-beb3-b79d9c264527", "Account0@x.com", false, null, false, null, "ACCOUNT0@X.COM", "ADMIN0", "AQAAAAEAACcQAAAAEP3uYJp4AurpyY7NYMia5Dyt21MvCvGZOGSXW/RH+DEGdUyxNsyAmhZnigaSdiykpQ==", null, false, "a3961caf-0302-4940-8ebf-29bc01e97bfe", false, "Admin0" },
-                    { "00000000-0000-0000-0000-000000000001", 0, "65341b4d-dbc3-4972-8308-0c3c3e8e5503", "Account1@x.com", false, null, false, null, "ACCOUNT1@X.COM", "USER1", "AQAAAAEAACcQAAAAEApVIxb9Awx6xsF22jkhWCWW7bhqsqQt+79ZFR7yXbJ8hc0Fz8ZeOaVW9Eb0k9sc2A==", null, false, "1e50f2df-2697-415b-ac7e-3b8b3c7976bf", false, "User1" },
-                    { "00000000-0000-0000-0000-000000000002", 0, "ceba9665-21b2-46a7-bd52-9cc56a66cc01", "Account2@x.com", false, null, false, null, "ACCOUNT2@X.COM", "TESCO", "AQAAAAEAACcQAAAAECNQUwh12XcabmS6dSCgfa7aBB0mQ0dbh7o4TCBLYjaiV/6tPKHcau90E8MiOvZ9HQ==", null, false, "5424316e-e0ef-4b4d-aed0-37490676be5f", false, "Tesco" },
-                    { "00000000-0000-0000-0000-000000000003", 0, "f7c1a863-676d-4097-91bb-ccfc3310a8d9", "Account3@x.com", false, null, false, null, "ACCOUNT3@X.COM", "AUCHAN", "AQAAAAEAACcQAAAAEAVtRMvwnfAhXD/kXKf0oT2zYbE5cCzGqDSKxEXPb6kLe6AG6XBdrW+B5lNpZawClg==", null, false, "e664753c-a67c-4c6a-ae59-843954985bc0", false, "Auchan" },
-                    { "00000000-0000-0000-0000-000000000004", 0, "392c853a-f6ee-4b72-b5e3-1f6adaeb959e", "Account4@x.com", false, null, false, null, "ACCOUNT4@X.COM", "USER4", "AQAAAAEAACcQAAAAEPCmHMA21Z+gAScOTasOLH0jEcRjY8RqnwdYXS/AdZWXmnLCvYd+VbhIYC9Ydd/FdA==", null, false, "2ef4fb1f-b33f-42c8-ab72-eb1863eb2eb1", false, "User4" }
+                    { "00000000-0000-0000-0000-000000000000", 0, "78350e97-202a-4b02-87bd-8160711088ff", "Account0@x.com", false, null, false, null, "ACCOUNT0@X.COM", "ADMIN0", "AQAAAAEAACcQAAAAEILkm2PTi72TqLhCs0p6DFcDa9hqaqMAaEqdDREC3myPzO2Cg4S4gT5OHJTGMGDsjQ==", null, false, "57a9c217-1f60-4e16-a899-629263a45633", false, "Admin0" },
+                    { "00000000-0000-0000-0000-000000000001", 0, "e698bd78-f37c-475b-9285-bf514781f94f", "Account1@x.com", false, null, false, null, "ACCOUNT1@X.COM", "USER1", "AQAAAAEAACcQAAAAEFuQ8iJ+Gso0U1z0Vr9VnZD4RS5Ul4xsnmHgM0ZxWH7pMkM57KvdTVVAD/CpTd0ahA==", null, false, "cd2feee7-5dca-4a24-8775-9b397698d2ee", false, "User1" },
+                    { "00000000-0000-0000-0000-000000000002", 0, "941053cd-3931-40f2-b43e-8ceed5f6692f", "Account2@x.com", false, null, false, null, "ACCOUNT2@X.COM", "TESCO", "AQAAAAEAACcQAAAAEEql4wiXHPHaT7EL8TqyZS59QI60twBO7FwsDXmLcyuI2HxzW1Yqt4i3Msws/BqgPQ==", null, false, "eb4c92bf-7dcf-4a6c-8700-dbc263b4eeb0", false, "Tesco" },
+                    { "00000000-0000-0000-0000-000000000003", 0, "964168a0-cc3d-4ac8-b458-a9dfed3d7d9a", "Account3@x.com", false, null, false, null, "ACCOUNT3@X.COM", "AUCHAN", "AQAAAAEAACcQAAAAECDrkWWqWP7KR/T5+FmvJvrnqqLqe5IwM7WfOLOCK5JVhHoq9dxO/YN+06Nr/UIKxA==", null, false, "2ee8e31c-453c-4e26-b345-2559af9b826e", false, "Auchan" },
+                    { "00000000-0000-0000-0000-000000000004", 0, "da217a0b-b144-4528-af42-c207d664947a", "Account4@x.com", false, null, false, null, "ACCOUNT4@X.COM", "USER4", "AQAAAAEAACcQAAAAELKdZUPAj08rU5mgUw8HeOhm5o+xtFOer7YQgyR8UuCPUMM7dqsyRkCTijerl91TAQ==", null, false, "f769b0bc-927c-46b0-a5e1-334a0d0dbd9c", false, "User4" }
                 });
 
             migrationBuilder.InsertData(
@@ -463,6 +463,17 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Item",
+                columns: new[] { "Barcode", "CreatorId", "Details", "Name", "Quantity", "Unit" },
+                values: new object[,]
+                {
+                    { "1", "00000000-0000-0000-0000-000000000001", "Gyermelyi Búzafinomliszt.\r\nBL 55\r\nKiszerelés: 1000g./csomag.\r\nAllergének: glutén.", "Búzafinomliszt BL55 GYERMELYI 1kg", 1.0, "kg" },
+                    { "2", "00000000-0000-0000-0000-000000000001", "A Koronás Kristálycukor tartósítószer és színezék hozzáadása nélkül.\r\nSzemcséi szabad szemmel is jól láthatóak.\r\nÉtelek és italok édesítésére, ízesítésére egyaránt használható.\r\nMinőségét korlátlan ideig megőrzi.", "Kristálycukor KORONÁS 1kg", 1.0, "kg" },
+                    { "3", "00000000-0000-0000-0000-000000000001", "0,5 literes, szénsavmentes természetes ásványvíz.\r\n\r\nAlkalmas nátrium-szegény diétához. Lúgos kémhatású termék, 7,5 pH-val. Vastalanítva.", "Mizse szénsavmentes ásványvíz", 0.5, "l" },
+                    { "4", "00000000-0000-0000-0000-000000000001", "Asztali só.", "Asztali tengeri só 1kg", 1.0, "kg" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Shop",
                 columns: new[] { "Id", "CompanyId", "CreatorId", "Details", "LocationId", "Name" },
                 values: new object[,]
@@ -471,6 +482,125 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     { 2, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Budaörs", 2, "AUCHAN Budaörs" },
                     { 3, "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000002", "Tesco Székesfehérvár", 3, "TESCO Székesfehérvár" },
                     { 4, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Debrecen", 4, "AUCHAN Debrecen" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ItemPriceEntry",
+                columns: new[] { "Id", "CreatedAt", "CreatorId", "ItemId", "Price", "ShopId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 359.0, 1 },
+                    { 2, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 889.0, 1 },
+                    { 3, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 139.0, 1 },
+                    { 4, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 349.0, 1 },
+                    { 5, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 361.0, 1 },
+                    { 6, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 891.0, 1 },
+                    { 7, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 141.0, 1 },
+                    { 8, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 351.0, 1 },
+                    { 9, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 363.0, 1 },
+                    { 10, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 893.0, 1 },
+                    { 11, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 143.0, 1 },
+                    { 12, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 353.0, 1 },
+                    { 13, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 365.0, 1 },
+                    { 14, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 895.0, 1 },
+                    { 15, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 145.0, 1 },
+                    { 16, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 355.0, 1 },
+                    { 17, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 367.0, 1 },
+                    { 18, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 897.0, 1 },
+                    { 19, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 147.0, 1 },
+                    { 20, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 357.0, 1 },
+                    { 21, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 369.0, 1 },
+                    { 22, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 899.0, 1 },
+                    { 23, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 149.0, 1 },
+                    { 24, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 359.0, 1 },
+                    { 25, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 371.0, 1 },
+                    { 26, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 901.0, 1 },
+                    { 27, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 151.0, 1 },
+                    { 28, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 361.0, 1 },
+                    { 29, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 360.0, 2 },
+                    { 30, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 890.0, 2 },
+                    { 31, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 140.0, 2 },
+                    { 32, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 350.0, 2 },
+                    { 33, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 362.0, 2 },
+                    { 34, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 892.0, 2 },
+                    { 35, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 142.0, 2 },
+                    { 36, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 352.0, 2 },
+                    { 37, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 364.0, 2 },
+                    { 38, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 894.0, 2 },
+                    { 39, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 144.0, 2 },
+                    { 40, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 354.0, 2 },
+                    { 41, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 366.0, 2 },
+                    { 42, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 896.0, 2 },
+                    { 43, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 146.0, 2 },
+                    { 44, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 356.0, 2 },
+                    { 45, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 368.0, 2 },
+                    { 46, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 898.0, 2 },
+                    { 47, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 148.0, 2 },
+                    { 48, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 358.0, 2 },
+                    { 49, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 370.0, 2 },
+                    { 50, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 900.0, 2 },
+                    { 51, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 150.0, 2 },
+                    { 52, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 360.0, 2 },
+                    { 53, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 372.0, 2 },
+                    { 54, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 902.0, 2 },
+                    { 55, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 152.0, 2 },
+                    { 56, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 362.0, 2 },
+                    { 57, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 361.0, 3 },
+                    { 58, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 891.0, 3 },
+                    { 59, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 141.0, 3 },
+                    { 60, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 351.0, 3 },
+                    { 61, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 363.0, 3 },
+                    { 62, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 893.0, 3 },
+                    { 63, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 143.0, 3 },
+                    { 64, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 353.0, 3 },
+                    { 65, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 365.0, 3 },
+                    { 66, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 895.0, 3 },
+                    { 67, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 145.0, 3 },
+                    { 68, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 355.0, 3 },
+                    { 69, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 367.0, 3 },
+                    { 70, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 897.0, 3 },
+                    { 71, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 147.0, 3 },
+                    { 72, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 357.0, 3 },
+                    { 73, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 369.0, 3 },
+                    { 74, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 899.0, 3 },
+                    { 75, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 149.0, 3 },
+                    { 76, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 359.0, 3 },
+                    { 77, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 371.0, 3 },
+                    { 78, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 901.0, 3 },
+                    { 79, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 151.0, 3 },
+                    { 80, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 361.0, 3 },
+                    { 81, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 373.0, 3 },
+                    { 82, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 903.0, 3 },
+                    { 83, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 153.0, 3 },
+                    { 84, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 363.0, 3 },
+                    { 85, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 362.0, 4 },
+                    { 86, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 892.0, 4 },
+                    { 87, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 142.0, 4 },
+                    { 88, new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 352.0, 4 },
+                    { 89, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 364.0, 4 },
+                    { 90, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 894.0, 4 },
+                    { 91, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 144.0, 4 },
+                    { 92, new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 354.0, 4 },
+                    { 93, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 366.0, 4 },
+                    { 94, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 896.0, 4 },
+                    { 95, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 146.0, 4 },
+                    { 96, new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 356.0, 4 },
+                    { 97, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 368.0, 4 },
+                    { 98, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 898.0, 4 },
+                    { 99, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 148.0, 4 },
+                    { 100, new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 358.0, 4 },
+                    { 101, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 370.0, 4 },
+                    { 102, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 900.0, 4 },
+                    { 103, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 150.0, 4 },
+                    { 104, new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 360.0, 4 },
+                    { 105, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 372.0, 4 },
+                    { 106, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 902.0, 4 },
+                    { 107, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 152.0, 4 },
+                    { 108, new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 362.0, 4 },
+                    { 109, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 374.0, 4 },
+                    { 110, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 904.0, 4 },
+                    { 111, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 154.0, 4 },
+                    { 112, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 364.0, 4 }
                 });
 
             migrationBuilder.InsertData(

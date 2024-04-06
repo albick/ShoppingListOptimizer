@@ -27,11 +27,12 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
 
             //Seed users
             var hasher = new PasswordHasher<IdentityUser>();
+            Account account1 = new Account { Id = "00000000-0000-0000-0000-000000000001", UserName = "User1", NormalizedUserName = "USER1", Email = "Account1@x.com", NormalizedEmail = "ACCOUNT1@X.COM", PasswordHash = hasher.HashPassword(null, "password") };
             Account account2 = new Account { Id = "00000000-0000-0000-0000-000000000002", UserName = "Tesco", NormalizedUserName = "TESCO", Email = "Account2@x.com", NormalizedEmail = "ACCOUNT2@X.COM", PasswordHash = hasher.HashPassword(null, "password") };
             Account account3 = new Account { Id = "00000000-0000-0000-0000-000000000003", UserName = "Auchan", NormalizedUserName = "AUCHAN", Email = "Account3@x.com", NormalizedEmail = "ACCOUNT3@X.COM", PasswordHash = hasher.HashPassword(null, "password") };
             modelBuilder.Entity<Account>().HasData(
                 new Account { Id = "00000000-0000-0000-0000-000000000000", UserName = "Admin0", NormalizedUserName = "ADMIN0", Email = "Account0@x.com", NormalizedEmail = "ACCOUNT0@X.COM", PasswordHash = hasher.HashPassword(null, "password") },
-                new Account { Id = "00000000-0000-0000-0000-000000000001", UserName = "User1", NormalizedUserName = "USER1", Email = "Account1@x.com", NormalizedEmail = "ACCOUNT1@X.COM", PasswordHash = hasher.HashPassword(null, "password") },
+                account1,
                 account2,
                 account3,
                 new Account { Id = "00000000-0000-0000-0000-000000000004", UserName = "User4", NormalizedUserName = "USER4", Email = "Account4@x.com", NormalizedEmail = "ACCOUNT4@X.COM", PasswordHash = hasher.HashPassword(null, "password") }
@@ -44,7 +45,7 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
                 new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
             );
 
-            // Seed user-role relationships
+            //Seed user-role relationships
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string> { UserId = "00000000-0000-0000-0000-000000000000", RoleId = "0" },
                 new IdentityUserRole<string> { UserId = "00000000-0000-0000-0000-000000000001", RoleId = "2" },
@@ -101,11 +102,54 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
                 new OpeningHours { Id = 28, DayOfWeek = DayOfWeek.Sunday, StartTime = new TimeSpan(6, 0, 0), EndTime = new TimeSpan(16, 0, 0), ShopId = 4 }
                 );
 
+
+            //Seed shops
+            List<Shop> shops = new List<Shop>() {
+            new Shop { Id = 1, Name = "TESCO Budaörs", Details = "Tesco Budaörs", LocationId = location1.Id, CreatorId = account2.Id, CompanyId = account2.Id },
+            new Shop { Id = 2, Name = "AUCHAN Budaörs", Details = "Auchan Budaörs", LocationId = location2.Id, CreatorId = account3.Id, CompanyId = account3.Id },
+            new Shop { Id = 3, Name = "TESCO Székesfehérvár", Details = "Tesco Székesfehérvár", LocationId = location3.Id, CreatorId = account2.Id, CompanyId = account2.Id },
+            new Shop { Id = 4, Name = "AUCHAN Debrecen", Details = "Auchan Debrecen", LocationId = location4.Id, CreatorId = account3.Id, CompanyId = account3.Id }
+                 };
             modelBuilder.Entity<Shop>().HasData(
-                new Shop { Id = 1, Name = "TESCO Budaörs", Details = "Tesco Budaörs", LocationId = location1.Id, CreatorId = account2.Id, CompanyId = account2.Id },
-                new Shop { Id = 2, Name = "AUCHAN Budaörs", Details = "Auchan Budaörs", LocationId = location2.Id, CreatorId = account3.Id, CompanyId = account3.Id },
-                new Shop { Id = 3, Name = "TESCO Székesfehérvár", Details = "Tesco Székesfehérvár", LocationId = location3.Id, CreatorId = account2.Id, CompanyId = account2.Id },
-                new Shop { Id = 4, Name = "AUCHAN Debrecen", Details = "Auchan Debrecen", LocationId = location4.Id, CreatorId = account3.Id, CompanyId = account3.Id }
+                shops
+                );
+
+            //Seed items
+
+            Item item1 = new Item { Barcode = "1", Name = "Búzafinomliszt BL55 GYERMELYI 1kg", Details = "Gyermelyi Búzafinomliszt.\r\nBL 55\r\nKiszerelés: 1000g./csomag.\r\nAllergének: glutén.", Unit = "kg", Quantity = 1, CreatorId = account1.Id };
+            Item item2 = new Item { Barcode = "2", Name = "Kristálycukor KORONÁS 1kg", Details = "A Koronás Kristálycukor tartósítószer és színezék hozzáadása nélkül.\r\nSzemcséi szabad szemmel is jól láthatóak.\r\nÉtelek és italok édesítésére, ízesítésére egyaránt használható.\r\nMinőségét korlátlan ideig megőrzi.", Unit = "kg", Quantity = 1, CreatorId = account1.Id };
+            Item item3 = new Item { Barcode = "3", Name = "Mizse szénsavmentes ásványvíz", Details = "0,5 literes, szénsavmentes természetes ásványvíz.\r\n\r\nAlkalmas nátrium-szegény diétához. Lúgos kémhatású termék, 7,5 pH-val. Vastalanítva.", Unit = "l", Quantity = 0.5, CreatorId = account1.Id };
+            Item item4 = new Item { Barcode = "4", Name = "Asztali tengeri só 1kg", Details = "Asztali só.", Unit = "kg", Quantity = 1, CreatorId = account1.Id };
+            modelBuilder.Entity<Item>().HasData(
+                item1,
+                item2,
+                item3,
+                item4
+                );
+
+            //Seed item price entries
+            List<ItemPriceEntry> itemPriceEntries = new List<ItemPriceEntry>();
+            int id = 1;
+            for (int j = 0; j < shops.Count; j++)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    itemPriceEntries.Add(
+                        new ItemPriceEntry { Id = id++, Price = 359 + 2 * i+j, CreatedAt = new DateTime(2024, 3, 1).AddDays(i).AddHours(1), ItemId = item1.Barcode, ShopId = shops.ElementAt(j).Id, CreatorId = account1.Id }
+                        );
+                    itemPriceEntries.Add(
+                        new ItemPriceEntry { Id = id++, Price = 889 + 2 * i+j, CreatedAt = new DateTime(2024, 3, 1).AddDays(i).AddHours(1), ItemId = item2.Barcode, ShopId = shops.ElementAt(j).Id, CreatorId = account1.Id }
+                        );
+                    itemPriceEntries.Add(
+                        new ItemPriceEntry { Id = id++, Price = 139 + 2 * i+j, CreatedAt = new DateTime(2024, 3, 1).AddDays(i).AddHours(1), ItemId = item3.Barcode, ShopId = shops.ElementAt(j).Id, CreatorId = account1.Id }
+                        );
+                    itemPriceEntries.Add(
+                        new ItemPriceEntry { Id = id++, Price = 349 + 2 * i+j, CreatedAt = new DateTime(2024, 3, 1).AddDays(i).AddHours(1), ItemId = item4.Barcode, ShopId = shops.ElementAt(j).Id, CreatorId = account1.Id }
+                        );
+                }
+            }
+            modelBuilder.Entity<ItemPriceEntry>().HasData(
+                itemPriceEntries
                 );
 
 
@@ -113,48 +157,48 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
 
             // ShoppingList entity
             modelBuilder.Entity<ShoppingList>()
-                 .HasKey(s => s.Id)
-                 .HasName("PK_ShoppingList");
+                     .HasKey(s => s.Id)
+                     .HasName("PK_ShoppingList");
 
             modelBuilder.Entity<ShoppingList>()
-                .Property(s => s.Name)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsFixedLength(true);
+                    .Property(s => s.Name)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsFixedLength(true);
 
             modelBuilder.Entity<ShoppingList>()
-                .ToTable("ShoppingList", table =>
-                {
-                    table.HasCheckConstraint("CK_ShoppingList_Name", "CHAR_LENGTH(Name) >= 3");
-                });
+                    .ToTable("ShoppingList", table =>
+                    {
+                        table.HasCheckConstraint("CK_ShoppingList_Name", "CHAR_LENGTH(Name) >= 3");
+                    });
 
             modelBuilder.Entity<ShoppingList>()
                 .Property(e => e.Details)
                 .HasMaxLength(1000);
 
             modelBuilder.Entity<ShoppingList>()
-                .HasOne(s => s.Creator)
-                .WithMany()
-                .HasForeignKey("CreatorId")
-                .IsRequired();
+                    .HasOne(s => s.Creator)
+                    .WithMany()
+                    .HasForeignKey("CreatorId")
+                    .IsRequired();
 
 
             // ShoppingListItem entity
             modelBuilder.Entity<ShoppingListItem>()
-                .HasKey(s => s.Id)
-                .HasName("PK_ShoppingListItem");
+                    .HasKey(s => s.Id)
+                    .HasName("PK_ShoppingListItem");
 
             modelBuilder.Entity<ShoppingListItem>()
-                .HasOne(e => e.Item)
-                .WithMany()
-                .HasForeignKey("ItemId")
-                .IsRequired();
+                    .HasOne(e => e.Item)
+                    .WithMany()
+                    .HasForeignKey("ItemId")
+                    .IsRequired();
 
             modelBuilder.Entity<ShoppingListItem>()
-                .ToTable("ShoppingListItem", table =>
-                {
-                    table.HasCheckConstraint("CK_ShoppingListItem_Count", "Count > 0");
-                });
+                    .ToTable("ShoppingListItem", table =>
+                    {
+                        table.HasCheckConstraint("CK_ShoppingListItem_Count", "Count > 0");
+                    });
 
             modelBuilder.Entity<ShoppingListItem>()
                 .Property(e => e.IsPriority)
@@ -164,42 +208,42 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
 
             // Shop entity
             modelBuilder.Entity<Shop>()
-                .HasKey(s => s.Id)
-                .HasName("PK_Shop");
+                    .HasKey(s => s.Id)
+                    .HasName("PK_Shop");
 
             modelBuilder.Entity<Shop>()
-                .Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsFixedLength(true);
+                    .Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsFixedLength(true);
 
             modelBuilder.Entity<Shop>()
-                .ToTable("Shop", table =>
-                {
-                    table.HasCheckConstraint("CK_Shop_Name", "CHAR_LENGTH(Name) >= 3");
-                });
+                    .ToTable("Shop", table =>
+                    {
+                        table.HasCheckConstraint("CK_Shop_Name", "CHAR_LENGTH(Name) >= 3");
+                    });
 
             modelBuilder.Entity<Shop>()
                 .Property(e => e.Details)
                 .HasMaxLength(1000);
 
             modelBuilder.Entity<Shop>()
-                .HasOne(s => s.Location)
-                .WithMany()
-                .HasForeignKey(s => s.LocationId)
-                .IsRequired();
+                    .HasOne(s => s.Location)
+                    .WithMany()
+                    .HasForeignKey(s => s.LocationId)
+                    .IsRequired();
 
             modelBuilder.Entity<Shop>()
-                .HasOne(s => s.Creator)
-                .WithMany()
-                .HasForeignKey(s => s.CreatorId)
-                .IsRequired();
+                    .HasOne(s => s.Creator)
+                    .WithMany()
+                    .HasForeignKey(s => s.CreatorId)
+                    .IsRequired();
 
             modelBuilder.Entity<Shop>()
-                .HasOne(s => s.Company)
-                .WithMany()
-                .HasForeignKey(s => s.CompanyId)
-                .IsRequired();
+                    .HasOne(s => s.Company)
+                    .WithMany()
+                    .HasForeignKey(s => s.CompanyId)
+                    .IsRequired();
 
 
 
@@ -208,92 +252,92 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
 
             // OpeningHours entity
             modelBuilder.Entity<OpeningHours>()
-                    .HasKey(o => o.Id)
-                    .HasName("PK_OpeningHours");
+                        .HasKey(o => o.Id)
+                        .HasName("PK_OpeningHours");
 
             modelBuilder.Entity<OpeningHours>()
-                    .Property(e => e.DayOfWeek)
-                    .IsRequired();
+                        .Property(e => e.DayOfWeek)
+                        .IsRequired();
 
             modelBuilder.Entity<OpeningHours>()
-                    .Property(e => e.StartTime)
-                    .IsRequired();
+                        .Property(e => e.StartTime)
+                        .IsRequired();
 
             modelBuilder.Entity<OpeningHours>()
-                    .Property(e => e.EndTime)
-                    .IsRequired();
+                        .Property(e => e.EndTime)
+                        .IsRequired();
 
             modelBuilder.Entity<OpeningHours>()
-                    .HasOne<Shop>()
-                    .WithMany(s => s.OpeningHours)
-                    .HasForeignKey(oh => oh.ShopId)
-                    .IsRequired();
+                        .HasOne<Shop>()
+                        .WithMany(s => s.OpeningHours)
+                        .HasForeignKey(oh => oh.ShopId)
+                        .IsRequired();
 
             // Location entity
             modelBuilder.Entity<Location>()
-                    .HasKey(l => l.Id)
-                    .HasName("PK_Location");
+                        .HasKey(l => l.Id)
+                        .HasName("PK_Location");
 
             modelBuilder.Entity<Location>()
-                    .Property(e => e.City)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                        .Property(e => e.City)
+                        .IsRequired()
+                        .HasMaxLength(100);
 
             modelBuilder.Entity<Location>()
-                    .Property(e => e.Postcode)
-                    .IsRequired()
-                    .HasMaxLength(20);
+                        .Property(e => e.Postcode)
+                        .IsRequired()
+                        .HasMaxLength(20);
 
             modelBuilder.Entity<Location>()
-                    .Property(e => e.Street)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                        .Property(e => e.Street)
+                        .IsRequired()
+                        .HasMaxLength(100);
 
             modelBuilder.Entity<Location>()
-                    .Property(e => e.Number)
-                    .IsRequired()
-                    .HasMaxLength(20);
+                        .Property(e => e.Number)
+                        .IsRequired()
+                        .HasMaxLength(20);
 
             modelBuilder.Entity<Location>()
-                    .Property(e => e.Longitude)
-                    .IsRequired();
+                        .Property(e => e.Longitude)
+                        .IsRequired();
 
             modelBuilder.Entity<Location>()
-                    .Property(e => e.Latitude)
-                    .IsRequired();
+                        .Property(e => e.Latitude)
+                        .IsRequired();
 
             // ItemPriceEntry entity
             modelBuilder.Entity<ItemPriceEntry>()
-                    .HasKey(i => i.Id)
-                    .HasName("PK_ItemPriceEntry");
+                        .HasKey(i => i.Id)
+                        .HasName("PK_ItemPriceEntry");
 
             modelBuilder.Entity<ItemPriceEntry>()
-                    .HasOne(i => i.Item)
-                    .WithMany()
-                    .HasForeignKey("ItemId")
-                    .IsRequired();
+                        .HasOne(i => i.Item)
+                        .WithMany()
+                        .HasForeignKey(i => i.ItemId)
+                        .IsRequired();
 
             modelBuilder.Entity<ItemPriceEntry>()
-                    .HasOne(i => i.Creator)
-                    .WithMany()
-                    .HasForeignKey("CreatorId")
-                    .IsRequired();
+                        .HasOne(i => i.Creator)
+                        .WithMany()
+                        .HasForeignKey(i => i.CreatorId)
+                        .IsRequired();
 
             modelBuilder.Entity<ItemPriceEntry>()
-                    .HasOne(i => i.Shop)
-                    .WithMany()
-                    .HasForeignKey("ShopId")
-                    .IsRequired();
+                        .HasOne(i => i.Shop)
+                        .WithMany()
+                        .HasForeignKey(i => i.ShopId)
+                        .IsRequired();
 
             modelBuilder.Entity<ItemPriceEntry>()
-                    .Property(i => i.Price)
-                    .IsRequired();
+                        .Property(i => i.Price)
+                        .IsRequired();
 
             modelBuilder.Entity<ItemPriceEntry>()
-                .ToTable("ItemPriceEntry", table =>
-                {
-                    table.HasCheckConstraint("CK_ItemPriceEntry_Price", "Price > 0");
-                });
+                    .ToTable("ItemPriceEntry", table =>
+                    {
+                        table.HasCheckConstraint("CK_ItemPriceEntry_Price", "Price > 0");
+                    });
 
             // Item entity
             modelBuilder.Entity<Item>()
@@ -301,35 +345,35 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
                     .HasName("PK_Item");
 
             modelBuilder.Entity<Item>()
-                    .Property(i => i.Name)
-                    .HasMaxLength(100)
-                    .IsRequired();
+                        .Property(i => i.Name)
+                        .HasMaxLength(100)
+                        .IsRequired();
 
             modelBuilder.Entity<Item>()
-               .ToTable("Item", table =>
-               {
-                   table.HasCheckConstraint("CK_Item_Name", "CHAR_LENGTH(Name) >= 3");
-               });
+                   .ToTable("Item", table =>
+                   {
+                       table.HasCheckConstraint("CK_Item_Name", "CHAR_LENGTH(Name) >= 3");
+                   });
 
             modelBuilder.Entity<Item>()
                     .Property(i => i.Quantity)
                     .IsRequired();
 
             modelBuilder.Entity<Item>()
-                .ToTable("Item", table =>
-                {
-                    table.HasCheckConstraint("CK_Item_Quantity", "Quantity > 0");
-                });
+                    .ToTable("Item", table =>
+                    {
+                        table.HasCheckConstraint("CK_Item_Quantity", "Quantity > 0");
+                    });
 
             modelBuilder.Entity<Item>()
                     .Property(i => i.Unit)
                     .IsRequired();
 
             modelBuilder.Entity<Item>()
-                    .HasOne(i => i.Creator)
-                    .WithMany()
-                    .HasForeignKey("CreatorId")
-                    .IsRequired();
+                        .HasOne(i => i.Creator)
+                        .WithMany()
+                        .HasForeignKey(i => i.CreatorId)
+                        .IsRequired();
 
 
         }
