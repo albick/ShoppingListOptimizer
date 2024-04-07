@@ -102,10 +102,10 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
 
             //Seed shops
             List<Shop> shops = new List<Shop>() {
-            new Shop { Id = 1, Name = "TESCO Budaörs", Details = "Tesco Budaörs", LocationId = location1.Id, CreatorId = account2.Id, CompanyId = account2.Id },
-            new Shop { Id = 2, Name = "AUCHAN Budaörs", Details = "Auchan Budaörs", LocationId = location2.Id, CreatorId = account3.Id, CompanyId = account3.Id },
-            new Shop { Id = 3, Name = "TESCO Székesfehérvár", Details = "Tesco Székesfehérvár", LocationId = location3.Id, CreatorId = account2.Id, CompanyId = account2.Id },
-            new Shop { Id = 4, Name = "AUCHAN Debrecen", Details = "Auchan Debrecen", LocationId = location4.Id, CreatorId = account3.Id, CompanyId = account3.Id }
+            new Shop { Id = 1, Name = "AUCHAN Debrecen", Details = "Auchan Debrecen", LocationId = location4.Id, CreatorId = account3.Id, CompanyId = account3.Id },
+            new Shop { Id = 2, Name = "TESCO Székesfehérvár", Details = "Tesco Székesfehérvár", LocationId = location3.Id, CreatorId = account2.Id, CompanyId = account2.Id },
+            new Shop { Id = 3, Name = "AUCHAN Budaörs", Details = "Auchan Budaörs", LocationId = location2.Id, CreatorId = account3.Id, CompanyId = account3.Id },
+            new Shop { Id = 4, Name = "TESCO Budaörs", Details = "Tesco Budaörs", LocationId = location1.Id, CreatorId = account2.Id, CompanyId = account2.Id }
                  };
             modelBuilder.Entity<Shop>().HasData(
                 shops
@@ -145,6 +145,10 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
                         );
                 }
             }
+            itemPriceEntries.Add(
+                        new ItemPriceEntry { Id = id++, Price = 349, CreatedAt = new DateTime(2024, 3, 1).AddDays(9).AddHours(1), ItemId = item4.Barcode, ShopId = shops.ElementAt(0).Id, CreatorId = account1.Id }
+                        );
+
             modelBuilder.Entity<ItemPriceEntry>().HasData(
                 itemPriceEntries
                 );
@@ -157,7 +161,8 @@ namespace ShoppingListOptimizerAPI.Data.Infrastructure
 
             //Seed shopping list items
             modelBuilder.Entity<ShoppingListItem>().HasData(
-                new ShoppingListItem { Id=1,ItemId=item1.Barcode,Count=2,ShoppingListId=1,IsPriority=true}
+                new ShoppingListItem { Id=1,ItemId=item1.Barcode,Count=2,ShoppingListId=1,IsPriority=true},
+                new ShoppingListItem { Id=2,ItemId=item4.Barcode,Count=20,ShoppingListId=1,IsPriority=false}
                 );
             #endregion
 

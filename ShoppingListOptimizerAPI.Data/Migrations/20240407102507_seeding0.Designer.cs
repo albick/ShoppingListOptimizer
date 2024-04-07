@@ -11,7 +11,7 @@ using ShoppingListOptimizerAPI.Data.Infrastructure;
 namespace ShoppingListOptimizerAPI.Data.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240406144243_seeding0")]
+    [Migration("20240407102507_seeding0")]
     partial class seeding0
     {
         /// <inheritdoc />
@@ -51,21 +51,21 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         new
                         {
                             Id = "0",
-                            ConcurrencyStamp = "92955802-1298-4935-b41f-b2627831ed96",
+                            ConcurrencyStamp = "9b2d1667-56b1-4e6d-843a-049ead102f48",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "d11018ad-f977-4821-8f3a-fac6a18259f3",
+                            ConcurrencyStamp = "a424861c-f84c-4fbf-9220-c1f66d1fd199",
                             Name = "Shop",
                             NormalizedName = "SHOP"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "37773b24-d637-4d89-9422-ba7b10fe309b",
+                            ConcurrencyStamp = "bbef211e-4203-43b0-84c5-52ffb6525034",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -274,15 +274,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000000",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5db5bf6a-ce89-4d3e-8821-33df7fc5056e",
+                            ConcurrencyStamp = "cfa65111-7365-41d4-9ef9-4d8cdc3dfcde",
                             Email = "Account0@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT0@X.COM",
                             NormalizedUserName = "ADMIN0",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPx/ZkAVZq09VBV+Yvh/CGArUqln4qoP/E2794duVco15y9wWU7jGeZFuY4cQid8Ug==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC2R5bZd7Gd/qwLLoAhqqK/jHY4Xf6zOYOVYPlpzflIOWR8ssQmvsFHixIYHEeiM1w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f278aa71-2cdd-499e-b28f-152c4533d39a",
+                            SecurityStamp = "20c8707c-2524-4677-8a3f-7a5cc094ad83",
                             TwoFactorEnabled = false,
                             UserName = "Admin0"
                         },
@@ -290,15 +290,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d0f77330-c197-4142-941a-361a435b3a22",
+                            ConcurrencyStamp = "357e8a17-331d-4961-a52b-c296c69e8c5b",
                             Email = "Account1@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT1@X.COM",
                             NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFz1tS8EeGUEC8Pr9KHVWQ3pvYUf7c4iQo2xhO1DnaSfjHh7M2ltVks8T6ohXaQGig==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMiCvzYG/H9pY+oePowxCPlAD0c6F10qbQ4nA598DNf4KpGiQDh1GVbmAkiCmjECyw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "09c29dd3-f462-47a9-8cf2-0a3020fbae60",
+                            SecurityStamp = "885b60b7-7b0b-4fd8-bd5a-4dcc5fb34aa2",
                             TwoFactorEnabled = false,
                             UserName = "User1"
                         },
@@ -306,15 +306,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9d2e0b2e-527e-4339-82c2-30a599929ba0",
+                            ConcurrencyStamp = "30abfa97-e364-428b-b6b1-cd3e14fffec4",
                             Email = "Account2@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT2@X.COM",
                             NormalizedUserName = "TESCO",
-                            PasswordHash = "AQAAAAEAACcQAAAAECWRJwztJTgPNJWNWHIi2Gre4KGX8LhHcp63BhhyPAjRdZPRLC2d1QMG/KtCY7DroA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIYwn1bbIOhx8BsyyBb7PknvVXFyyOoegE2LrUPZQ8U8oTpNYiBvTpUe3IAU4ZH/FA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6f449158-b1ed-4b54-b8d5-2a10b2583704",
+                            SecurityStamp = "5d639932-6cb4-4c58-977d-47bb52ffb528",
                             TwoFactorEnabled = false,
                             UserName = "Tesco"
                         },
@@ -322,15 +322,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000003",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5745ea10-7fc8-4941-b8c4-dc2ab70e58a4",
+                            ConcurrencyStamp = "d129bca8-18c0-4ff9-bf81-d2291e555669",
                             Email = "Account3@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT3@X.COM",
                             NormalizedUserName = "AUCHAN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKNMMw/ViX4tY7ws/lQ5DTutKcO9GcWmA14ArxinOLmvYuMmi3T+bfrjF+NiR4PXgg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHjaSwPT9MGcSMw7B/xOFBxByoJb99ZoQtPNzrAn8pgePsZGlcKD9+yhs5mYVTxbXg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ff838fa0-e955-46b5-8046-94947a30f62d",
+                            SecurityStamp = "0515491d-d643-43b3-ab16-6e8eb5e95868",
                             TwoFactorEnabled = false,
                             UserName = "Auchan"
                         },
@@ -338,15 +338,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         {
                             Id = "00000000-0000-0000-0000-000000000004",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a2682994-61b7-4353-8cd1-4ef750eb8a85",
+                            ConcurrencyStamp = "2ad7349a-c793-4f5d-a043-b00b29dc191b",
                             Email = "Account4@x.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ACCOUNT4@X.COM",
                             NormalizedUserName = "USER4",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGk33uyVuJmrOUq6J8HkmzsQFfO1xloy/NqbtRzM4eq5rur3Yyq07+njzuD85DNWUA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEARXa/QDo4Mg91EXOlFYAo9NRSEQ+RLNem4rvwMbwLXJfcwCGpX8jSgNnWgWnjNtKw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b8c7b67e-663e-4416-8f7e-bca5a762561c",
+                            SecurityStamp = "b46eb576-bb28-4a54-8127-a4c05d9702d4",
                             TwoFactorEnabled = false,
                             UserName = "User4"
                         });
@@ -1473,6 +1473,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                             ItemId = "4",
                             Price = 364.0,
                             ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CreatedAt = new DateTime(2024, 3, 10, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 349.0,
+                            ShopId = 1
                         });
                 });
 
@@ -1854,24 +1863,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CompanyId = "00000000-0000-0000-0000-000000000002",
-                            CreatorId = "00000000-0000-0000-0000-000000000002",
-                            Details = "Tesco Budaörs",
-                            LocationId = 1,
-                            Name = "TESCO Budaörs"
+                            CompanyId = "00000000-0000-0000-0000-000000000003",
+                            CreatorId = "00000000-0000-0000-0000-000000000003",
+                            Details = "Auchan Debrecen",
+                            LocationId = 4,
+                            Name = "AUCHAN Debrecen"
                         },
                         new
                         {
                             Id = 2,
-                            CompanyId = "00000000-0000-0000-0000-000000000003",
-                            CreatorId = "00000000-0000-0000-0000-000000000003",
-                            Details = "Auchan Budaörs",
-                            LocationId = 2,
-                            Name = "AUCHAN Budaörs"
-                        },
-                        new
-                        {
-                            Id = 3,
                             CompanyId = "00000000-0000-0000-0000-000000000002",
                             CreatorId = "00000000-0000-0000-0000-000000000002",
                             Details = "Tesco Székesfehérvár",
@@ -1880,12 +1880,21 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 3,
                             CompanyId = "00000000-0000-0000-0000-000000000003",
                             CreatorId = "00000000-0000-0000-0000-000000000003",
-                            Details = "Auchan Debrecen",
-                            LocationId = 4,
-                            Name = "AUCHAN Debrecen"
+                            Details = "Auchan Budaörs",
+                            LocationId = 2,
+                            Name = "AUCHAN Budaörs"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CompanyId = "00000000-0000-0000-0000-000000000002",
+                            CreatorId = "00000000-0000-0000-0000-000000000002",
+                            Details = "Tesco Budaörs",
+                            LocationId = 1,
+                            Name = "TESCO Budaörs"
                         });
                 });
 
@@ -1972,6 +1981,14 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                             Count = 2,
                             IsPriority = true,
                             ItemId = "1",
+                            ShoppingListId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Count = 20,
+                            IsPriority = false,
+                            ItemId = "4",
                             ShoppingListId = 1
                         });
                 });

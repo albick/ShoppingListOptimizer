@@ -423,9 +423,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0", "92955802-1298-4935-b41f-b2627831ed96", "Admin", "ADMIN" },
-                    { "1", "d11018ad-f977-4821-8f3a-fac6a18259f3", "Shop", "SHOP" },
-                    { "2", "37773b24-d637-4d89-9422-ba7b10fe309b", "User", "USER" }
+                    { "0", "9b2d1667-56b1-4e6d-843a-049ead102f48", "Admin", "ADMIN" },
+                    { "1", "a424861c-f84c-4fbf-9220-c1f66d1fd199", "Shop", "SHOP" },
+                    { "2", "bbef211e-4203-43b0-84c5-52ffb6525034", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -433,11 +433,11 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LocationId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "00000000-0000-0000-0000-000000000000", 0, "5db5bf6a-ce89-4d3e-8821-33df7fc5056e", "Account0@x.com", false, null, false, null, "ACCOUNT0@X.COM", "ADMIN0", "AQAAAAEAACcQAAAAEPx/ZkAVZq09VBV+Yvh/CGArUqln4qoP/E2794duVco15y9wWU7jGeZFuY4cQid8Ug==", null, false, "f278aa71-2cdd-499e-b28f-152c4533d39a", false, "Admin0" },
-                    { "00000000-0000-0000-0000-000000000001", 0, "d0f77330-c197-4142-941a-361a435b3a22", "Account1@x.com", false, null, false, null, "ACCOUNT1@X.COM", "USER1", "AQAAAAEAACcQAAAAEFz1tS8EeGUEC8Pr9KHVWQ3pvYUf7c4iQo2xhO1DnaSfjHh7M2ltVks8T6ohXaQGig==", null, false, "09c29dd3-f462-47a9-8cf2-0a3020fbae60", false, "User1" },
-                    { "00000000-0000-0000-0000-000000000002", 0, "9d2e0b2e-527e-4339-82c2-30a599929ba0", "Account2@x.com", false, null, false, null, "ACCOUNT2@X.COM", "TESCO", "AQAAAAEAACcQAAAAECWRJwztJTgPNJWNWHIi2Gre4KGX8LhHcp63BhhyPAjRdZPRLC2d1QMG/KtCY7DroA==", null, false, "6f449158-b1ed-4b54-b8d5-2a10b2583704", false, "Tesco" },
-                    { "00000000-0000-0000-0000-000000000003", 0, "5745ea10-7fc8-4941-b8c4-dc2ab70e58a4", "Account3@x.com", false, null, false, null, "ACCOUNT3@X.COM", "AUCHAN", "AQAAAAEAACcQAAAAEKNMMw/ViX4tY7ws/lQ5DTutKcO9GcWmA14ArxinOLmvYuMmi3T+bfrjF+NiR4PXgg==", null, false, "ff838fa0-e955-46b5-8046-94947a30f62d", false, "Auchan" },
-                    { "00000000-0000-0000-0000-000000000004", 0, "a2682994-61b7-4353-8cd1-4ef750eb8a85", "Account4@x.com", false, null, false, null, "ACCOUNT4@X.COM", "USER4", "AQAAAAEAACcQAAAAEGk33uyVuJmrOUq6J8HkmzsQFfO1xloy/NqbtRzM4eq5rur3Yyq07+njzuD85DNWUA==", null, false, "b8c7b67e-663e-4416-8f7e-bca5a762561c", false, "User4" }
+                    { "00000000-0000-0000-0000-000000000000", 0, "cfa65111-7365-41d4-9ef9-4d8cdc3dfcde", "Account0@x.com", false, null, false, null, "ACCOUNT0@X.COM", "ADMIN0", "AQAAAAEAACcQAAAAEC2R5bZd7Gd/qwLLoAhqqK/jHY4Xf6zOYOVYPlpzflIOWR8ssQmvsFHixIYHEeiM1w==", null, false, "20c8707c-2524-4677-8a3f-7a5cc094ad83", false, "Admin0" },
+                    { "00000000-0000-0000-0000-000000000001", 0, "357e8a17-331d-4961-a52b-c296c69e8c5b", "Account1@x.com", false, null, false, null, "ACCOUNT1@X.COM", "USER1", "AQAAAAEAACcQAAAAEMiCvzYG/H9pY+oePowxCPlAD0c6F10qbQ4nA598DNf4KpGiQDh1GVbmAkiCmjECyw==", null, false, "885b60b7-7b0b-4fd8-bd5a-4dcc5fb34aa2", false, "User1" },
+                    { "00000000-0000-0000-0000-000000000002", 0, "30abfa97-e364-428b-b6b1-cd3e14fffec4", "Account2@x.com", false, null, false, null, "ACCOUNT2@X.COM", "TESCO", "AQAAAAEAACcQAAAAEIYwn1bbIOhx8BsyyBb7PknvVXFyyOoegE2LrUPZQ8U8oTpNYiBvTpUe3IAU4ZH/FA==", null, false, "5d639932-6cb4-4c58-977d-47bb52ffb528", false, "Tesco" },
+                    { "00000000-0000-0000-0000-000000000003", 0, "d129bca8-18c0-4ff9-bf81-d2291e555669", "Account3@x.com", false, null, false, null, "ACCOUNT3@X.COM", "AUCHAN", "AQAAAAEAACcQAAAAEHjaSwPT9MGcSMw7B/xOFBxByoJb99ZoQtPNzrAn8pgePsZGlcKD9+yhs5mYVTxbXg==", null, false, "0515491d-d643-43b3-ab16-6e8eb5e95868", false, "Auchan" },
+                    { "00000000-0000-0000-0000-000000000004", 0, "2ad7349a-c793-4f5d-a043-b00b29dc191b", "Account4@x.com", false, null, false, null, "ACCOUNT4@X.COM", "USER4", "AQAAAAEAACcQAAAAEARXa/QDo4Mg91EXOlFYAo9NRSEQ+RLNem4rvwMbwLXJfcwCGpX8jSgNnWgWnjNtKw==", null, false, "b46eb576-bb28-4a54-8127-a4c05d9702d4", false, "User4" }
                 });
 
             migrationBuilder.InsertData(
@@ -479,10 +479,10 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 columns: new[] { "Id", "CompanyId", "CreatorId", "Details", "LocationId", "Name" },
                 values: new object[,]
                 {
-                    { 1, "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000002", "Tesco Budaörs", 1, "TESCO Budaörs" },
-                    { 2, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Budaörs", 2, "AUCHAN Budaörs" },
-                    { 3, "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000002", "Tesco Székesfehérvár", 3, "TESCO Székesfehérvár" },
-                    { 4, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Debrecen", 4, "AUCHAN Debrecen" }
+                    { 1, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Debrecen", 4, "AUCHAN Debrecen" },
+                    { 2, "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000002", "Tesco Székesfehérvár", 3, "TESCO Székesfehérvár" },
+                    { 3, "00000000-0000-0000-0000-000000000003", "00000000-0000-0000-0000-000000000003", "Auchan Budaörs", 2, "AUCHAN Budaörs" },
+                    { 4, "00000000-0000-0000-0000-000000000002", "00000000-0000-0000-0000-000000000002", "Tesco Budaörs", 1, "TESCO Budaörs" }
                 });
 
             migrationBuilder.InsertData(
@@ -606,7 +606,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     { 109, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "1", 374.0, 4 },
                     { 110, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "2", 904.0, 4 },
                     { 111, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "3", 154.0, 4 },
-                    { 112, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 364.0, 4 }
+                    { 112, new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 364.0, 4 },
+                    { 113, new DateTime(2024, 3, 10, 1, 0, 0, 0, DateTimeKind.Unspecified), "00000000-0000-0000-0000-000000000001", "4", 349.0, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -647,7 +648,11 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
             migrationBuilder.InsertData(
                 table: "ShoppingListItem",
                 columns: new[] { "Id", "Count", "IsPriority", "ItemId", "ShoppingListId" },
-                values: new object[] { 1, 2, true, "1", 1 });
+                values: new object[,]
+                {
+                    { 1, 2, true, "1", 1 },
+                    { 2, 20, false, "4", 1 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
