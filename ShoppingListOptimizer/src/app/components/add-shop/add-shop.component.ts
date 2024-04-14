@@ -3,9 +3,9 @@ import {NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
 import {EMPTY, Observable} from 'rxjs';
 import {DayOfWeek, LocationModel, OpeningHoursModel} from 'src/app/models/generated';
 import {ShopService} from 'src/app/services/shop.service';
-import { CommonModule } from '@angular/common';
-import { Feature } from 'geojson';
-import { faSquarePlus } from '@fortawesome/free-solid-svg-icons';
+import {CommonModule} from '@angular/common';
+import {Feature} from 'geojson';
+import {faSquarePlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-shop',
@@ -36,32 +36,61 @@ export class AddShopComponent {
     longitude: 0,
     latitude: 0
   };
-  //days from monday to sunday
-  times: NgbTimeStruct[][] = [];
 
 
-  faSquarePlus=faSquarePlus;
+  faSquarePlus = faSquarePlus;
 
-  weekdaysSameAsMonday=true;
+  weekdaysSameAsMonday = true;
+  times: string[][] = []
+  closedDays: boolean[] = [];
 
   constructor(private shopService: ShopService) {
     for (let i = 0; i <= 6; i++) {
-      const innerArray: NgbTimeStruct[] = [];
-      for (let j = 0; j <= 1; j++) {
-        innerArray.push({hour: 0, minute: 0, second: 0});
-      }
+      this.closedDays.push(false);
+
+      const innerArray: string[] = [];
+      innerArray.push("08:00");
+      innerArray.push("17:00");
       this.times.push(innerArray);
     }
+
   }
 
   ngOnInit(): void {
-    this.companies=this.shopService.getCompanies();
+    this.companies = this.shopService.getCompanies();
   }
 
   onSubmit() {
     const {company, name, details} = this.form;
 
-    this.shopService.addShop(name, details, company, this.location, this.times).subscribe(
+    const times: string[][] = [];
+    if (this.weekdaysSameAsMonday) {
+      for (let i = 0; i < 5; i++) {
+        if (this.closedDays[i]) {
+          times.push(["00:00", "00:00"])
+        } else {
+          times.push(this.times[0]);
+        }
+      }
+      for (let j = 5; j < 7; j++) {
+        if (this.closedDays[j]) {
+          times.push(["00:00", "00:00"])
+        } else {
+          times.push(this.times[j]);
+        }
+      }
+    } else {
+      for (let i = 0; i < 7; i++) {
+        if (this.closedDays[i]) {
+          times.push(["00:00", "00:00"])
+        } else {
+          times.push(this.times[i]);
+        }
+      }
+    }
+
+
+    this.shopService.addShop(name, details, company, this.location, times).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
@@ -112,4 +141,14 @@ export class AddShopComponent {
   }
 
 
+  weekdaysSameAsMondayClicked() {
+    this.weekdaysSameAsMonday = !this.weekdaysSameAsMonday;
+  }
+
+  closedDaysClicked(id: number) {
+    if (id == 0) {
+      this.weekdaysSameAsMonday = false;
+    }
+    this.closedDays[id] = !this.closedDays[id];
+  }
 }

@@ -14,6 +14,8 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { ShoppingListsComponent } from './components/shopping-lists/shopping-lists.component';
 import { ShoppingListDetailsComponent } from './components/shopping-list-details/shopping-list-details.component';
 import { ShopDetailsComponent } from './components/shop-details/shop-details.component';
+import { OptimizerListsComponent } from './components/optimizer-lists/optimizer-lists.component';
+import { OptimizerSelectOptionsComponent } from './components/optimizer-select-options/optimizer-select-options.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,8 @@ const routes: Routes = [
   {path: 'items/:id', component: ItemDetailsComponent},
   {path: 'shops/:id', component: ShopDetailsComponent},
   {path: 'shopping-lists/:id', component: ShoppingListDetailsComponent},
+  {path: 'optimizer-lists', component: OptimizerListsComponent},
+  {path: 'optimizer-select-options/:id', component: OptimizerSelectOptionsComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 

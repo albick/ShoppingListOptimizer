@@ -25,7 +25,7 @@ namespace ShoppingListOptimizerAPI.Controllers
         public ActionResult<List<ShoppingListResponse>> GetShoppingLists()
         {
             var shoppingLists = _shoppingListService.GetShoppingLists();
-            if(shoppingLists == null)
+            if (shoppingLists == null)
             {
                 return NotFound("No shopping lists found");
             }
@@ -42,7 +42,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             }
             return Ok(_mapper.Map<ShoppingListResponse>(shoppingList));
         }
-        
+
         [HttpPost]
         public ActionResult<ShoppingListResponse> AddShoppingList([FromBody] ShoppingListRequest shoppingListRequest)
         {
@@ -86,7 +86,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             }
             return Ok(_mapper.Map<ShoppingListItemResponse>(shoppingListItem));
         }
-        
+
         [HttpPut("{listId}/items/{itemId}")]
         public ActionResult<ShoppingListItemResponse> UpdateShoppingListItem([FromBody] ShoppingListItemRequest shoppingListItemRequest, int listId, int itemId)
         {
@@ -109,5 +109,11 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(true);
         }
 
+
+        [HttpGet("{id}/optimize")]
+        public ActionResult<string> OptimizeShoppingList([FromQuery] double distance, [FromQuery] bool onlyOptimizePriority)
+        {
+            return Ok(222);
+        }
     }
 }

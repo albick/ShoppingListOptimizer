@@ -9,12 +9,16 @@ namespace ShoppingListOptimizerAPI.Data.Models
 {
     public class ItemPriceEntry
     {
-        [Key]
         public int Id { get; set; }
         public double Price { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public string ItemId { get; set; }
         public Item Item { get; set; }
+
+        public string CreatorId { get; set; }
         public Account Creator { get; set; }
+        public int ShopId { get; set; }
         public Shop Shop { get; set; }
     }
 }

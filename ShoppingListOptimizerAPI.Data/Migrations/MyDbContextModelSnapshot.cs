@@ -43,6 +43,29 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0",
+                            ConcurrencyStamp = "9b2d1667-56b1-4e6d-843a-049ead102f48",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "a424861c-f84c-4fbf-9220-c1f66d1fd199",
+                            Name = "Shop",
+                            NormalizedName = "SHOP"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "bbef211e-4203-43b0-84c5-52ffb6525034",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -126,6 +149,33 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000000",
+                            RoleId = "0"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000001",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000002",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000003",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "00000000-0000-0000-0000-000000000004",
+                            RoleId = "1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -215,6 +265,88 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000000",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "cfa65111-7365-41d4-9ef9-4d8cdc3dfcde",
+                            Email = "Account0@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT0@X.COM",
+                            NormalizedUserName = "ADMIN0",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC2R5bZd7Gd/qwLLoAhqqK/jHY4Xf6zOYOVYPlpzflIOWR8ssQmvsFHixIYHEeiM1w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "20c8707c-2524-4677-8a3f-7a5cc094ad83",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin0"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000001",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "357e8a17-331d-4961-a52b-c296c69e8c5b",
+                            Email = "Account1@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT1@X.COM",
+                            NormalizedUserName = "USER1",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMiCvzYG/H9pY+oePowxCPlAD0c6F10qbQ4nA598DNf4KpGiQDh1GVbmAkiCmjECyw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "885b60b7-7b0b-4fd8-bd5a-4dcc5fb34aa2",
+                            TwoFactorEnabled = false,
+                            UserName = "User1"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000002",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "30abfa97-e364-428b-b6b1-cd3e14fffec4",
+                            Email = "Account2@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT2@X.COM",
+                            NormalizedUserName = "TESCO",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIYwn1bbIOhx8BsyyBb7PknvVXFyyOoegE2LrUPZQ8U8oTpNYiBvTpUe3IAU4ZH/FA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5d639932-6cb4-4c58-977d-47bb52ffb528",
+                            TwoFactorEnabled = false,
+                            UserName = "Tesco"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000003",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d129bca8-18c0-4ff9-bf81-d2291e555669",
+                            Email = "Account3@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT3@X.COM",
+                            NormalizedUserName = "AUCHAN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHjaSwPT9MGcSMw7B/xOFBxByoJb99ZoQtPNzrAn8pgePsZGlcKD9+yhs5mYVTxbXg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0515491d-d643-43b3-ab16-6e8eb5e95868",
+                            TwoFactorEnabled = false,
+                            UserName = "Auchan"
+                        },
+                        new
+                        {
+                            Id = "00000000-0000-0000-0000-000000000004",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2ad7349a-c793-4f5d-a043-b00b29dc191b",
+                            Email = "Account4@x.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ACCOUNT4@X.COM",
+                            NormalizedUserName = "USER4",
+                            PasswordHash = "AQAAAAEAACcQAAAAEARXa/QDo4Mg91EXOlFYAo9NRSEQ+RLNem4rvwMbwLXJfcwCGpX8jSgNnWgWnjNtKw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b46eb576-bb28-4a54-8127-a4c05d9702d4",
+                            TwoFactorEnabled = false,
+                            UserName = "User4"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Item", b =>
@@ -232,7 +364,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("double");
@@ -241,11 +374,55 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Barcode");
+                    b.HasKey("Barcode")
+                        .HasName("PK_Item");
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("Items");
+                    b.ToTable("Item", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Item_Name", "CHAR_LENGTH(Name) >= 3");
+
+                            t.HasCheckConstraint("CK_Item_Quantity", "Quantity > 0");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Barcode = "1",
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            Details = "Gyermelyi Búzafinomliszt.\r\nBL 55\r\nKiszerelés: 1000g./csomag.\r\nAllergének: glutén.",
+                            Name = "Búzafinomliszt BL55 GYERMELYI 1kg",
+                            Quantity = 1.0,
+                            Unit = "kg"
+                        },
+                        new
+                        {
+                            Barcode = "2",
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            Details = "A Koronás Kristálycukor tartósítószer és színezék hozzáadása nélkül.\r\nSzemcséi szabad szemmel is jól láthatóak.\r\nÉtelek és italok édesítésére, ízesítésére egyaránt használható.\r\nMinőségét korlátlan ideig megőrzi.",
+                            Name = "Kristálycukor KORONÁS 1kg",
+                            Quantity = 1.0,
+                            Unit = "kg"
+                        },
+                        new
+                        {
+                            Barcode = "3",
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            Details = "0,5 literes, szénsavmentes természetes ásványvíz.\r\n\r\nAlkalmas nátrium-szegény diétához. Lúgos kémhatású termék, 7,5 pH-val. Vastalanítva.",
+                            Name = "Mizse szénsavmentes ásványvíz",
+                            Quantity = 0.5,
+                            Unit = "l"
+                        },
+                        new
+                        {
+                            Barcode = "4",
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            Details = "Asztali só.",
+                            Name = "Asztali tengeri só 1kg",
+                            Quantity = 1.0,
+                            Unit = "kg"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ItemPriceEntry", b =>
@@ -261,7 +438,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("ItemBarcode")
+                    b.Property<string>("ItemId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
@@ -271,15 +448,1038 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<int>("ShopId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ItemPriceEntry");
 
                     b.HasIndex("CreatorId");
 
-                    b.HasIndex("ItemBarcode");
+                    b.HasIndex("ItemId");
 
                     b.HasIndex("ShopId");
 
-                    b.ToTable("ItemPriceEntries");
+                    b.ToTable("ItemPriceEntry", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ItemPriceEntry_Price", "Price > 0");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 359.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 889.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 139.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 349.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 361.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 891.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 141.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 351.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 363.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 893.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 143.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 353.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 365.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 895.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 145.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 355.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 367.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 897.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 147.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 357.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 369.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 899.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 149.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 359.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 371.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 901.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 151.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 361.0,
+                            ShopId = 1
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 360.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 890.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 140.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 350.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 362.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 892.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 142.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 352.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 364.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 894.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 144.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 354.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 366.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 896.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 146.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 356.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 368.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 898.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 148.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 358.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 370.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 900.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 150.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 360.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 372.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 902.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 152.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 362.0,
+                            ShopId = 2
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 361.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 891.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 141.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 351.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 61,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 363.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 893.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 143.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 64,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 353.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 65,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 365.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 66,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 895.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 67,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 145.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 68,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 355.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 69,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 367.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 70,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 897.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 71,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 147.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 72,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 357.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 73,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 369.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 74,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 899.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 75,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 149.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 76,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 359.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 77,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 371.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 78,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 901.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 79,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 151.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 80,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 361.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 81,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 373.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 82,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 903.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 83,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 153.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 84,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 363.0,
+                            ShopId = 3
+                        },
+                        new
+                        {
+                            Id = 85,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 362.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 86,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 892.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 87,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 142.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 88,
+                            CreatedAt = new DateTime(2024, 3, 1, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 352.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 89,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 364.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 90,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 894.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 91,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 144.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 92,
+                            CreatedAt = new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 354.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 93,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 366.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 94,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 896.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 95,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 146.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 96,
+                            CreatedAt = new DateTime(2024, 3, 3, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 356.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 97,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 368.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 98,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 898.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 99,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 148.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 100,
+                            CreatedAt = new DateTime(2024, 3, 4, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 358.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 370.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 900.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 150.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CreatedAt = new DateTime(2024, 3, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 360.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 105,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 372.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 106,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 902.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 152.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CreatedAt = new DateTime(2024, 3, 6, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 362.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "1",
+                            Price = 374.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "2",
+                            Price = 904.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "3",
+                            Price = 154.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CreatedAt = new DateTime(2024, 3, 7, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 364.0,
+                            ShopId = 4
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CreatedAt = new DateTime(2024, 3, 10, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            ItemId = "4",
+                            Price = 349.0,
+                            ShopId = 1
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Location", b =>
@@ -290,7 +1490,8 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<double>("Latitude")
                         .HasColumnType("double");
@@ -300,19 +1501,65 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Number")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Postcode")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Street")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_Location");
 
                     b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Budaörs",
+                            Latitude = 47.450125,
+                            Longitude = 18.964566300000001,
+                            Number = "1",
+                            Postcode = "2040",
+                            Street = "Kinizsi utca"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Budaörs",
+                            Latitude = 47.454938749999997,
+                            Longitude = 18.943733936449245,
+                            Number = "2-4",
+                            Postcode = "2040",
+                            Street = "Sport utca"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Székesfehérvár",
+                            Latitude = 47.190058999999998,
+                            Longitude = 18.4041082,
+                            Number = "6",
+                            Postcode = "8000",
+                            Street = "Palotai út"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Debrecen",
+                            Latitude = 47.540409799999999,
+                            Longitude = 21.583815048626832,
+                            Number = "7",
+                            Postcode = "4031",
+                            Street = "Kishatár utca"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.OpeningHours", b =>
@@ -327,17 +1574,244 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time(6)");
 
-                    b.Property<int?>("ShopId")
+                    b.Property<int>("ShopId")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time(6)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_OpeningHours");
 
                     b.HasIndex("ShopId");
 
                     b.ToTable("OpeningHours");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 1,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 12,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 13,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 14,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 2,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 15,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 16,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 17,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 18,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 19,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 20,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 21,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 3,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 22,
+                            DayOfWeek = 1,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 23,
+                            DayOfWeek = 2,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 24,
+                            DayOfWeek = 3,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 25,
+                            DayOfWeek = 4,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 26,
+                            DayOfWeek = 5,
+                            EndTime = new TimeSpan(0, 20, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 27,
+                            DayOfWeek = 6,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        },
+                        new
+                        {
+                            Id = 28,
+                            DayOfWeek = 0,
+                            EndTime = new TimeSpan(0, 16, 0, 0, 0),
+                            ShopId = 4,
+                            StartTime = new TimeSpan(0, 6, 0, 0, 0)
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Shop", b =>
@@ -356,16 +1830,20 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Details")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("char(50)")
+                        .IsFixedLength();
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_Shop");
 
                     b.HasIndex("CompanyId");
 
@@ -373,7 +1851,48 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.HasIndex("LocationId");
 
-                    b.ToTable("Shops");
+                    b.ToTable("Shop", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Shop_Name", "CHAR_LENGTH(Name) >= 3");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyId = "00000000-0000-0000-0000-000000000003",
+                            CreatorId = "00000000-0000-0000-0000-000000000003",
+                            Details = "Auchan Debrecen",
+                            LocationId = 4,
+                            Name = "AUCHAN Debrecen"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyId = "00000000-0000-0000-0000-000000000002",
+                            CreatorId = "00000000-0000-0000-0000-000000000002",
+                            Details = "Tesco Székesfehérvár",
+                            LocationId = 3,
+                            Name = "TESCO Székesfehérvár"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CompanyId = "00000000-0000-0000-0000-000000000003",
+                            CreatorId = "00000000-0000-0000-0000-000000000003",
+                            Details = "Auchan Budaörs",
+                            LocationId = 2,
+                            Name = "AUCHAN Budaörs"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CompanyId = "00000000-0000-0000-0000-000000000002",
+                            CreatorId = "00000000-0000-0000-0000-000000000002",
+                            Details = "Tesco Budaörs",
+                            LocationId = 1,
+                            Name = "TESCO Budaörs"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingList", b =>
@@ -391,17 +1910,34 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.Property<string>("Details")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("char(50)")
+                        .IsFixedLength();
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ShoppingList");
 
                     b.HasIndex("CreatorId");
 
-                    b.ToTable("ShoppingLists");
+                    b.ToTable("ShoppingList", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ShoppingList_Name", "CHAR_LENGTH(Name) >= 3");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatorId = "00000000-0000-0000-0000-000000000001",
+                            DateModified = new DateTime(2024, 3, 8, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            Details = "details of shopping list",
+                            Name = "Shopping List 1"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.ShoppingListItem", b =>
@@ -416,20 +1952,42 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                     b.Property<bool>("IsPriority")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("ItemBarcode")
+                    b.Property<string>("ItemId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int?>("ShoppingListId")
+                    b.Property<int>("ShoppingListId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ShoppingListItem");
 
-                    b.HasIndex("ItemBarcode");
+                    b.HasIndex("ItemId");
 
                     b.HasIndex("ShoppingListId");
 
-                    b.ToTable("ShoppingListItems");
+                    b.ToTable("ShoppingListItem", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_ShoppingListItem_Count", "Count > 0");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Count = 2,
+                            IsPriority = true,
+                            ItemId = "1",
+                            ShoppingListId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Count = 20,
+                            IsPriority = false,
+                            ItemId = "4",
+                            ShoppingListId = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -513,7 +2071,7 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
 
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("ItemBarcode")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -534,7 +2092,9 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 {
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.Shop", null)
                         .WithMany("OpeningHours")
-                        .HasForeignKey("ShopId");
+                        .HasForeignKey("ShopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ShoppingListOptimizerAPI.Data.Models.Shop", b =>
@@ -579,13 +2139,15 @@ namespace ShoppingListOptimizerAPI.Data.Migrations
                 {
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("ItemBarcode")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ShoppingListOptimizerAPI.Data.Models.ShoppingList", null)
                         .WithMany("ShoppingListItems")
-                        .HasForeignKey("ShoppingListId");
+                        .HasForeignKey("ShoppingListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Item");
                 });

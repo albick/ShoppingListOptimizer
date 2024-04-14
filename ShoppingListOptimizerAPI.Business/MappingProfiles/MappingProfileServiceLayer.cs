@@ -30,7 +30,8 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
             .ForMember(dest => dest.Company, opt => opt.MapFrom(src => src.Company));
 
             CreateMap<OpeningHoursDTO, OpeningHours>()
-            .ForMember(dest => dest.Id, opt => opt.Ignore());
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.ShopId, opt => opt.Ignore());
 
             CreateMap<OpeningHours, OpeningHoursDTO>();
 
@@ -62,10 +63,16 @@ namespace ShoppingListOptimizerAPI.Business.MappingProfiles
             .ForMember(dest => dest.AccessFailedCount, opt => opt.Ignore());
 
             CreateMap<ItemPriceEntry, ItemPriceEntryDTO>();
-            CreateMap<ItemPriceEntryDTO, ItemPriceEntry>();
+            CreateMap<ItemPriceEntryDTO, ItemPriceEntry>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.ItemId, opt => opt.Ignore())
+                .ForMember(dest => dest.ShopId, opt => opt.Ignore());
 
             CreateMap<ShoppingListItem, ShoppingListItemDTO>();
-            CreateMap<ShoppingListItemDTO, ShoppingListItem>();
+            CreateMap<ShoppingListItemDTO, ShoppingListItem>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.ItemId, opt => opt.Ignore())
+                .ForMember(dest => dest.ShoppingListId, opt => opt.Ignore());
 
             CreateMap<ShoppingList, ShoppingListDTO>();
             CreateMap<ShoppingListDTO, ShoppingList>();

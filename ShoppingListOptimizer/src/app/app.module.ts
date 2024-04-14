@@ -41,6 +41,10 @@ import { ShoppingListAddRowComponent } from './components/helpers/shopping-list-
 import { ShoppingListItemRowComponent } from './components/helpers/shopping-list-item-row/shopping-list-item-row.component';
 import { ShoppingListItemDeleteModalComponent } from './components/helpers/shopping-list-item-delete-modal/shopping-list-item-delete-modal.component';
 import { ShoppingListItemEditModalComponent } from './components/helpers/shopping-list-item-edit-modal/shopping-list-item-edit-modal.component';
+import { OptimizerListsComponent } from './components/optimizer-lists/optimizer-lists.component';
+import { OptimizerListRowComponent } from './components/helpers/optimizer-list-row/optimizer-list-row.component';
+import { OptimizerSelectOptionsComponent } from './components/optimizer-select-options/optimizer-select-options.component';
+import { OptimizerListItemRowComponent } from './components/helpers/optimizer-list-item-row/optimizer-list-item-row.component';
 
 
 @NgModule({
@@ -70,7 +74,11 @@ import { ShoppingListItemEditModalComponent } from './components/helpers/shoppin
     ShoppingListAddRowComponent,
     ShoppingListItemRowComponent,
     ShoppingListItemDeleteModalComponent,
-    ShoppingListItemEditModalComponent
+    ShoppingListItemEditModalComponent,
+    OptimizerListsComponent,
+    OptimizerListRowComponent,
+    OptimizerSelectOptionsComponent,
+    OptimizerListItemRowComponent
   ],
   imports: [
     AppRoutingModule,

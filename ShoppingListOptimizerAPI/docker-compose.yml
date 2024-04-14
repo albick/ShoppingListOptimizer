@@ -1,0 +1,13 @@
+version: '3'
+services:
+  shoppinglistoptimizerapi:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - shopping_list_optimizer_network
+networks:
+  shopping_list_optimizer_network:
+    external: true

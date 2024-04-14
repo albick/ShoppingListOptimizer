@@ -87,8 +87,6 @@ namespace ShoppingListOptimizerAPI
 
             //services.AddHostedService<SchedulerService>();
 
-            services.AddScoped<RoleSeedService>();
-            services.AddScoped<DbSeedService>();
 
 
             //services.AddServerSentEvents();
@@ -142,7 +140,7 @@ namespace ShoppingListOptimizerAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleSeedService roleSeedService,IMapper mapper,DbSeedService dbSeedService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,IMapper mapper)
         {
             if (env.IsDevelopment())
             {
@@ -154,11 +152,7 @@ namespace ShoppingListOptimizerAPI
             app.UseHttpsRedirection();
 
 
-
-            roleSeedService.SeedRolesAsync().GetAwaiter().GetResult();
             //
-            dbSeedService.SeedDbAsync().GetAwaiter().GetResult();
-            
             
 
             app.UseSwagger();

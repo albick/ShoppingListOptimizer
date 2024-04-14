@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uV/7f3n1ucYO6niMisNfL2Ry4Qh/QVH5bKClS6UQeSa2RUuvtOId9enHv0yOZH3qDJAA7H2BdzCTmx2/NCm/qw==",
+  "dgSpecHash": "muhE9CCXtsosobC9ckHtVwFsDuCSy/Na7EAl3Xqjv4MEEAYs1m10NQ4QfRS74Nh/TuKPE+8k81nT7wVQetsF4Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\khhun\\source\\ShoppingListOptimizer\\ShoppingListOptimizerAPI.Business\\ShoppingListOptimizerAPI.Business.csproj",
   "expectedPackageFiles": [
@@ -27,7 +27,7 @@
     "C:\\Users\\khhun\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.12\\microsoft.entityframeworkcore.7.0.12.nupkg.sha512",
     "C:\\Users\\khhun\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.12\\microsoft.entityframeworkcore.abstractions.7.0.12.nupkg.sha512",
     "C:\\Users\\khhun\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.12\\microsoft.entityframeworkcore.analyzers.7.0.12.nupkg.sha512",
-    "C:\\Users\\khhun\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.2\\microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
+    "C:\\Users\\khhun\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.12\\microsoft.entityframeworkcore.relational.7.0.12.nupkg.sha512",
     "C:\\Users\\khhun\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\khhun\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\khhun\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

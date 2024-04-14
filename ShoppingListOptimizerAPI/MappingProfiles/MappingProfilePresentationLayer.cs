@@ -50,10 +50,10 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
 
             //CreateMap<ShopResponse, ShopDTO>();
 
-            CreateMap<string, TimeSpan>().ConvertUsing(new StringToTimeSpanConverter());
+            CreateMap<string, TimeSpan>().ConvertUsing<StringToTimeSpanConverter>();
             CreateMap<OpeningHoursModel, OpeningHoursDTO>()
-            .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime))
-            .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => src.EndTime));
+                .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime))
+                .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => src.EndTime));
 
             CreateMap<TimeSpan, string>().ConvertUsing(new TimeSpanToStringConverter());
 
@@ -113,7 +113,7 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
     {
         public TimeSpan Convert(string source, TimeSpan destination, ResolutionContext context)
         {
-            if (TimeSpan.TryParseExact(source, "h\\:m\\:s", null, out TimeSpan result))
+            if (TimeSpan.TryParseExact(source, "h\\:m", null, out TimeSpan result))
             {
                 return result;
             }
@@ -129,7 +129,7 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
     {
         public string Convert(TimeSpan source, string destination, ResolutionContext context)
         {
-            return source.ToString("h\\:m\\:s");
+            return source.ToString("h\\:m");
         }
     }
 }

@@ -13,5 +13,7 @@ namespace ShoppingListOptimizerAPI.Data.Models
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
 
+        public int ShopId { get; set; }
+
     }
 }
