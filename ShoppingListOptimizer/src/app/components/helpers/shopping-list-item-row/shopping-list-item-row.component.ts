@@ -13,7 +13,7 @@ import { ShoppingListItemEditModalComponent } from '../shopping-list-item-edit-m
 })
 export class ShoppingListItemRowComponent {
   @Input() shoppingListItem!: ShoppingListItemResponse;
-@Input() shoppingListId!:number;
+  @Input() shoppingListId!:number;
 
   faCircleExclamation = faCircleExclamation;
   faPenToSquare = faPenToSquare;

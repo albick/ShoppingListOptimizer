@@ -1,1 +1,17 @@
-<p>optimizer-lists works!</p>
+<div class="col-10 col-lg-4 offset-1 offset-lg-4 mt-4">
+  <div class="d-flex justify-content-between mb-4 align-items-center">
+    <p class="h1 p-0">Shopping lists</p>
+
+
+  </div>
+  <div *ngIf="(shoppingLists | async) as shoppingLists; else spinner" class="mb-2">
+    <app-optimizer-list-row *ngFor="let shoppingList of shoppingLists"
+                            [shoppingList]="shoppingList"></app-optimizer-list-row>
+  </div>
+</div>
+<ng-template #spinner>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-dark" role="status">
+    </div>
+  </div>
+</ng-template>

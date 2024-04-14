@@ -1,6 +1,6 @@
 <div class="col-10 col-lg-10 offset-1 offset-lg-1 mt-4">
   <div class="row">
-    <p class="h1 mb-4 p-0">Search shops</p>
+    <p class="h1 mb-4 p-0">Search items</p>
   </div>
   <div class="row">
     <div class="mb-4 col-12 col-lg-4 p-0">
@@ -55,13 +55,28 @@
             <p class="m-0 align-self-center">Search</p></button>
         </div>
       </div>
+
     </div>
     <div class="col-12 col-lg-7 offset-lg-1 p-0">
+      <div class="btn-group w-100 mb-4" role="group">
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+               [checked]="!mapResultsPage" (click)="mapResultsPageClicked(false)">
+        <label class="btn btn-outline-dark" for="btnradio1">List results</label>
 
-      <div *ngIf="(items | async) as items; else spinner">
-        <app-item-query-row *ngFor="let item of items" [item]="item"></app-item-query-row>
+        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+               [checked]="mapResultsPage" (click)="mapResultsPageClicked(true)">
+        <label class="btn btn-outline-dark" for="btnradio2">Map results</label>
+      </div>
+      <div [hidden]="mapResultsPage">
+        <div *ngIf="(items | async) as items; else spinner">
+          <app-item-query-row *ngFor="let item of items" [item]="item"></app-item-query-row>
+        </div>
+      </div>
+      <div [hidden]="!mapResultsPage">
+        <div id="shop_map" style="height: 400px;"></div>
       </div>
     </div>
+
   </div>
 
 </div>
