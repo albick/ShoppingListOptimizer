@@ -111,9 +111,14 @@ namespace ShoppingListOptimizerAPI.Controllers
 
 
         [HttpGet("{id}/optimize")]
-        public ActionResult<string> OptimizeShoppingList([FromQuery] double distance, [FromQuery] bool onlyOptimizePriority)
+        public ActionResult<List<ShopOptimizationResponse>> OptimizeShoppingList(int id, [FromQuery] double distance, int selectedMode,bool openNow)
         {
-            return Ok(222);
+            var optimizationResult = _shoppingListService.OptimizeShoppingList(id, distance, selectedMode,openNow);
+            if (optimizationResult != null)
+            {
+                return Ok(_mapper.Map < List<ShopOptimizationResponse>>(optimizationResult));
+            }
+            return NotFound("Shopping list cannot be optimized, because no shop fulfills the query criteria");
         }
     }
 }

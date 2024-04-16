@@ -16,13 +16,15 @@ namespace ShoppingListOptimizerAPI.Business.Services
         private readonly MyDbContext _context;
         private readonly IMapper _mapper;
         private readonly AccountService _accountService;
+        private readonly ShopService _shopService;
 
 
-        public ShoppingListService(MyDbContext context, IMapper mapper, AccountService accountService)
+        public ShoppingListService(MyDbContext context, IMapper mapper, AccountService accountService, ShopService shopService)
         {
             _context = context;
             _mapper = mapper;
             _accountService = accountService;
+            _shopService = shopService;
         }
 
         public ShoppingListDTO AddShoppingList(ShoppingListDTO shoppingListDTO)
@@ -231,7 +233,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 return null;
             }
             listItemFromDb.Count = listItem.Count;
-            listItemFromDb.IsPriority=listItem.IsPriority;
+            listItemFromDb.IsPriority = listItem.IsPriority;
 
 
             shoppingListFromDb.DateModified = DateTime.Now;
@@ -257,6 +259,99 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
 
             return _mapper.Map<ShoppingListItemDTO>(listItemFromDb);
+        }
+
+        public List<ShopOptimizationDTO> OptimizeShoppingList(int listId, double distance, int mode,bool openNow)
+        {
+            var shopsInRange = _shopService.GetShops(distance, null);
+            if (openNow)
+            {
+                shopsInRange = shopsInRange.Where(s => _shopService.IsShopOpenNow(s)).ToList();
+            } 
+            var shoppingList = GetShoppingList(listId);
+            if (mode == 0 || mode == 1)
+            {
+                List<ShopDTO>? shopsWhereAllRequiredItems;
+                //all items in one shop
+                if (mode == 0)
+                {
+                    shopsWhereAllRequiredItems = shopsInRange
+                        .Where(shop => shoppingList.ShoppingListItems
+                        .All(shoppingListItem => _context.ItemPriceEntries
+                        .Any(itemPriceEntry => itemPriceEntry.Item.Barcode == shoppingListItem.Item.Barcode && itemPriceEntry.Shop.Id == shop.Id)))
+                        .ToList();
+                }
+                //priority all in one shop
+                else
+                {
+                    shopsWhereAllRequiredItems = shopsInRange
+                        .Where(shop => shoppingList.ShoppingListItems
+                        .Where(item => item.IsPriority)
+                        .All(shoppingListItem => _context.ItemPriceEntries
+                        .Any(itemPriceEntry => itemPriceEntry.Item.Barcode == shoppingListItem.Item.Barcode && itemPriceEntry.Shop.Id == shop.Id)))
+                        .ToList();
+                }
+                List<ShopOptimizationDTO> shops = new List<ShopOptimizationDTO>();
+                //sum price
+                foreach (ShopDTO shop in shopsWhereAllRequiredItems)
+                {
+                    double shopSum = 0;
+                    double shopPrioritySum = 0;
+                    var shopToAdd = new ShopOptimizationDTO
+                    {
+                        Id = shop.Id,
+                        Name = shop.Name,
+                        Location = shop.Location,
+                        PriceSum = shopSum,
+                        PricePrioritySum = shopPrioritySum,
+                        DistanceFromUser = shop.DistanceFromUser
+                    };
+                    foreach (ShoppingListItemDTO shoppingListItem in shoppingList.ShoppingListItems)
+                    {
+                        //if contains
+                        var itemPriceEntry = _context.ItemPriceEntries
+                            .Where(i => i.Item.Barcode == shoppingListItem.Item.Barcode && i.Shop.Id == shop.Id)
+                            .OrderByDescending(i => i.CreatedAt)
+                            .FirstOrDefault();
+                        if (itemPriceEntry != null)
+                        {
+                            shopSum += itemPriceEntry.Price * shoppingListItem.Count;
+                            if (shoppingListItem.IsPriority)
+                            {
+                                shopPrioritySum += itemPriceEntry.Price * shoppingListItem.Count;
+                            }
+                            var itemToAdd = new ShopOptimizationItemDTO
+                            {
+                                Id=shoppingListItem.Id,
+                                Name=shoppingListItem.Item.Name,
+                                Price=itemPriceEntry.Price,
+                                PriceSum= itemPriceEntry.Price * shoppingListItem.Count,
+                                Count=shoppingListItem.Count,
+                                Quantity=shoppingListItem.Item.Quantity,
+                                Unit=shoppingListItem.Item.Unit,
+                                IsPriority=shoppingListItem.IsPriority
+                            };
+                            shopToAdd.Items.Add(itemToAdd);
+                        }
+                    }
+                    shopToAdd.PriceSum = shopSum;
+                    shopToAdd.PricePrioritySum = shopPrioritySum;
+                    shops.Add(shopToAdd);
+                }
+
+                List<ShopOptimizationDTO> sortedShops;
+                if (mode == 0) {
+                    sortedShops = shops.OrderBy(shop => shop.PriceSum).ToList();
+                } else {
+                    sortedShops = shops.OrderBy(shop => shop.PricePrioritySum).ToList();
+                }
+                
+                return sortedShops;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

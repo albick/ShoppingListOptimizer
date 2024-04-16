@@ -106,6 +106,12 @@ namespace ShoppingListOptimizerAPI.MappingProfiles
                 .ForMember(dest=>dest.IsPriority,opt=>opt.MapFrom(src=>src.IsPriority))
                 .ForMember(dest => dest.Item, opt => opt.MapFrom(src => new ItemDTO { Barcode = src.ItemId}));
             ;
+
+            CreateMap<ShopOptimizationDTO, ShopOptimizationResponse>()
+                ;
+
+            CreateMap<ShopOptimizationItemDTO, ShopOptimizationItemResponse>()
+                ;
         }
     }
 

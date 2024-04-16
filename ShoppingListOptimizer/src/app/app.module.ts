@@ -45,6 +45,7 @@ import { OptimizerListsComponent } from './components/optimizer-lists/optimizer-
 import { OptimizerListRowComponent } from './components/helpers/optimizer-list-row/optimizer-list-row.component';
 import { OptimizerSelectOptionsComponent } from './components/optimizer-select-options/optimizer-select-options.component';
 import { OptimizerListItemRowComponent } from './components/helpers/optimizer-list-item-row/optimizer-list-item-row.component';
+import { OptimizerResultRowComponent } from './components/helpers/optimizer-result-row/optimizer-result-row.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { OptimizerListItemRowComponent } from './components/helpers/optimizer-li
     OptimizerListsComponent,
     OptimizerListRowComponent,
     OptimizerSelectOptionsComponent,
-    OptimizerListItemRowComponent
+    OptimizerListItemRowComponent,
+    OptimizerResultRowComponent
   ],
   imports: [
     AppRoutingModule,

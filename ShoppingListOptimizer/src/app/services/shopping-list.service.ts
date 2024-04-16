@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {
+  ShopOptimizationResponse,
   ShoppingListItemRequest,
   ShoppingListItemResponse,
   ShoppingListRequest,
@@ -70,11 +71,12 @@ export class ShoppingListService {
     return this.http.put<ShoppingListItemResponse>(API_URL + `${listId}/items/${listItemId}`, shoppingListItem);
   }
 
-  optimizeShoppingList(listId: string, distance: number, onlyOptimizePriority: boolean) {
+  optimizeShoppingList(listId: string, distance: number, selectedMode: number,openNow:boolean):Observable<ShopOptimizationResponse[]> {
     let query = '?';
     query += `distance=${distance}&`;
-    query += `onlyOptimizePriority=${onlyOptimizePriority}&`;
+    query += `selectedMode=${selectedMode}&`;
+    query += `openNow=${openNow}&`;
 
-    return this.http.get(API_URL + `${listId}/optimize` +query);
+    return this.http.get<ShopOptimizationResponse[]>(API_URL + `${listId}/optimize` +query);
   }
 }

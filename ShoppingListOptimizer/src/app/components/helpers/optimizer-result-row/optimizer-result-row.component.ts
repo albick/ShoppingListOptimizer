@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ShopOptimizationResponse } from 'src/app/models/generated';
 
 @Component({
   selector: 'app-optimizer-result-row',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./optimizer-result-row.component.css']
 })
 export class OptimizerResultRowComponent {
-
+  @Input() optimizedShop!: ShopOptimizationResponse;
 }

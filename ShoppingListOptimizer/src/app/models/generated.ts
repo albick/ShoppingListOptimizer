@@ -217,3 +217,24 @@ export interface ShopResponse {
     openingHours?: OpeningHoursModel[] | undefined;
     distanceFromUser: number;
 }
+
+export interface ShopOptimizationResponse {
+    id: number;
+    name: string;
+    location: LocationModel;
+    priceSum: number;
+    pricePrioritySum: number;
+    distanceFromUser: number;
+    items: ShopOptimizationItemResponse[];
+}
+
+export interface ShopOptimizationItemResponse {
+    id: number;
+    name: string;
+    price: number;
+    priceSum: number;
+    count: number;
+    quantity: number;
+    unit: string;
+    isPriority: boolean;
+}

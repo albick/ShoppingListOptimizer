@@ -25,7 +25,9 @@
         "ShoppingListOptimizerAPI.Models.Responses.RegisterResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ShoppingListItemResponse",
         "ShoppingListOptimizerAPI.Models.Responses.ShoppingListResponse",
-        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse"
+        "ShoppingListOptimizerAPI.Models.Responses.ShopResponse",
+        "ShoppingListOptimizerAPI.Models.Responses.ShopOptimizationResponse",
+        "ShoppingListOptimizerAPI.Models.Responses.ShopOptimizationItemResponse"
       ],
       "defaultPropertyNameHandling": "Default",
       "defaultReferenceTypeNullHandling": "Null",

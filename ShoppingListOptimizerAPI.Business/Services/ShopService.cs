@@ -41,6 +41,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 .Include(s => s.Company)
                     .ThenInclude(c => c.Location)
                 .Include(s => s.Location)
+                .Include(s=>s.OpeningHours)
                 .ToList();
             }
             else
@@ -51,6 +52,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 .Include(s => s.Company)
                     .ThenInclude(c => c.Location)
                 .Include(s => s.Location)
+                .Include(s => s.OpeningHours)
                 .ToList();
             }
 
@@ -132,8 +134,8 @@ namespace ShoppingListOptimizerAPI.Business.Services
         public ShopDTO AddShopDevelopment(ShopDTO shop, Account creator)
         {
 
-            var existingLocation = _context.Locations.Where(l=>l.Id.Equals(shop.Location.Id)).FirstOrDefault();
-            
+            var existingLocation = _context.Locations.Where(l => l.Id.Equals(shop.Location.Id)).FirstOrDefault();
+
             //look up company by id
             var company = _accountService.GetCompanyByName(shop.Company.UserName).Result;
 
@@ -159,13 +161,13 @@ namespace ShoppingListOptimizerAPI.Business.Services
 
         public ShopDTO GetShopByNameDevelopment(string name)
         {
-            var shop=_context.Shops.Where(s=>s.Name.Equals(name))
-                .Include(s=>s.Company)
-                .ThenInclude(c=>c.Location)
-                .Include(s=>s.Creator)
+            var shop = _context.Shops.Where(s => s.Name.Equals(name))
+                .Include(s => s.Company)
                 .ThenInclude(c => c.Location)
-                .Include(s=>s.Location)
-                .Include(s=>s.OpeningHours)
+                .Include(s => s.Creator)
+                .ThenInclude(c => c.Location)
+                .Include(s => s.Location)
+                .Include(s => s.OpeningHours)
                 .FirstOrDefault();
             if (shop != null)
             {
@@ -188,6 +190,32 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 }
             }
             return maxDistance;
+        }
+
+        public bool IsShopOpenNow(ShopDTO shop)
+        {
+            if (shop.OpeningHours == null)
+            {
+                return true;
+            }
+            else
+            {
+                if (shop.OpeningHours.Count.Equals(0))
+                {
+                    return true;
+                }
+            }
+            var now = DateTime.Now.TimeOfDay;
+            var today = DateTime.Now.DayOfWeek;
+
+            var openingHoursToday = shop.OpeningHours?.FirstOrDefault(oh => oh.DayOfWeek == today);
+
+            if (openingHoursToday != null)
+            {
+                return now >= openingHoursToday.StartTime && now <= openingHoursToday.EndTime;
+            }
+
+            return false;
         }
     }
 }
