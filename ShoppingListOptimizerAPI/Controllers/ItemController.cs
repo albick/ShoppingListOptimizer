@@ -22,6 +22,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet("{barcode}")]
         public ActionResult<ItemResponse> GetItemByBarcode(string barcode)
         {
@@ -47,7 +48,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok();
         }
 
-
+        
         [HttpGet("maxPrice")]
         public ActionResult<double> GetMaxItemPrice()
         {
@@ -55,6 +56,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(price);
         }
 
+        
         [HttpGet("{barcode}/chart")]
         public ActionResult<List<ItemChartResponse>> GetChartItemPriceForShops(string barcode, [FromQuery] int[]? shopIds)
         {
@@ -67,6 +69,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult<Item> AddItem([FromBody] ItemRequest item)
         {
@@ -79,6 +82,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(createdItem);
         }
 
+        [Authorize]
         [HttpPost("{barcode}")]
         public ActionResult<Item> AddItemPrice(string barcode, [FromBody] ItemPriceRequest itemPriceEntryRequest)
         {

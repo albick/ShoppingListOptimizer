@@ -171,7 +171,6 @@ namespace ShoppingListOptimizerAPI
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapServerSentEvents("/notification-updates");
                 endpoints.MapControllers();
 
             });

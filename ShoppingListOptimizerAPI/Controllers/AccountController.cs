@@ -40,6 +40,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("myprofile")]
         public ActionResult GetMyProfile()

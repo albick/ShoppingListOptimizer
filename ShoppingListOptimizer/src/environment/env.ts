@@ -1,4 +1,6 @@
 export const Environment = {
-  apiUrl: 'localhost',
-  apiPort: '80'
+  apiUrl: 'https://localhost',
+  //apiUrl: 'https://localhost',
+  apiPort: '7090'
+  //apiPort: '8080'
 };

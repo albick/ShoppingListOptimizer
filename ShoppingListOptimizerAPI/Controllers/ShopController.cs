@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.Services;
@@ -23,6 +24,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             _accountService = accountService;
             _mapper = mapper;
         }
+        
         [HttpGet]
         public ActionResult<List<ShopResponse>> GetShops([FromQuery] double? distance, [FromQuery] string? name)
         {
@@ -58,6 +60,7 @@ namespace ShoppingListOptimizerAPI.Controllers
             return Ok(distance);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult<ShopResponse> AddShopCommunity([FromBody] ShopRequest shop)
         {

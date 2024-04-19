@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingListOptimizerAPI.Business.DTOs;
 using ShoppingListOptimizerAPI.Business.Services;
@@ -8,6 +9,7 @@ using ShoppingListOptimizerAPI.Models.Responses;
 
 namespace ShoppingListOptimizerAPI.Controllers
 {
+    [Authorize]
     [Route("api/shoppinglists")]
     [ApiController]
     public class ShoppingListController : ControllerBase

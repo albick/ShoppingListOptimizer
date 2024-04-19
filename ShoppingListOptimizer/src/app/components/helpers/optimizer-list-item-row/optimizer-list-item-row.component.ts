@@ -12,6 +12,28 @@ import { ShoppingListItemEditModalComponent } from '../shopping-list-item-edit-m
 })
 export class OptimizerListItemRowComponent {
   @Input() shoppingListItem!: ShoppingListItemResponse;
+  @Input() shoppingListId!:string;
+
 
   faCircleExclamation = faCircleExclamation;
+  faPenToSquare = faPenToSquare;
+  faTrashCan = faTrashCan;
+
+  modalRefDeleteItem!: NgbModalRef;
+  modalRefEditItem!: NgbModalRef;
+
+  constructor(private modalService: NgbModal) {
+  }
+
+  showDeleteShoppingListItemModal() {
+    this.modalRefDeleteItem=this.modalService.open(ShoppingListItemDeleteModalComponent);
+    this.modalRefDeleteItem.componentInstance.shoppingListItem=this.shoppingListItem;
+    this.modalRefDeleteItem.componentInstance.shoppingListId=this.shoppingListId;
+  }
+
+  showEditShoppingListItemModal() {
+    this.modalRefEditItem=this.modalService.open(ShoppingListItemEditModalComponent);
+    this.modalRefEditItem.componentInstance.shoppingListItem=this.shoppingListItem;
+    this.modalRefEditItem.componentInstance.shoppingListId=this.shoppingListId;
+  }
 }

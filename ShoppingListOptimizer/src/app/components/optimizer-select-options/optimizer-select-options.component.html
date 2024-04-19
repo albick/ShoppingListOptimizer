@@ -5,7 +5,7 @@
       <p class="h1 mb-4 p-0">Select optimization options for {{ shoppingList.name }}</p>
     </div>
     <div class="row">
-      <div class="mb-4 col-12 col-lg-4 p-0 order-lg-1 order-2">
+      <div class="mb-4 col-12 col-lg-6 p-0 order-lg-1 order-2">
         <div class="p-2 border-container">
           <label class="fw-semibold">Name</label>
           <p class="mb-2">{{ shoppingList.name }}</p>
@@ -61,24 +61,26 @@
           <div class="col p-0" *ngIf="isSubmitted">
 
             <div *ngIf="(shopOptimizationResponse | async) as shopOptimizationResponse; else spinner">
-                <app-optimizer-result-row *ngFor="let optimizedShop of shopOptimizationResponse"
-                                          [optimizedShop]="optimizedShop"></app-optimizer-result-row>
+              <app-optimizer-result-row *ngFor="let optimizedShop of shopOptimizationResponse"
+                                        [optimizedShop]="optimizedShop"
+                                        [mode]="form.selectedMode"></app-optimizer-result-row>
 
 
             </div>
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-7 offset-lg-1 p-0 order-lg-2 order-1">
+      <div class="col-12 col-lg-5 offset-lg-1 p-0 order-lg-2 order-1">
         <app-optimizer-list-item-row *ngFor="let shoppingListItem of shoppingList.shoppingListItems"
-                                     [shoppingListItem]="shoppingListItem"></app-optimizer-list-item-row>
+                                     [shoppingListItem]="shoppingListItem" [shoppingListId]="id"></app-optimizer-list-item-row>
       </div>
     </div>
     <div class="row d-lg-none">
       <div class="col p-0" *ngIf="isSubmitted">
         <div *ngIf="(shopOptimizationResponse | async) as shopOptimizationResponse; else spinner">
           <app-optimizer-result-row *ngFor="let optimizedShop of shopOptimizationResponse"
-                                    [optimizedShop]="optimizedShop"></app-optimizer-result-row>
+                                    [optimizedShop]="optimizedShop"
+                                    [mode]="form.selectedMode"></app-optimizer-result-row>
 
         </div>
       </div>

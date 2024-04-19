@@ -5,7 +5,7 @@ import {ItemChartResponse, ItemPriceRequest, ItemQueryResponse, ItemRequest, Ite
 import {Environment} from 'src/environment/env';
 
 
-const API_URL = 'https://' + Environment.apiUrl + ':7090/api/items/';
+const API_URL = Environment.apiUrl + ':' + Environment.apiPort + '/api/items/';
 
 @Injectable({
   providedIn: 'root'
@@ -38,30 +38,30 @@ export class ItemService {
     return this.http.post<any>(API_URL + barcode, itemPrice);
   }
 
-  getMaxItemPrice():Observable<number>{
-    return this.http.get<number>(API_URL+'maxPrice');
+  getMaxItemPrice(): Observable<number> {
+    return this.http.get<number>(API_URL + 'maxPrice');
   }
 
-  getItems(barcode: string = "",name: string = "", distance: number = 0, priceMin: number = 0, priceMax: number = 0,shopIds:number[]=[]):Observable<ItemQueryResponse[]> {
-    let query="?";
-    if(name.length>0){
-      query+=`name=${name}&`;
+  getItems(barcode: string = "", name: string = "", distance: number = 0, priceMin: number = 0, priceMax: number = 0, shopIds: number[] = []): Observable<ItemQueryResponse[]> {
+    let query = "?";
+    if (name.length > 0) {
+      query += `name=${name}&`;
     }
-    if(barcode.length>0){
-      query+=`barcode=${barcode}&`;
+    if (barcode.length > 0) {
+      query += `barcode=${barcode}&`;
     }
-    if(distance>0){
-      query+=`distance=${distance}&`;
+    if (distance > 0) {
+      query += `distance=${distance}&`;
     }
-    if(priceMin>0){
-      query+=`priceMin=${priceMin}&`;
+    if (priceMin > 0) {
+      query += `priceMin=${priceMin}&`;
     }
-    if(priceMax>0){
-      query+=`priceMax=${priceMax}&`;
+    if (priceMax > 0) {
+      query += `priceMax=${priceMax}&`;
     }
-    if(shopIds.length>0){
-      for(let shopId of shopIds) {
-        query+=`shopIds=${shopId}&`;
+    if (shopIds.length > 0) {
+      for (let shopId of shopIds) {
+        query += `shopIds=${shopId}&`;
       }
     }
 

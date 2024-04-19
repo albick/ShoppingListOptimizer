@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 import {Environment} from 'src/environment/env';
 
 
-const API_URL = 'https://' + Environment.apiUrl + ':7090/api/shoppinglists/';
+const API_URL = Environment.apiUrl + ':' + Environment.apiPort + '/api/shoppinglists/';
 
 @Injectable({
   providedIn: 'root'
@@ -71,12 +71,12 @@ export class ShoppingListService {
     return this.http.put<ShoppingListItemResponse>(API_URL + `${listId}/items/${listItemId}`, shoppingListItem);
   }
 
-  optimizeShoppingList(listId: string, distance: number, selectedMode: number,openNow:boolean):Observable<ShopOptimizationResponse[]> {
+  optimizeShoppingList(listId: string, distance: number, selectedMode: number, openNow: boolean): Observable<ShopOptimizationResponse[]> {
     let query = '?';
     query += `distance=${distance}&`;
     query += `selectedMode=${selectedMode}&`;
     query += `openNow=${openNow}&`;
 
-    return this.http.get<ShopOptimizationResponse[]>(API_URL + `${listId}/optimize` +query);
+    return this.http.get<ShopOptimizationResponse[]>(API_URL + `${listId}/optimize` + query);
   }
 }

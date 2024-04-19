@@ -6,7 +6,7 @@ import {NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
 import { Environment } from 'src/environment/env';
 
 
-const API_URL = 'https://'+Environment.apiUrl+':7090/api/shops/';
+const API_URL = Environment.apiUrl + ':' + Environment.apiPort + '/api/shops/';
 
 @Injectable({
   providedIn: 'root'

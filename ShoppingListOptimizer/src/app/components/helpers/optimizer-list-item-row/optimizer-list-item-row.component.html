@@ -16,5 +16,9 @@
         <p class="m-0 fw-semibold align-self-center">{{ shoppingListItem.count }} pieces</p>
       </div>
     </div>
+    <div class="col-6 col-lg-4 text-end">
+      <fa-icon class="fs-2 align-self-center me-3" [icon]="faPenToSquare"  (click)="showEditShoppingListItemModal()"></fa-icon>
+      <fa-icon class="fs-2 align-self-center text-danger" [icon]="faTrashCan" (click)="showDeleteShoppingListItemModal()"></fa-icon>
+    </div>
   </div>
 </div>
