@@ -2,7 +2,7 @@
 
   <div *ngIf="(shoppingList | async) as shoppingList; else spinner">
     <div class="row">
-      <p class="h1 mb-4 p-0">Select optimization options for {{ shoppingList.name }}</p>
+      <p class="h1 mb-4 p-0">Select optimization options</p>
     </div>
     <div class="row">
       <div class="mb-4 col-12 col-lg-6 p-0 order-lg-1 order-2">
@@ -63,7 +63,9 @@
             <div *ngIf="(shopOptimizationResponse | async) as shopOptimizationResponse; else spinner">
               <app-optimizer-result-row *ngFor="let optimizedShop of shopOptimizationResponse"
                                         [optimizedShop]="optimizedShop"
-                                        [mode]="form.selectedMode"></app-optimizer-result-row>
+                                        [mode]="form.selectedMode"
+
+              ></app-optimizer-result-row>
 
 
             </div>

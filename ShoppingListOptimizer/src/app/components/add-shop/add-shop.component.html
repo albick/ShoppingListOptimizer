@@ -82,7 +82,9 @@
         <geoapify-geocoder-autocomplete
           [type]="'amenity'"
           [filterByCountryCode]="['hu']"
-          (placeSelect)="placeSelected($event)">
+          [placeholder]="' '"
+          (placeSelect)="placeSelected($event)"
+        >
         </geoapify-geocoder-autocomplete>
 
       </div>

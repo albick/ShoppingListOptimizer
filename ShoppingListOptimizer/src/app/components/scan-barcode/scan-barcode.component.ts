@@ -34,9 +34,7 @@ export class ScanBarcodeComponent {
   constructor(private itemService: ItemService) {
     this.formatsEnabled = [
       BarcodeFormat.CODE_128,
-      BarcodeFormat.DATA_MATRIX,
-      BarcodeFormat.EAN_13,
-      BarcodeFormat.QR_CODE
+      BarcodeFormat.EAN_13
     ];
   }
 

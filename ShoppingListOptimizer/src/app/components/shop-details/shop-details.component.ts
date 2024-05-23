@@ -42,7 +42,6 @@ export class ShopDetailsComponent implements OnInit {
   }
 
   initMap(mapElement: HTMLElement): void {
-    console.log('Map element:', mapElement);
     const isRetina = L.Browser.retina;
     const map = L.map(mapElement).setView([this.shopLatitude, this.shopLongitude], 16);
     const myAPIKey = "d69bf89b9e5c4838bc7dd0cf2ede270a";

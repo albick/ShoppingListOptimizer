@@ -10,11 +10,8 @@ namespace ShoppingListOptimizerAPI.Data.Models
     public class ShoppingList
     {
         public int Id { get; set; }
-
         public string Name { get; set; }
-
         public string Details { get; set; }
-
         public DateTime DateModified { get; set; }
 
         public string CreatorId { get; set; }

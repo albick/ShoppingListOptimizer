@@ -13,7 +13,7 @@ import {
     LocationModel
 } from "../models/generated";
 
-const AUTH_API = Environment.apiUrl+':'+Environment.apiPort+'/api/Account/';
+const AUTH_API = Environment.apiUrl+':'+Environment.apiPort+'/api/accounts/';
 
 const httpOptions = {
     headers: new HttpHeaders({

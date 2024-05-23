@@ -41,7 +41,7 @@ namespace ShoppingListOptimizerAPI.Business.Services
                 .Include(s => s.Company)
                     .ThenInclude(c => c.Location)
                 .Include(s => s.Location)
-                .Include(s=>s.OpeningHours)
+                .Include(s => s.OpeningHours)
                 .ToList();
             }
             else
@@ -108,7 +108,56 @@ namespace ShoppingListOptimizerAPI.Business.Services
             return shop_mapped;
         }
 
-        public ShopDTO AddShopCommunity(ShopDTO shop)
+        public ShopDTO UpdateShopById(ShopDTO shop, int id)
+        {
+            var shopFromDb = _context.Shops
+                .Include(s => s.Creator)
+                    .ThenInclude(c => c.Location)
+                .Include(s => s.Company)
+                    .ThenInclude(c => c.Location)
+                .Include(s => s.Location)
+                .Include(s => s.OpeningHours)
+                .FirstOrDefault(p => p.Id == id);
+            if (shopFromDb != null)
+            {
+                var currentUser = _accountService.GetCurrentUser().Result;
+                if (currentUser != null)
+                {
+                    if (shopFromDb.Company.Id.Equals(currentUser.Id))
+                    {
+                        var shopUpdated = _mapper.Map<Shop>(shop);
+                        shopFromDb.OpeningHours = shopUpdated.OpeningHours;
+                        shopFromDb.Name = shopUpdated.Name;
+                        shopFromDb.Details = shopUpdated.Details;
+                        shopFromDb.Location = shopUpdated.Location;
+
+
+                        _context.Shops.Update(shopFromDb);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public bool DeleteShopById(int id)
+        {
+            var shopFromDb = _context.Shops
+                .Include(s => s.Creator)
+                    .ThenInclude(c => c.Location)
+                .Include(s => s.Company)
+                    .ThenInclude(c => c.Location)
+                .Include(s => s.Location)
+                .Include(s => s.OpeningHours)
+                .FirstOrDefault(p => p.Id == id);
+            if (shopFromDb != null)
+            {
+                _context.Shops.Remove(shopFromDb);
+                return true;
+            }
+            return false;
+        }
+
+        public ShopDTO AddShop(ShopDTO shop)
         {
             //look up company by id
             var company = _accountService.GetCompanyByName(shop.Company.UserName).Result;

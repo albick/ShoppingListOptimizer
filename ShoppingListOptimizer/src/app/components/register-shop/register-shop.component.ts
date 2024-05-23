@@ -88,7 +88,6 @@ export class RegisterShopComponent {
     this.location.latitude = data.properties['lat'];
     // @ts-ignore
     this.location.longitude = data.properties['lon'];
-    console.log(this.location)
   }
 
 

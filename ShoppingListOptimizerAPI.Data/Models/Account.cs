@@ -15,12 +15,6 @@ namespace ShoppingListOptimizerAPI.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override string Id { get; set; }
-
         public Location? Location { get; set; }
-        
-        
-
     }
-
-    
 }

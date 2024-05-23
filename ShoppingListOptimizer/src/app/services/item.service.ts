@@ -15,7 +15,7 @@ export class ItemService {
   constructor(private http: HttpClient) {
   }
 
-  getItemByBarcode(barcode: string): Observable<ItemResponse> {
+    getItemByBarcode(barcode: string): Observable<ItemResponse> {
     return this.http.get<ItemResponse>(API_URL + barcode);
   }
 

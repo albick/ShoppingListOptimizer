@@ -18,6 +18,7 @@ namespace ShoppingListOptimizerAPI.Data.Models
 
         public string CreatorId { get; set; }
         public Account Creator { get; set; }
+
         public int ShopId { get; set; }
         public Shop Shop { get; set; }
     }

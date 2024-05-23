@@ -4,7 +4,7 @@
 
 
   </div>
-  <div *ngIf="(shoppingLists | async) as shoppingLists; else spinner" class="mb-2">
+  <div *ngIf="(shoppingLists | async) as shoppingLists; else spinner">
     <app-optimizer-list-row *ngFor="let shoppingList of shoppingLists"
                             [shoppingList]="shoppingList"></app-optimizer-list-row>
   </div>

@@ -12,8 +12,6 @@ namespace ShoppingListOptimizerAPI.Data.Models
         public DayOfWeek DayOfWeek { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-
         public int ShopId { get; set; }
-
     }
 }
